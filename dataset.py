@@ -69,7 +69,7 @@ class MultiDataset(InMemoryDataset):
     def __init__(self, root, dataset, tasks, transform=None, pre_transform=None, pre_filter=None):
         self.tasks = tasks
         self.dataset = dataset
-        self.weight = 0
+        self.weights = 0
         super(MultiDataset, self).__init__(root, transform, pre_transform, pre_filter)
         self.data, self.slices = torch.load(self.processed_paths[0])
 
@@ -129,8 +129,8 @@ class MultiDataset(InMemoryDataset):
 def load_dataset_random(path, dataset, seed, tasks=None):
     save_path = path + f'processed/train_test_{dataset}_seed_{seed}.ckpt'
     if os.path.isfile(save_path):
-        train, test = torch.load(save_path)
-        return train, test
+        train, val, test = torch.load(save_path)
+        return train, val, test
     pyg_dataset = MultiDataset(root=path, dataset=dataset, tasks=tasks)
     df = pd.read_csv(os.path.join(path, f'raw/{dataset}.csv'))
     smiles_list = df.smiles.values
@@ -140,8 +140,7 @@ def load_dataset_random(path, dataset, seed, tasks=None):
     for smiles in smiles_list:
         try:
             remained_smiles.append(smiles)
-            canonical_smiles.append(MolToSmiles(MolFromSmiles(smiles),
-                                                isomericSmiles=True))  # isomericSmiles: include information about stereochemistry in the SMILES.
+            canonical_smiles.append(MolToSmiles(MolFromSmiles(smiles), isomericSmiles=True))  # isomericSmiles: include information about stereochemistry in the SMILES.
         except:
             print("not successfully processed smiles: ", smiles)
             pass
@@ -150,19 +149,20 @@ def load_dataset_random(path, dataset, seed, tasks=None):
     df = df[df['smiles'].isin(remained_smiles)].reset_index()
     if dataset == 'tox21':
         train_size = int(0.8 * len(pyg_dataset))
-        test_size = len(pyg_dataset) - train_size
+        val_size = int(0.1*len(pyg_dataset))
+        test_size = len(pyg_dataset) - train_size - val_size
         pyg_dataset = pyg_dataset.shuffle()
-        train, test = pyg_dataset[:train_size], pyg_dataset[train_size:]
+        train, val, test = pyg_dataset[:train_size], pyg_dataset[train_size:(train_size+val_size)], pyg_dataset[(train_size+val_size):]
 
-        # # in each classfication work, add a weight base on the number of positive and negative data
-        # weights = []
-        # for i, task in enumerate(tasks):
-        #     negative_df = df[df[task] == 0][['smiles', task]]
-        #     positive_df = df[df[task] == 1][["smiles", task]]
-        #     neg_len = len(negative_df)
-        #     pos_len = len(positive_df)
-        #     weights.append([(neg_len + pos_len) / neg_len, (neg_len + pos_len) / pos_len])
-        # train.weight = weights
+        # in each classfication work, add a weight base on the number of positive and negative data
+        weights = []
+        for i, task in enumerate(tasks):
+            negative_df = df[df[task] == 0][['smiles', task]]
+            positive_df = df[df[task] == 1][["smiles", task]]
+            neg_len = len(negative_df)
+            pos_len = len(positive_df)
+            weights.append([(neg_len + pos_len) / neg_len, (neg_len + pos_len) / pos_len])
+        train.weights = weights
 
-        torch.save([train, test], save_path)  # save to disk for loading next time without data processing
+        torch.save([train, val, test], save_path)  # save to disk for loading next time without data processing
         return load_dataset_random(path, dataset, seed, tasks)
