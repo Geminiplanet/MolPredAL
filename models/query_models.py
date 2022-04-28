@@ -107,7 +107,7 @@ class View(nn.Module):
 
 class VAE(nn.Module):
     """Encoder-Decoder architecture for both WAE-MMD and WAE-GAN."""
-    def __init__(self, z_dim=32, nc=3, f_filt=4):
+    def __init__(self, z_dim=32, nc=3, f_filt=4):  # nc = n_channel
         super(VAE, self).__init__()
         self.z_dim = z_dim
         self.nc = nc

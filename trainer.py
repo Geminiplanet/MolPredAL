@@ -18,7 +18,8 @@ class Trainer():
                  tasks_num=17):
         # Most important variable
         self.option = option
-        self.device = torch.device("cuda:{}".format(option['gpu'][0]) if torch.cuda.is_available() else "cpu")
+        # self.device = torch.device("cuda:{}".format(option['gpu'][0]) if torch.cuda.is_available() else "cpu")
+        self.device = torch.device('cuda')
         self.model = DataParallel(model).to(self.device) if option['parallel'] else model.to(self.device)
 
         # Setting the train valid and test data loader
