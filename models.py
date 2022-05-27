@@ -6,18 +6,16 @@ from config import *
 
 
 class LossNet(nn.Module):
-    def __init__(self, feature_sizes=[8, 8, 5], num_channels=[126, 90, 80], interm_dim=32):
+    def __init__(self, feature_sizes=[10, 5], num_channels=[15, 15], interm_dim=15):
         super(LossNet, self).__init__()
 
         self.GAP1 = nn.AvgPool1d(feature_sizes[0])
         self.GAP2 = nn.AvgPool1d(feature_sizes[1])
-        self.GAP3 = nn.AvgPool1d(feature_sizes[2])
 
         self.FC1 = nn.Linear(num_channels[0], interm_dim)
         self.FC2 = nn.Linear(num_channels[1], interm_dim)
-        self.FC3 = nn.Linear(num_channels[2], interm_dim)
 
-        self.linear = nn.Linear(3 * interm_dim, 1)
+        self.linear = nn.Linear(2 * interm_dim, 1)
 
     def forward(self, features):
         out1 = self.GAP1(features[0])
@@ -28,11 +26,7 @@ class LossNet(nn.Module):
         out2 = out2.view(out2.size(0), -1)
         out2 = F.relu(self.FC2(out2))
 
-        out3 = self.GAP3(features[2])
-        out3 = out3.view(out3.size(0), -1)
-        out3 = F.relu(self.FC3(out3))
-
-        out = self.linear(torch.cat((out1, out2, out3), 1))
+        out = self.linear(torch.cat((out1, out2), 1))
         return out
 
 
@@ -44,23 +38,23 @@ class MolecularVAE(nn.Module):
         self.conv_2 = nn.Conv1d(18, 18, kernel_size=18)
         self.conv_3 = nn.Conv1d(18, 20, kernel_size=22)
         self.linear_0 = nn.Linear(400, 435)
-        self.linear_1 = nn.Linear(435, 292)
-        self.linear_2 = nn.Linear(435, 292)
+        self.linear_1 = nn.Linear(435, LATENT_DIM)
+        self.linear_2 = nn.Linear(435, LATENT_DIM)
 
-        self.linear_3 = nn.Linear(292, 292)
-        self.gru = nn.GRU(292, 501, 3, batch_first=True)
-        self.linear_4 = nn.Linear(501, 75)
+        self.linear_3 = nn.Linear(LATENT_DIM+1, 300)
+        self.gru = nn.GRU(300, 500, 3, batch_first=True)
+        self.linear_4 = nn.Linear(500, 75)
 
         self.relu = nn.ReLU()
         self.softmax = nn.Softmax()
 
     def encode(self, x):
-        out1 = self.relu(self.conv_1(x))
-        out2 = self.relu(self.conv_2(out1))
-        out3 = self.relu(self.conv_3(out2))
-        out = out3.view(x.size(0), -1)
-        x = F.selu(self.linear_0(out))
-        return self.linear_1(x), self.linear_2(x), [out1, out2, out3]
+        x = self.relu(self.conv_1(x))
+        x = self.relu(self.conv_2(x))
+        x = self.relu(self.conv_3(x))
+        x = x.view(x.size(0), -1)
+        x = F.selu(self.linear_0(x))
+        return self.linear_1(x), self.linear_2(x)
 
     def sampling(self, z_mean, z_logvar):
         epsilon = 1e-2 * torch.randn_like(z_logvar)
@@ -75,20 +69,29 @@ class MolecularVAE(nn.Module):
         y = y0.contiguous().view(output.size(0), -1, y0.size(-1))
         return y
 
-    def forward(self, x):
-        z_mean, z_logvar, _ = self.encode(x)
+    def forward(self, x, r):
+        z_mean, z_logvar = self.encode(x)
         z = self.sampling(z_mean, z_logvar)
-        return self.decode(z), z, z_mean, z_logvar
+        z = torch.cat([z, r], 1)
+        return self.decode(z), z_mean, z_logvar
 
 
 class Predictor(nn.Module):
     def __init__(self):
         super(Predictor, self).__init__()
 
-        self.fc1 = nn.Linear(LATENT_DIM, 24)
+        self.fc1 = nn.Linear(LATENT_DIM, 150)
+        self.fc2 = nn.Linear(150, 75)
+        self.fc3 = nn.Linear(75, 24)
 
-    def forward(self, z):
-        return self.fc1(z)
+        self.relu = nn.ReLU()
+
+    def forward(self, z_mean):
+        out1 = self.relu(self.fc1(z_mean))
+        out2 = self.relu(self.fc2(out1))
+        out = self.relu(self.fc3(out2))
+
+        return out, [out1, out2]
 
 
 class Discriminator(nn.Module):
@@ -98,11 +101,11 @@ class Discriminator(nn.Module):
         super(Discriminator, self).__init__()
         self.z_dim = z_dim
         self.net = nn.Sequential(
-            nn.Linear(z_dim, LATENT_DIM),
+            nn.Linear(z_dim+1, 500),
             nn.ReLU(True),
-            nn.Linear(LATENT_DIM, LATENT_DIM),
+            nn.Linear(500, 500),
             nn.ReLU(True),
-            nn.Linear(LATENT_DIM, 1),
+            nn.Linear(500, 1),
             nn.Sigmoid()
         )
         self.weight_init()
@@ -112,11 +115,11 @@ class Discriminator(nn.Module):
             for m in self._modules[block]:
                 kaiming_init(m)
 
-    # def forward(self, r, z):
-    #     z = torch.cat([z, r], 1)
-    #     return self.net(z)
-    def forward(self, z):
+    def forward(self, r, z):
+        z = torch.cat([z, r], 1)
         return self.net(z)
+    # def forward(self, z):
+    #     return self.net(z)
 
 
 def kaiming_init(m):

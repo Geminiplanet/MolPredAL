@@ -44,7 +44,7 @@ def process_tox21_smiles_data(data_dir):
         Pdata.append(label)
         X_d = np.zeros((MAX_SEQ_LEN, CHAR_LEN))
         j = 0
-        istring = 0  # x_d[0] is set '<'
+        istring = 0
         check = True
         while check:
             char2 = smi[j: j + 2]
