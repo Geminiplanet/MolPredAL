@@ -1,140 +1,281 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-
-# Press the green button in the gutter to run the script.
-import os
 import random
-import argparse
-import time
 
+import numpy as np
 import torch.cuda
-from torch import optim, nn
-from torch_geometric.loader import DataLoader
-
-from dataset import load_dataset_random
+import torch.nn as nn
+import torch.nn.functional as F
+from sklearn import metrics
+from sklearn.metrics import precision_recall_curve
+from torch import optim
+from torch.optim import lr_scheduler
+from torch.utils.data import DataLoader, SubsetRandomSampler
+from tqdm import tqdm
 
 from config import *
-from models.model import TrimNet
-from models.query_models import LossNet
-# from train_test import train
-from trainer import Trainer
+from dataset import load_tox21_dataset
+from models import MolecularVAE, Discriminator, Predictor, LossNet
 
-parser = argparse.ArgumentParser()
-parser.add_argument("--data", type=str, default='../data/', help="all data dir")
-parser.add_argument("--dataset", type=str, default='bace', help="muv,tox21,toxcast,sider,clintox,hiv,bace,bbbp")
-parser.add_argument('--seed', default=68, type=int)
-parser.add_argument("--gpu", type=int, nargs='+', default=0, help="CUDA device ids")
 
-parser.add_argument("--hid", type=int, default=32, help="hidden size of transformer model")
-parser.add_argument('--heads', default=4, type=int)
-parser.add_argument('--depth', default=3, type=int)
-parser.add_argument("--dropout", type=float, default=0.2)
+def LossPredLoss(input, target, margin=1.0, reduction='mean'):
+    assert len(input) % 2 == 0, 'the batch size is not even.'
+    assert input.shape == input.flip(0).shape
+    criterion = nn.BCELoss()
+    input = (input - input.flip(0))[
+            :len(input) // 2]  # [l_1 - l_2B, l_2 - l_2B-1, ... , l_B - l_B+1], where batch_size = 2B
+    target = (target - target.flip(0))[:len(target) // 2]
+    target = target.detach()
+    diff = torch.sigmoid(input)
+    one = torch.sign(torch.clamp(target, min=0))  # 1 operation which is defined by the authors
 
-parser.add_argument("--batch_size", type=int, default=128, help="number of batch_size")
-parser.add_argument("--epochs", type=int, default=200, help="number of epochs")
-parser.add_argument("--lr", type=float, default=0.001, help="learning rate of adam")
-parser.add_argument("--weight_decay", type=float, default=1e-5)
-parser.add_argument('--lr_scheduler_patience', default=10, type=int)
-parser.add_argument('--early_stop_patience', default=-1, type=int)
-parser.add_argument('--lr_decay', default=0.98, type=float)
-parser.add_argument('--focalloss', default=False, action="store_true")
+    if reduction == 'mean':
+        loss = criterion(diff, one)
+    elif reduction == 'none':
+        loss = criterion(diff, one)
+    else:
+        NotImplementedError()
 
-parser.add_argument('--eval', default=False, action="store_true")
-parser.add_argument("--exps_dir", default='test/', type=str, help="out dir")
-parser.add_argument('--exp_name', default=None, type=str)
-parser.add_argument('--load', default=None, type=str)
+    return loss
 
-args = parser.parse_args()
+
+def vae_loss(x, recon, mu, logvar, beta):
+    mse_loss = nn.MSELoss()
+    MSE = mse_loss(recon, x)
+    KLD = -0.5 * torch.sum(1 + logvar - mu.pow(2) - logvar.exp())
+    KLD = KLD * beta
+    return MSE + KLD
+
+
+def read_data(dataloader, labels=True):
+    if labels:
+        while True:
+            for data, _, label in dataloader:
+                yield data, label
+    else:
+        while True:
+            for data, _, _ in dataloader:
+                yield data
+
+
+def main():
+    # load dataset
+    data_train, data_test, data_unlabeled = load_tox21_dataset('data/tox21.csv')
+    indices = list(range(data_train.len))
+    random.shuffle(indices)
+    labeled_set = []
+    unlabeled_set = indices
+    # train_loader = DataLoader(data_train, batch_size=BATCH, pin_memory=True, drop_last=True)
+    # test_loader = DataLoader(data_test, batch_size=BATCH)
+    unlabeled_loader = DataLoader(data_unlabeled, batch_size=BATCH, pin_memory=True)
+    # dataloaders = {'train': train_loader, 'test': test_loader}
+    device = 'cuda' if torch.cuda.is_available() else 'cpu'
+
+    unlabeled_data = read_data(unlabeled_loader, labels=False)
+    # taskModel = Predictor().to(device)
+    # loss_module = LossNet().to(device)
+    # ranker = loss_module
+    # model = {'backbone': taskModel, 'module': loss_module}
+    vae = MolecularVAE().to(device)
+    discriminator = Discriminator(292).to(device)
+
+    optim_vae = optim.Adam(vae.parameters(), lr=5e-4)
+    optim_discriminator = optim.Adam(discriminator.parameters(), lr=5e-4)
+
+    # train vaal
+    num_vae_steps = 1
+    num_adv_steps = 1
+    adversary_param = 1
+    beta = 1
+    bce_loss = nn.BCELoss()
+    train_iterations = len(data_unlabeled) * EPOCHL // BATCH
+    vae.train()
+    discriminator.train()
+    best_acc = 0
+    for iter_count in range(20):
+        unlabeled_imgs = next(unlabeled_data).float().to(device)
+
+        # VAE step
+        for count in range(num_vae_steps):
+            # recon, z, mu, logvar = vae(labeled_imgs)
+            # unsup_loss = self.vae_loss(labeled_imgs, recon, mu, logvar, self.args.beta)
+            unlab_recon, unlab_z, unlab_mu, unlab_logvar = vae(unlabeled_imgs)
+            transductive_loss = vae_loss(unlabeled_imgs, unlab_recon, unlab_mu, unlab_logvar, beta)
+
+            # labeled_preds = discriminator(mu).squeeze(-1)
+            unlabeled_preds = discriminator(unlab_mu).squeeze(-1)
+
+            # lab_real_preds = torch.ones(labeled_imgs.size(0))
+            unlab_real_preds = torch.ones(unlabeled_imgs.size(0))
+
+            # if self.args.cuda:
+            #     lab_real_preds = lab_real_preds.cuda()
+            unlab_real_preds = unlab_real_preds.to(device)
+
+            # dsc_loss = self.bce_loss(labeled_preds, lab_real_preds) + \
+            #            self.bce_loss(unlabeled_preds, unlab_real_preds)
+            dsc_loss = bce_loss(unlabeled_preds, unlab_real_preds)
+            # total_vae_loss = unsup_loss + transductive_loss + self.args.adversary_param * dsc_loss
+            total_vae_loss = transductive_loss + adversary_param * dsc_loss
+            optim_vae.zero_grad()
+            total_vae_loss.backward()
+            optim_vae.step()
+
+            # # sample new batch if needed to train the adversarial network
+            # if count < (self.args.num_vae_steps - 1):
+            #     labeled_imgs, _ = next(labeled_data)
+            #     unlabeled_imgs = next(unlabeled_data)
+            #
+            #     if self.args.cuda:
+            #         labeled_imgs = labeled_imgs.cuda()
+            #         unlabeled_imgs = unlabeled_imgs.cuda()
+            #         labels = labels.cuda()
+
+        # Discriminator step
+        for count in range(num_adv_steps):
+            with torch.no_grad():
+                # _, _, mu, _ = vae(labeled_imgs)
+                _, _, unlab_mu, _ = vae(unlabeled_imgs)
+
+            # labeled_preds = discriminator(mu).squeeze(-1)
+            unlabeled_preds = discriminator(unlab_mu).squeeze(-1)
+
+            # lab_real_preds = torch.ones(labeled_imgs.size(0))
+            unlab_fake_preds = torch.zeros(unlabeled_imgs.size(0)).to(device)
+
+            # if self.args.cuda:
+            #     lab_real_preds = lab_real_preds.cuda()
+            #     unlab_fake_preds = unlab_fake_preds.cuda()
+
+            # dsc_loss = self.bce_loss(labeled_preds, lab_real_preds) + \
+            #            self.bce_loss(unlabeled_preds, unlab_fake_preds)
+            dsc_loss = bce_loss(unlabeled_preds, unlab_fake_preds)
+            optim_discriminator.zero_grad()
+            dsc_loss.backward()
+            optim_discriminator.step()
+
+            # # sample new batch if needed to train the adversarial network
+            # if count < (self.args.num_adv_steps - 1):
+            #     labeled_imgs, _ = next(labeled_data)
+            #     unlabeled_imgs = next(unlabeled_data)
+            #
+            #     if self.args.cuda:
+            #         labeled_imgs = labeled_imgs.cuda()
+            #         unlabeled_imgs = unlabeled_imgs.cuda()
+            #         labels = labels.cuda()
+
+        if iter_count % 10 == 9:
+            print('Current training iteration: {}'.format(iter_count))
+            # print('Current task model loss: {:.4f}'.format(task_loss.item()))
+            print('Current vae model loss: {:.4f}'.format(total_vae_loss.item()))
+            print('Current discriminator model loss: {:.4f}'.format(dsc_loss.item()))
+
+    # train and test task model
+    labeled_set = indices[:ADDENNUM]
+    train_loader = DataLoader(data_train, batch_size=BATCH, sampler=SubsetRandomSampler(labeled_set), pin_memory=True,
+                              drop_last=True)
+    test_loader = DataLoader(data_test, batch_size=BATCH)
+    task_model = Predictor().to(device)
+    loss_module = LossNet().to(device)
+    criterion = [torch.nn.CrossEntropyLoss(torch.Tensor(w).to(device), reduction='none') for w in data_train.weights]
+    optim_task = optim.Adam(task_model.parameters(), lr=0.001, weight_decay=1e-5)
+    sched_task = lr_scheduler.MultiStepLR(optim_task, milestones=MILESTONES)
+    optim_module = optim.Adam(loss_module.parameters(), lr=LR, weight_decay=WDECAY)
+    sched_module = lr_scheduler.MultiStepLR(optim_module, milestones=MILESTONES)
+    for cycle in range(CYCLES):
+        # train
+        for epoch in range(100):
+            task_model.train()
+            loss_module.train()
+            losses = []
+            y_label_list = {}
+            y_pred_list = {}
+            for data in tqdm(train_loader, leave=False, total=len(train_loader)):
+                batch_x, _, batch_p = data
+                batch_x = batch_x.float().to(device)
+                batch_p = batch_p.to(device)
+                optim_task.zero_grad()
+                _, z, _, _ = vae(batch_x)
+                scores = task_model(z)
+                target_loss = 0
+                # 12 classifier loss
+                for i in range(12):
+                    y_pred = scores[:, i * 2:(i + 1) * 2]
+                    y_label = batch_p[:, i].squeeze().cpu()
+                    y_label[np.where(y_label == 6)] = 0
+                    y_label = y_label.to(device)
+                    # validId = np.where((y_label.cpu().numpy() == 0) | (y_label.cpu().numpy() == 1))[0]
+                    # if len(validId) == 0:
+                    #     continue
+                    # y_pred = y_pred[validId]
+                    # y_label = y_label[validId]
+                    target_loss += criterion[i](y_pred, y_label)
+                    y_pred = F.softmax(y_pred.detach().cpu(), dim=-1)[:, 1].view(-1).numpy()
+                    try:
+                        y_label_list[i].extend(y_label.cpu().numpy())
+                        y_pred_list[i].extend(y_pred)
+                    except:
+                        y_label_list[i] = []
+                        y_pred_list[i] = []
+                        y_label_list[i].extend(y_label.cpu().numpy())
+                        y_pred_list[i].extend(y_pred)
+                _, _, feature = vae.encode(batch_x)
+                pred_loss = loss_module(feature)
+                pred_loss = pred_loss.view(pred_loss.size(0))
+                m_module_loss = LossPredLoss(pred_loss, target_loss, margin=MARGIN)
+                m_backbone_loss = torch.sum(target_loss) / target_loss.size(0)
+                loss = m_backbone_loss + WEIGHT * m_module_loss
+                # loss = target_loss
+                loss.backward()
+                optim_task.step()
+                optim_module.step()
+                losses.append(loss.item())
+            train_roc = [metrics.roc_auc_score(y_label_list[i], y_pred_list[i]) for i in range(12)]
+            train_prc = [metrics.auc(precision_recall_curve(y_label_list[i], y_pred_list[i])[1],
+                                     precision_recall_curve(y_label_list[i], y_pred_list[i])[0]) for i in range(12)]
+            train_loss = np.array(losses).mean()
+            train_roc = np.array(train_roc).mean()
+            train_prc = np.array(train_prc).mean()
+            sched_task.step()
+            sched_module.step()
+            if epoch % 10 == 0:
+                print(f'epoch {epoch}: train loss is {train_loss}, train_roc: {train_roc}, train_prc: {train_prc}')
+        # test
+
+        task_model.eval()
+        with torch.no_grad():
+            y_label_list = {}
+            y_pred_list = {}
+            for data in tqdm(test_loader, leave=False, total=len(test_loader)):
+                batch_x, batch_l, batch_p = data
+                batch_x = batch_x.float().to(device)
+                # batch_l = batch_l.cuda()
+                batch_p = batch_p.to(device)
+                _, z, _, _ = vae(batch_x)
+                pred = task_model(z)
+                for i in range(12):
+                    y_pred = pred[:, i * 2:(i + 1) * 2]
+                    y_label = batch_p[:, i].squeeze()
+                    validId = np.where((y_label.cpu().numpy() == 0) | (y_label.cpu().numpy() == 1))[0]
+                    if len(validId) == 0:
+                        continue
+                    y_pred = y_pred[validId]
+                    y_label = y_label[validId]
+                    y_pred = F.softmax(y_pred.detach().cpu(), dim=-1)[:, 1].view(-1).numpy()
+                    try:
+                        y_label_list[i].extend(y_label.cpu().numpy())
+                        y_pred_list[i].extend(y_pred)
+                    except:
+                        y_label_list[i] = []
+                        y_pred_list[i] = []
+                        y_label_list[i].extend(y_label.cpu().numpy())
+                        y_pred_list[i].extend(y_pred)
+            roc = [metrics.roc_auc_score(y_label_list[i], y_pred_list[i]) for i in range(12)]
+            prc = [metrics.auc(precision_recall_curve(y_label_list[i], y_pred_list[i])[1],
+                               precision_recall_curve(y_label_list[i], y_pred_list[i])[0]) for i in range(12)]
+        print(f'Cycle {cycle + 1}/{CYCLES} || labeled data size {len(labeled_set)}, test roc = {roc}, test prc = {prc}')
+
+        # AL to select data
+        # arg = query_samples()
+
 
 if __name__ == '__main__':
-
-
-    args.tasks = ['NR-AR', 'NR-AR-LBD', 'NR-AhR', 'NR-Aromatase', 'NR-ER', 'NR-ER-LBD', 'NR-PPAR-gamma', 'SR-ARE',
-             'SR-ATAD5', 'SR-HSE', 'SR-MMP', 'SR-p53']
-
-    # load training and testing dataset
-    data_train, data_val, data_test = load_dataset_random('data/', 'tox21', args.seed, args.tasks)
-    print(f'train: {data_train}, val: {data_val}, test: {data_test}')
-    data_unlabeld = data_train
-    NUM_TRAIN = len(data_train)
-    indices = list(range(NUM_TRAIN))
-    random.shuffle(indices)
-    labeled_set = indices[:ADDENNUM]
-    unlabelled_set = indices[ADDENNUM:]
-    train_loader = DataLoader(data_train, batch_size=BATCH, shuffle=True)
-    # for data in train_loader:
-    #     print(data.y)
-    #     for i in range(12):
-    #         y_label = data.y[:, i].squeeze()
-    #         print(y_label)
-    test_loader = DataLoader(data_test, batch_size=BATCH)
-    # data_loaders = {'train': train_loader, 'test': test_loader}
-
-    args.parallel = True if args.gpu and len(args.gpu) > 1 else False
-    args.parallel_devices = args.gpu
-    args.tag = time.strftime("%m-%d-%H-%M") if args.exp_name is None else args.exp_name
-    args.exp_path = os.path.join(args.exps_dir, args.tag)
-
-    if not os.path.exists(args.exp_path):
-        os.makedirs(args.exp_path)
-    args.code_file_path = os.path.abspath(__file__)
-    args.out_dim = 2 * len(args.tasks)
-    option = args.__dict__
-
-
-    for cycle in range(1):
-        # # model: create new instance for every cycle so that it resets
-        # with torch.cuda.device(CUDA_VISIBLE_DEVICES):
-        #     resnet18 = resnet.ResNet18(num_classes=NO_CLASSES).cuda()
-        #     loss_module = LossNet().cuda()
-        #
-        # models = {'backbone': resnet18, 'module': loss_module}
-        # torch.backends.cudnn.benchmark = True
-
-        # # loss, criterion and scheduler (re)initialization
-        # criterion = nn.CrossEntropyLoss(reduction='none')
-        # optim_backbone = optim.SGD(models['backbone'].parameters(), lr=LR, momentum=MOMENTUM, weight_decay=WDECAY)
-        # sched_backbone = optim.lr_scheduler.MultiStepLR(optim_backbone, milestones=MILESTONES)
-        # optim_module = optim.SGD(models['module'].parameters(), lr=LR, momentum=MOMENTUM, weight_decay=WDECAY)
-        # sched_module = optim.lr_scheduler.MultiStepLR(optim_module, milestones=MILESTONES)
-        # optimizers = {'backbone': optim_backbone, 'module': optim_module}
-        # schedulers = {'backbone': sched_backbone, 'module': sched_module}
-
-        # trainging and testing
-        in_dim = data_train.num_node_features
-        edge_in_dim = data_train.num_edge_features
-        weight = data_train.weights
-
-        if not args.eval:
-            model = TrimNet(in_dim, edge_in_dim, hidden_dim=option['hid'], depth=option['depth'],
-                          heads=option['heads'], dropout=option['dropout'], outdim=option['out_dim'])
-            trainer = Trainer(option, model, data_train, data_val, data_test, weight=weight, tasks_num=len(args.tasks))
-            trainer.train()
-            print('Testing...')
-            trainer.load_best_ckpt()
-            trainer.valid_iterations(mode='eval')
-        # else:
-        #     ckpt = torch.load(args.load)
-        #     option = ckpt['option']
-        #     model = TrimNet(option['in_dim'], option['edge_in_dim'], hidden_dim=option['hid'], depth=option['depth'],
-        #                   heads=option['heads'], dropout=option['dropout'], outdim=option['out_dim'])
-        #     if not os.path.exists(option['exp_path']): os.makedirs(option['exp_path'])
-        #     model.load_state_dict(ckpt['model_state_dict'])
-        #     model.eval()
-        #     trainer = Trainer(option, model, data_train, data_val, data_test, weight=weight,
-        #                       tasks_num=len(args.tasks))
-        #     trainer.valid_iterations(mode='eval')
-
-
-
-
-
-
-
-
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    main()
