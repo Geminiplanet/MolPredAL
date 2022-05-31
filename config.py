@@ -1,7 +1,6 @@
 CHAR_LIST = [" ", "H", "Li", "Be", "B", "C", "N", "O", "F", "Na", "Mg", "Al", "Si", "P", "S", "Cl", "K", "Ca", "Ti",
-             "V",
-             "Cr", "Mn", "Fe", "Ni", "Cu", "Zn", "Ge", "As", "Se", "Br", "Sr", "Zr", "Mo", "Pd", "Yb", "Ag", "Cd", "Sb",
-             "I", "Ba", "Nd", "Gd", "Dy", "Pt", "Au", "Hg", "Tl", "Pb", "Bi",
+             "V", "Cr", "Mn", "Fe", "Ni", "Cu", "Zn", "Ge", "As", "Se", "Br", "Sr", "Zr", "Mo", "Pd", "Yb", "Ag", "Cd",
+             "Sb", "I", "Ba", "Nd", "Gd", "Dy", "Pt", "Au", "Hg", "Tl", "Pb", "Bi",
              "n", "c", "o", "s", "se",
              "1", "2", "3", "4", "5", "6", "7", "8", "9",
              "(", ")", "[", "]",
@@ -13,7 +12,7 @@ MAX_SEQ_LEN = 200
 CUDA_VISIBLE_DEVICES = 0
 
 BATCH = 128
-ADDENNUM = 200
+ADDENNUM = 100
 
 CYCLES = 10
 

@@ -7,7 +7,6 @@ import torch.nn.functional as F
 from torch import optim
 from torch.optim import lr_scheduler
 from torch.utils.data import DataLoader, SubsetRandomSampler
-from tqdm import tqdm
 
 from config import *
 from data.sampler import SubsetSequentialSampler
@@ -37,10 +36,18 @@ def LossPredLoss(input, target, margin=1.0, reduction='mean'):
 
 
 def vae_loss(x, recon, mu, logvar, beta):
-    recon_loss = F.binary_cross_entropy(recon, x, reduction='sum')
-    kl_loss = -0.5 * torch.sum(1 + logvar - mu.pow(2) - logvar.exp())
+    recon_loss = F.binary_cross_entropy(recon, x, reduction='mean')
+    kl_loss = -0.5 * torch.mean(1 + logvar - mu.pow(2) - logvar.exp())
     kl_loss = kl_loss * beta
     return recon_loss + kl_loss
+
+
+# def vae_loss(x, recon, mu, logvar, beta):
+#     mse_loss = nn.MSELoss()
+#     MSE = mse_loss(recon, x)
+#     KLD = -0.5 * torch.mean(1 + logvar - mu.pow(2) - logvar.exp())
+#     KLD = KLD * beta
+#     return MSE + KLD
 
 
 def read_data(dataloader, labels=True):
@@ -55,12 +62,13 @@ def read_data(dataloader, labels=True):
 
 
 def main():
-    # load dataset
-    data_train, data_test, data_unlabeled = load_tox21_dataset('data/tox21.csv')
+
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
     method = 'TA-VAAL'
     results = open(f'results_{method}_TOX21_{CYCLES}CYCLES.txt', 'w')
-    for task_num in range(5, len(TOX21_TASKS)):
+    for task_num in range(len(TOX21_TASKS)):
+        # load dataset
+        data_train, data_test, data_unlabeled = load_tox21_dataset('data/tox21.csv', TOX21_TASKS[task_num])
         indices = list(range(data_train.len))
         random.shuffle(indices)
         labeled_set = indices[:ADDENNUM]
@@ -74,16 +82,18 @@ def main():
 
             # train vae
             task_vae = MolecularVAE().to(device)
-            optim_vae = optim.Adam(task_vae.parameters(), lr=2e-4)
-            for epoch in range(1, 201):
+            optim_vae = optim.Adam(task_vae.parameters(), lr=1e-4)
+            # scheduler_vae = optim.lr_scheduler.ReduceLROnPlateau(optim_vae, 'min', factor=0.8, patience=3,
+            #                                                      min_lr=0.0001)
+            for epoch in range(1, 101):
                 task_vae.train()
                 epoch_loss = 0
-                for data in tqdm(train_loader, leave=False):
+                for data in train_loader:
                     batch_x, _, batch_p = data
                     batch_x = batch_x.float().to(device)
                     optim_vae.zero_grad()
                     # !!!
-                    r = batch_p[:, task_num].float().unsqueeze(1).to(device)
+                    r = batch_p.float().unsqueeze(1).to(device)
                     recon_x, z_mean, z_logvar = task_vae(batch_x, r)
 
                     loss = vae_loss(batch_x, recon_x, z_mean, z_logvar, BETA)
@@ -91,8 +101,9 @@ def main():
                     epoch_loss += loss
                     optim_vae.step()
 
-                if epoch % 50 == 0:
+                if epoch % 20 == 0:
                     print(f'epoch {epoch}, vae loss is {epoch_loss}')
+                # scheduler_vae.step(epoch_loss)
 
             # train task model and loss module
             task_model = Predictor().to(device)
@@ -109,10 +120,10 @@ def main():
                 losses = []
                 total = 0
                 correct = 0
-                for data in tqdm(train_loader, leave=False, total=len(train_loader)):
+                for data in train_loader:
                     batch_x, _, batch_p = data
                     batch_x = batch_x.float().to(device)
-                    batch_p = batch_p[:, task_num].to(device)
+                    batch_p = batch_p.to(device)
                     optim_task.zero_grad()
                     optim_module.zero_grad()
                     z_mean, _ = task_vae.encode(batch_x)
@@ -136,7 +147,7 @@ def main():
                 train_loss = np.array(losses).mean()
                 sched_task.step()
                 sched_module.step()
-                if epoch % 10 == 0:
+                if epoch % 20 == 0:
                     print(
                         f'epoch {epoch}: train loss is {train_loss: .4f}, train_acc: {train_acc: .4f}')
 
@@ -147,10 +158,10 @@ def main():
             total = 0
             correct = 0
             with torch.no_grad():
-                for data in tqdm(test_loader, leave=False, total=len(test_loader)):
+                for data in test_loader:
                     batch_x, _, batch_p = data
                     batch_x = batch_x.float().to(device)
-                    batch_p = batch_p[:, task_num].to(device)
+                    batch_p = batch_p.to(device)
                     z_mean, _ = task_vae.encode(batch_x)
                     scores, _ = task_model(z_mean)
                     total += batch_p.shape[0]
@@ -177,7 +188,7 @@ def main():
             tavaal_vae = MolecularVAE()
             discriminator = Discriminator(LATENT_DIM)
             optim_vaal_vae = optim.Adam(tavaal_vae.parameters(), lr=2e-4)
-            optim_discriminator = optim.Adam(discriminator.parameters(), lr=5e-4)
+            optim_discriminator = optim.Adam(discriminator.parameters(), lr=2e-4)
             ranker = loss_module
             task_model.eval().to(device)
             task_vae.eval().to(device)
@@ -195,16 +206,15 @@ def main():
             labeled_data = read_data(labeled_loader)
             unlabeled_data = read_data(unlabeled_loader)
 
-            train_iterations = int((ADDENNUM * cycle + len(unlabeled_set)) * 50 / BATCH)
+            train_iterations = int((ADDENNUM * cycle + len(unlabeled_set)) * 30 / BATCH)
 
             for iter_count in range(train_iterations):
                 labeled_imgs, labels = next(labeled_data)
                 unlabeled_imgs = next(unlabeled_data)[0]
 
-                with torch.cuda.device(CUDA_VISIBLE_DEVICES):
-                    labeled_imgs = labeled_imgs.cuda()
-                    unlabeled_imgs = unlabeled_imgs.cuda()
-                    labels = labels.cuda()
+                labeled_imgs = labeled_imgs.to(device)
+                unlabeled_imgs = unlabeled_imgs.to(device)
+                # labels = labels.cuda()
                 if iter_count == 0:
                     r_l_0 = torch.from_numpy(np.random.uniform(0, 1, size=(labeled_imgs.shape[0], 1))).type(
                         torch.FloatTensor).cuda()
@@ -229,6 +239,8 @@ def main():
 
                 # VAE step
                 for count in range(num_vae_steps):  # num_vae_steps
+                    optim_vaal_vae.zero_grad()
+
                     recon, mu, logvar = tavaal_vae(labeled_imgs, r_l_s)
                     unsup_loss = vae_loss(labeled_imgs, recon, mu, logvar, beta)
                     unlab_recon, unlab_mu, unlab_logvar = tavaal_vae(unlabeled_imgs, r_u_s)
@@ -240,15 +252,13 @@ def main():
                     lab_real_preds = torch.ones(labeled_imgs.size(0))
                     unlab_real_preds = torch.ones(unlabeled_imgs.size(0))
 
-                    with torch.cuda.device(CUDA_VISIBLE_DEVICES):
-                        lab_real_preds = lab_real_preds.cuda()
-                        unlab_real_preds = unlab_real_preds.cuda()
+                    lab_real_preds = lab_real_preds.to(device)
+                    unlab_real_preds = unlab_real_preds.to(device)
 
                     dsc_loss = bce_loss(labeled_preds[:, 0], lab_real_preds) + \
                                bce_loss(unlabeled_preds[:, 0], unlab_real_preds)
                     total_vae_loss = unsup_loss + transductive_loss + adversary_param * dsc_loss
 
-                    optim_vaal_vae.zero_grad()
                     total_vae_loss.backward()
                     optim_vaal_vae.step()
 
@@ -264,6 +274,8 @@ def main():
 
                 # Discriminator step
                 for count in range(num_adv_steps):
+                    optim_discriminator.zero_grad()
+
                     with torch.no_grad():
                         _, mu, _ = tavaal_vae(labeled_imgs, r_l_s)
                         _, unlab_mu, _ = tavaal_vae(unlabeled_imgs, r_u_s)
@@ -274,14 +286,12 @@ def main():
                     lab_real_preds = torch.ones(labeled_imgs.size(0))
                     unlab_fake_preds = torch.zeros(unlabeled_imgs.size(0))
 
-                    with torch.cuda.device(CUDA_VISIBLE_DEVICES):
-                        lab_real_preds = lab_real_preds.cuda()
-                        unlab_fake_preds = unlab_fake_preds.cuda()
+                    lab_real_preds = lab_real_preds.to(device)
+                    unlab_fake_preds = unlab_fake_preds.to(device)
 
                     dsc_loss = bce_loss(labeled_preds[:, 0], lab_real_preds) + \
                                bce_loss(unlabeled_preds[:, 0], unlab_fake_preds)
 
-                    optim_discriminator.zero_grad()
                     dsc_loss.backward()
                     optim_discriminator.step()
 
@@ -299,7 +309,7 @@ def main():
                             total_vae_loss.item()) + " dsc_loss: " + str(dsc_loss.item()))
 
             all_preds, all_indices = [], []
-            for batch_x, _, batch_p in unlabeled_loader:
+            for batch_x, _, _ in unlabeled_loader:
                 batch_x = batch_x.float().to(device)
                 with torch.no_grad():
                     z_mean, _ = task_vae.encode(batch_x)
@@ -310,7 +320,7 @@ def main():
 
                 preds = preds.cpu().data
                 all_preds.extend(preds)
-                all_indices.extend(indices)
+                # all_indices.extend(indices)
 
             all_preds = torch.stack(all_preds)
             all_preds = all_preds.view(-1)
@@ -335,5 +345,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-
