@@ -103,7 +103,7 @@ def main():
             sched_task = lr_scheduler.MultiStepLR(optim_task, milestones=MILESTONES)
             optim_module = optim.Adam(loss_module.parameters(), lr=LR, weight_decay=WDECAY)
             sched_module = lr_scheduler.MultiStepLR(optim_module, milestones=MILESTONES)
-            for epoch in range(30):
+            for epoch in range(100):
                 task_model.train()
                 loss_module.train()
                 losses = []
