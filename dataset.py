@@ -40,7 +40,7 @@ def process_tox21_smiles_data(data_dir):
         if smiles_len > MAX_SEQ_LEN:
             continue
         label = target[i]
-        label[np.isnan(label)] = 6  # nan set 6!
+        label[np.isnan(label)] = 0  # nan set 6!
         Pdata.append(label)
         X_d = np.zeros((MAX_SEQ_LEN, CHAR_LEN))
         j = 0
@@ -127,8 +127,7 @@ def load_tox21_dataset(data_dir):
 
 
 if __name__ == '__main__':
-    pass
-    # process_tox21_smiles_data('data/tox21.csv')
+    process_tox21_smiles_data('data/tox21.csv')
     # train_data = UserDataset('data/', 'train')
     # test_data = UserDataset('data/', 'test')
     # unlabeled_data = UserDataset('data/', 'unlabeled')

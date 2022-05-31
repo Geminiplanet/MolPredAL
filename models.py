@@ -82,7 +82,7 @@ class Predictor(nn.Module):
 
         self.fc1 = nn.Linear(LATENT_DIM, 150)
         self.fc2 = nn.Linear(150, 75)
-        self.fc3 = nn.Linear(75, 24)
+        self.fc3 = nn.Linear(75, 2)
 
         self.relu = nn.ReLU()
 
