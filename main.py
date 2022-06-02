@@ -66,7 +66,7 @@ def main():
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
     method = 'TA-VAAL'
     results = open(f'results_{method}_TOX21_{CYCLES}CYCLES.txt', 'w')
-    for task_num in range(len(TOX21_TASKS)):
+    for task_num in range(12):
         # load dataset
         data_train, data_test, data_unlabeled = load_tox21_dataset('data/tox21.csv', TOX21_TASKS[task_num])
         indices = list(range(data_train.len))
@@ -336,8 +336,8 @@ def main():
             # print(len(new_list), min(new_list), max(new_list))
             labeled_set += list(torch.tensor(unlabeled_set)[arg][-ADDENNUM:].numpy())
             listd = list(torch.tensor(unlabeled_set)[arg][:-ADDENNUM].numpy())
-            unlabeled_set = listd + unlabeled_set
-            print(len(labeled_set), min(labeled_set), max(labeled_set))
+            unlabeled_set = listd
+            print(len(labeled_set), len(unlabeled_set), min(labeled_set), max(labeled_set))
             # Create a new dataloader for the updated labeled dataset
             train_loader = DataLoader(data_train, batch_size=BATCH, sampler=SubsetRandomSampler(labeled_set),
                                       pin_memory=True)
