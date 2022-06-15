@@ -34,21 +34,28 @@ class MolecularVAE(nn.Module):
     def __init__(self):
         super(MolecularVAE, self).__init__()
 
-        self.conv_1 = nn.Conv1d(200, 18, kernel_size=18)
-        self.conv_2 = nn.Conv1d(18, 18, kernel_size=18)
-        self.conv_3 = nn.Conv1d(18, 20, kernel_size=22)
-        self.linear_0 = nn.Linear(400, 435)
-        self.linear_1 = nn.Linear(435, LATENT_DIM)
-        self.linear_2 = nn.Linear(435, LATENT_DIM)
+        self.conv_1 = nn.Conv1d(42, 9, kernel_size=5)
+        self.conv_2 = nn.Conv1d(9, 9, kernel_size=5)
+        self.conv_3 = nn.Conv1d(9, 11, kernel_size=5)
+        # self.conv_1 = nn.Conv1d(200, 18, kernel_size=18)
+        # self.conv_2 = nn.Conv1d(18, 18, kernel_size=18)
+        # self.conv_3 = nn.Conv1d(18, 20, kernel_size=22)
 
-        self.linear_3 = nn.Linear(LATENT_DIM+1, 300)
+        self.linear_0 = nn.Linear(110, 250)
+        # self.linear_0 = nn.Linear(400, 435)
+        self.linear_1 = nn.Linear(250, LATENT_DIM)
+        self.linear_2 = nn.Linear(250, LATENT_DIM)
+
+        # vaal: nn.Linear(LATENT_DIM, 300); ta-vaal: nn.Linear(LATENT_DIM + 1, 300)
+        self.linear_3 = nn.Linear(LATENT_DIM + 1, 300)
         self.gru = nn.GRU(300, 500, 3, batch_first=True)
-        self.linear_4 = nn.Linear(500, 75)
+        self.linear_4 = nn.Linear(500, len(QM9_CHAR_LIST))
 
         self.relu = nn.ReLU()
         self.softmax = nn.Softmax()
 
     def encode(self, x):
+        # x = self.relu(self.conv(x))
         x = self.relu(self.conv_1(x))
         x = self.relu(self.conv_2(x))
         x = self.relu(self.conv_3(x))
@@ -62,19 +69,27 @@ class MolecularVAE(nn.Module):
 
     def decode(self, z):
         z = F.selu(self.linear_3(z))
-        z = z.view(z.size(0), 1, z.size(-1)).repeat(1, 200, 1)
+        z = z.view(z.size(0), 1, z.size(-1)).repeat(1, MAX_QM9_LEN, 1)
         output, hn = self.gru(z)
         out_reshape = output.contiguous().view(-1, output.size(-1))
         y0 = F.softmax(self.linear_4(out_reshape), dim=1)
         y = y0.contiguous().view(output.size(0), -1, y0.size(-1))
         return y
 
+    # ta-vaal
     def forward(self, x, r):
         z_mean, z_logvar = self.encode(x)
         z = self.sampling(z_mean, z_logvar)
         z = torch.cat([z, r], 1)
         return self.decode(z), z_mean, z_logvar
 
+    # def forward(self, x):
+    #     z_mean, z_logvar = self.encode(x)
+    #     z = self.sampling(z_mean, z_logvar)
+    #     return self.decode(z), z_mean, z_logvar
+
+
+# ta-vaal predictor
 
 class Predictor(nn.Module):
     def __init__(self):
@@ -82,7 +97,7 @@ class Predictor(nn.Module):
 
         self.fc1 = nn.Linear(LATENT_DIM, 150)
         self.fc2 = nn.Linear(150, 75)
-        self.fc3 = nn.Linear(75, 2)
+        self.fc3 = nn.Linear(75, 1)
 
         self.relu = nn.ReLU()
 
@@ -91,7 +106,19 @@ class Predictor(nn.Module):
         out2 = self.relu(self.fc2(out1))
         out = self.relu(self.fc3(out2))
 
-        return out, [out1, out2]
+        return out.view(-1), [out1, out2]
+
+# vaal predictor
+# class Predictor(nn.Module):
+#     def __init__(self):
+#         super(Predictor, self).__init__()
+#
+#         self.fc1 = nn.Linear(LATENT_DIM, 1)
+#
+#         self.sigmoid = nn.Sigmoid()
+#
+#     def forward(self, z_mean):
+#         return self.sigmoid(self.fc1(z_mean))
 
 
 class Discriminator(nn.Module):
@@ -101,7 +128,8 @@ class Discriminator(nn.Module):
         super(Discriminator, self).__init__()
         self.z_dim = z_dim
         self.net = nn.Sequential(
-            nn.Linear(z_dim+1, 500),
+            nn.Linear(z_dim + 1, 500),
+            # nn.Linear(z_dim, 500),
             nn.ReLU(True),
             nn.Linear(500, 500),
             nn.ReLU(True),

@@ -10,7 +10,7 @@ from torch.utils.data import DataLoader, SubsetRandomSampler
 
 from config import *
 from data.sampler import SubsetSequentialSampler
-from dataset import load_tox21_dataset
+from dataset import load_qm9_dataset
 from models import MolecularVAE, Predictor, LossNet, Discriminator
 
 
@@ -53,22 +53,35 @@ def vae_loss(x, recon, mu, logvar, beta):
 def read_data(dataloader, labels=True):
     if labels:
         while True:
-            for data, _, label in dataloader:
+            for data, label in dataloader:
                 yield data.float(), label
     else:
         while True:
-            for data, _, _ in dataloader:
+            for data, _ in dataloader:
                 yield data.float()
 
 
-def main():
+def symbol_vec(batch_x, recon_x):
+    indices1 = torch.max(batch_x, dim=2)[1]
+    indices2 = torch.max(recon_x, dim=2)[1]
+    for i in range(5):
+        string1 = ""
+        string2 = ""
+        for j in range(42):
+            string1 += QM9_CHAR_LIST[indices1[i, j]]
+            string2 += QM9_CHAR_LIST[indices2[i, j]]
+        print(f'x and recon_x:\n{string1} \n{string2}')
 
+
+def main():
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
     method = 'TA-VAAL'
-    results = open(f'results_{method}_TOX21_{CYCLES}CYCLES.txt', 'w')
-    for task_num in range(12):
+    # results = open(f'results_{method}_TOX21_{CYCLES}CYCLES.txt', 'w')
+    results = open(f'results_{method}_QM9_{CYCLES}CYCLES.txt', 'w')
+    for task_num in range(6):
         # load dataset
-        data_train, data_test, data_unlabeled = load_tox21_dataset('data/tox21.csv', TOX21_TASKS[task_num])
+        data_train, data_test, _ = load_qm9_dataset('data/qm9.csv', task_num)
+        data_unlabeled = data_train
         indices = list(range(data_train.len))
         random.shuffle(indices)
         labeled_set = indices[:ADDENNUM]
@@ -78,99 +91,102 @@ def main():
         test_loader = DataLoader(data_test, batch_size=BATCH)
         # train and test task model
         for cycle in range(CYCLES):
+            random.shuffle(unlabeled_set)
+            subset = unlabeled_set[:SUBSET]
             print('>> Train vae and task model')
-
-            # train vae
             task_vae = MolecularVAE().to(device)
-            optim_vae = optim.Adam(task_vae.parameters(), lr=1e-4)
+            optim_vae = optim.Adam(task_vae.parameters(), lr=LR)
+            # train vae
             # scheduler_vae = optim.lr_scheduler.ReduceLROnPlateau(optim_vae, 'min', factor=0.8, patience=3,
             #                                                      min_lr=0.0001)
-            for epoch in range(1, 101):
-                task_vae.train()
-                epoch_loss = 0
-                for data in train_loader:
-                    batch_x, _, batch_p = data
-                    batch_x = batch_x.float().to(device)
-                    optim_vae.zero_grad()
-                    # !!!
-                    r = batch_p.float().unsqueeze(1).to(device)
-                    recon_x, z_mean, z_logvar = task_vae(batch_x, r)
-
-                    loss = vae_loss(batch_x, recon_x, z_mean, z_logvar, BETA)
-                    loss.backward()
-                    epoch_loss += loss
-                    optim_vae.step()
-
-                if epoch % 20 == 0:
-                    print(f'epoch {epoch}, vae loss is {epoch_loss}')
+            # for epoch in range(1, 121):
+            #     task_vae.train()
+            #     epoch_loss = 0
+            #     for data in train_loader:
+            #         batch_x, batch_p = data
+            #         batch_x = batch_x.float().to(device)
+            #         optim_vae.zero_grad()
+            #         # ta-vaal needs r(rank)
+            #         r = batch_p.float().unsqueeze(1).to(device)
+            #         recon_x, z_mean, z_logvar = task_vae(batch_x, r)
+            #         # recon_x, z_mean, z_logvar = task_vae(batch_x)
+            #
+            #         loss = vae_loss(batch_x, recon_x, z_mean, z_logvar, BETA)
+            #         loss.backward()
+            #         epoch_loss += loss
+            #         optim_vae.step()
+            #
+            #     if epoch % 20 == 0:
+            #         print(f'epoch {epoch}, vae loss is {epoch_loss}')
+            #         symbol_vec(batch_x, recon_x)
                 # scheduler_vae.step(epoch_loss)
 
             # train task model and loss module
+
             task_model = Predictor().to(device)
             loss_module = LossNet().to(device)
-            criterion = torch.nn.CrossEntropyLoss(torch.Tensor(data_train.weights[task_num]).to(device),
-                                                  reduction='none')
+            criterion = torch.nn.L1Loss(reduction="none")
             optim_task = optim.Adam(task_model.parameters(), lr=LR, weight_decay=WDECAY)
             sched_task = lr_scheduler.MultiStepLR(optim_task, milestones=MILESTONES)
             optim_module = optim.Adam(loss_module.parameters(), lr=LR, weight_decay=WDECAY)
             sched_module = lr_scheduler.MultiStepLR(optim_module, milestones=MILESTONES)
-            for epoch in range(100):
+            for epoch in range(121):
+                task_vae.train()
                 task_model.train()
                 loss_module.train()
                 losses = []
-                total = 0
-                correct = 0
                 for data in train_loader:
-                    batch_x, _, batch_p = data
+                    batch_x, batch_p = data
                     batch_x = batch_x.float().to(device)
                     batch_p = batch_p.to(device)
+                    optim_vae.zero_grad()
                     optim_task.zero_grad()
                     optim_module.zero_grad()
+                    r = batch_p.float().unsqueeze(1).to(device)
+                    recon_x, z_mean, z_logvar = task_vae(batch_x, r)
                     z_mean, _ = task_vae.encode(batch_x)
                     scores, features = task_model(z_mean)
-                    # 2 classifier work
-                    target_loss = criterion(scores, batch_p)
-                    total += batch_p.shape[0]
-                    _, pred = torch.max(scores, 1)
-                    correct += (pred == batch_p).sum().item()
+                    target_loss = criterion(scores.view(-1), batch_p)
                     pred_loss = loss_module(features)
                     pred_loss = pred_loss.view(pred_loss.shape[0])
                     m_module_loss = LossPredLoss(pred_loss, target_loss, margin=MARGIN)
-                    m_backbone_loss = torch.sum(target_loss) / target_loss.size(0)
+                    m_backbone_loss = vae_loss(batch_x, recon_x, z_mean, z_logvar, BETA) + torch.sum(
+                        target_loss) / target_loss.size(0)
+                    # m_backbone_loss = torch.sum(target_loss) / target_loss.size(0)
                     loss = m_backbone_loss + WEIGHT * m_module_loss
                     loss.backward()
+                    optim_vae.step()
                     optim_task.step()
                     optim_module.step()
                     losses.append(loss.item())
-                # 2 分类的准确率
-                train_acc = 1.0 * correct / total
                 train_loss = np.array(losses).mean()
                 sched_task.step()
                 sched_module.step()
-                if epoch % 20 == 0:
+                if epoch % 10 == 0:
+                    # symbol_vec(batch_x, recon_x)
                     print(
-                        f'epoch {epoch}: train loss is {train_loss: .4f}, train_acc: {train_acc: .4f}')
+                        f'epoch {epoch}: train loss is {train_loss: .5f}')
 
             # test task model
             print(" >> Test Model")
             task_model.eval()
             loss_module.eval()
-            total = 0
-            correct = 0
+            labels = []
+            outputs = []
             with torch.no_grad():
                 for data in test_loader:
-                    batch_x, _, batch_p = data
+                    batch_x, batch_p = data
                     batch_x = batch_x.float().to(device)
                     batch_p = batch_p.to(device)
                     z_mean, _ = task_vae.encode(batch_x)
                     scores, _ = task_model(z_mean)
-                    total += batch_p.shape[0]
-                    _, pred = torch.max(scores, 1)
-                    correct += (pred == batch_p).sum().item()
-            test_acc = 1.0 * correct / total
-            print(f'Cycle {cycle + 1}/{CYCLES} || labeled data size {len(labeled_set)}, test acc = {test_acc: .4f}')
-            np.array([method, TOX21_TASKS[task_num], cycle + 1, CYCLES, len(labeled_set), test_acc]).tofile(results,
-                                                                                                            sep=" ")
+                    outputs.append(scores.cpu())
+                    labels.append(batch_p.cpu())
+            test_loss = np.array(criterion(torch.cat(outputs), torch.cat(labels))).mean()
+            print(
+                f'Cycle {cycle + 1}/{CYCLES} || labeled data size {len(labeled_set)}, test loss(MAE) = {test_loss: .5f}')
+            np.array([method, QM9_TASKS[task_num], cycle + 1, CYCLES, len(labeled_set), test_loss]).tofile(results,
+                                                                                                           sep=" ")
             results.write("\n")
 
             if cycle == CYCLES - 1:
@@ -180,21 +196,21 @@ def main():
             # AL to select data
             # Get the indices of the unlabeled samples to train on next cycle
             unlabeled_loader = DataLoader(data_unlabeled, batch_size=BATCH,
-                                          sampler=SubsetSequentialSampler(unlabeled_set), pin_memory=True)
+                                          sampler=SubsetSequentialSampler(subset), pin_memory=True)
             labeled_loader = DataLoader(data_unlabeled, batch_size=BATCH, sampler=SubsetSequentialSampler(labeled_set),
                                         pin_memory=True)
 
             # train TA-VAAL
-            tavaal_vae = MolecularVAE()
-            discriminator = Discriminator(LATENT_DIM)
-            optim_vaal_vae = optim.Adam(tavaal_vae.parameters(), lr=2e-4)
-            optim_discriminator = optim.Adam(discriminator.parameters(), lr=2e-4)
+            tavaal_vae = MolecularVAE().to(device)
+            discriminator = Discriminator(LATENT_DIM).to(device)
+            optim_vaal_vae = optim.Adam(tavaal_vae.parameters(), lr=LR)
+            optim_discriminator = optim.Adam(discriminator.parameters(), lr=LR)
             ranker = loss_module
             task_model.eval().to(device)
             task_vae.eval().to(device)
             ranker.eval().to(device)
-            tavaal_vae.train().to(device)
-            discriminator.train().to(device)
+            tavaal_vae.train()
+            discriminator.train()
 
             adversary_param = 1
             beta = 1
@@ -206,7 +222,7 @@ def main():
             labeled_data = read_data(labeled_loader)
             unlabeled_data = read_data(unlabeled_loader)
 
-            train_iterations = int((ADDENNUM * cycle + len(unlabeled_set)) * 30 / BATCH)
+            train_iterations = int((ADDENNUM * cycle + SUBSET) * 80 / BATCH)
 
             for iter_count in range(train_iterations):
                 labeled_imgs, labels = next(labeled_data)
@@ -304,12 +320,12 @@ def main():
                     #         labeled_imgs = labeled_imgs.cuda()
                     #         unlabeled_imgs = unlabeled_imgs.cuda()
                     #         labels = labels.cuda()
-                    if iter_count % 100 == 0:
+                    if (iter_count % 10 == 0 and iter_count < 100) or iter_count % 100 == 0:
                         print("TA-VAAL iteration: " + str(iter_count) + " vae_loss: " + str(
                             total_vae_loss.item()) + " dsc_loss: " + str(dsc_loss.item()))
 
             all_preds, all_indices = [], []
-            for batch_x, _, _ in unlabeled_loader:
+            for batch_x, _ in unlabeled_loader:
                 batch_x = batch_x.float().to(device)
                 with torch.no_grad():
                     z_mean, _ = task_vae.encode(batch_x)
@@ -330,17 +346,18 @@ def main():
             _, arg = torch.sort(all_preds)
 
             # random
-            # arg = np.random.randint(len(unlabeled_set), size=len(unlabeled_set))
+            # arg = np.random.randint(len(subset), size=len(subset))
             # Update the labeled dataset and the unlabeled dataset, respectively
             # new_list = list(torch.tensor(unlabeled_set)[arg][:ADDENNUM].numpy())
             # print(len(new_list), min(new_list), max(new_list))
-            labeled_set += list(torch.tensor(unlabeled_set)[arg][-ADDENNUM:].numpy())
-            listd = list(torch.tensor(unlabeled_set)[arg][:-ADDENNUM].numpy())
-            unlabeled_set = listd
+            labeled_set += list(torch.tensor(subset)[arg][-ADDENNUM:].numpy())
+            listd = list(torch.tensor(subset)[arg][:-ADDENNUM].numpy())
+            unlabeled_set = listd + unlabeled_set[SUBSET:]
             print(len(labeled_set), len(unlabeled_set), min(labeled_set), max(labeled_set))
             # Create a new dataloader for the updated labeled dataset
             train_loader = DataLoader(data_train, batch_size=BATCH, sampler=SubsetRandomSampler(labeled_set),
                                       pin_memory=True)
+    results.close()
 
 
 if __name__ == '__main__':
