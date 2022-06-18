@@ -1,0 +1,1320 @@
+>> Train vae and task model
+epoch 0: train loss is  3.2899
+epoch 20: train loss is  2.8207
+epoch 40: train loss is  1.8186
+epoch 60: train loss is  1.7516
+epoch 80: train loss is  1.6455
+epoch 100: train loss is  1.5478
+epoch 120: train loss is  1.4406
+ >> Test Model
+Cycle 1/10 || labeled data size 200, test loss(MSE) =  1.1199
+400 106708 0 105976
+>> Train vae and task model
+epoch 0: train loss is  3.3464
+epoch 20: train loss is  3.4595
+epoch 40: train loss is  1.8459
+epoch 60: train loss is  1.7446
+epoch 80: train loss is  1.6444
+epoch 100: train loss is  1.5581
+epoch 120: train loss is  1.3888
+ >> Test Model
+Cycle 2/10 || labeled data size 400, test loss(MSE) =  1.0995
+600 106508 0 106861
+>> Train vae and task model
+epoch 0: train loss is  3.3236
+epoch 20: train loss is  1.8798
+epoch 40: train loss is  1.7318
+epoch 60: train loss is  1.5718
+epoch 80: train loss is  1.4870
+epoch 100: train loss is  1.4118
+epoch 120: train loss is  1.3588
+ >> Test Model
+Cycle 3/10 || labeled data size 600, test loss(MSE) =  1.0860
+800 106308 0 106861
+>> Train vae and task model
+epoch 0: train loss is  3.3831
+epoch 20: train loss is  1.8510
+epoch 40: train loss is  1.6886
+epoch 60: train loss is  1.5461
+epoch 80: train loss is  1.4374
+epoch 100: train loss is  1.3377
+epoch 120: train loss is  1.2568
+ >> Test Model
+Cycle 4/10 || labeled data size 800, test loss(MSE) =  1.0865
+1000 106108 0 106861
+>> Train vae and task model
+epoch 0: train loss is  3.4322
+epoch 20: train loss is  1.8542
+epoch 40: train loss is  1.6485
+epoch 60: train loss is  1.5092
+epoch 80: train loss is  1.4139
+epoch 100: train loss is  1.3450
+epoch 120: train loss is  1.2835
+ >> Test Model
+Cycle 5/10 || labeled data size 1000, test loss(MSE) =  1.0707
+1200 105908 0 106916
+>> Train vae and task model
+epoch 0: train loss is  3.4448
+epoch 20: train loss is  2.0322
+epoch 40: train loss is  1.6631
+epoch 60: train loss is  1.4803
+epoch 80: train loss is  1.3706
+epoch 100: train loss is  1.3018
+epoch 120: train loss is  1.2490
+ >> Test Model
+Cycle 6/10 || labeled data size 1200, test loss(MSE) =  1.0866
+1400 105708 0 106916
+>> Train vae and task model
+epoch 0: train loss is  3.3557
+epoch 20: train loss is  1.7517
+epoch 40: train loss is  1.5896
+epoch 60: train loss is  1.4829
+epoch 80: train loss is  1.4190
+epoch 100: train loss is  1.3476
+epoch 120: train loss is  1.2820
+ >> Test Model
+Cycle 7/10 || labeled data size 1400, test loss(MSE) =  1.0479
+1600 105508 0 106920
+>> Train vae and task model
+epoch 0: train loss is  3.4341
+epoch 20: train loss is  1.7715
+epoch 40: train loss is  1.5645
+epoch 60: train loss is  1.4254
+epoch 80: train loss is  1.3474
+epoch 100: train loss is  1.2877
+epoch 120: train loss is  1.2365
+ >> Test Model
+Cycle 8/10 || labeled data size 1600, test loss(MSE) =  1.0558
+1800 105308 0 106920
+>> Train vae and task model
+epoch 0: train loss is  3.4098
+epoch 20: train loss is  1.7147
+epoch 40: train loss is  1.5795
+epoch 60: train loss is  1.5192
+epoch 80: train loss is  1.4575
+epoch 100: train loss is  1.4208
+epoch 120: train loss is  1.3666
+ >> Test Model
+Cycle 9/10 || labeled data size 1800, test loss(MSE) =  1.0123
+2000 105108 0 106920
+>> Train vae and task model
+epoch 0: train loss is  3.2780
+epoch 20: train loss is  1.6694
+epoch 40: train loss is  1.5202
+epoch 60: train loss is  1.4520
+epoch 80: train loss is  1.3971
+epoch 100: train loss is  1.3578
+epoch 120: train loss is  1.3239
+ >> Test Model
+Cycle 10/10 || labeled data size 2000, test loss(MSE) =  1.0379
+Finished.
+>> Train vae and task model
+epoch 0: train loss is  75.7285
+epoch 20: train loss is  75.6029
+epoch 40: train loss is  69.6711
+epoch 60: train loss is  15.3394
+epoch 80: train loss is  10.3284
+epoch 100: train loss is  9.3735
+epoch 120: train loss is  8.5305
+ >> Test Model
+Cycle 1/10 || labeled data size 200, test loss(MSE) =  6.8469
+400 106708 10 106626
+>> Train vae and task model
+epoch 0: train loss is  75.7400
+epoch 20: train loss is  70.4376
+epoch 40: train loss is  9.8698
+epoch 60: train loss is  9.0872
+epoch 80: train loss is  7.9165
+epoch 100: train loss is  6.8004
+epoch 120: train loss is  6.5378
+ >> Test Model
+Cycle 2/10 || labeled data size 400, test loss(MSE) =  5.5743
+600 106508 10 106626
+>> Train vae and task model
+epoch 0: train loss is  75.9982
+epoch 20: train loss is  40.5970
+epoch 40: train loss is  9.4362
+epoch 60: train loss is  8.1342
+epoch 80: train loss is  7.0644
+epoch 100: train loss is  6.0870
+epoch 120: train loss is  5.0637
+ >> Test Model
+Cycle 3/10 || labeled data size 600, test loss(MSE) =  4.2682
+800 106308 10 106626
+>> Train vae and task model
+epoch 0: train loss is  75.8544
+epoch 20: train loss is  12.0201
+epoch 40: train loss is  8.6934
+epoch 60: train loss is  7.0706
+epoch 80: train loss is  5.6491
+epoch 100: train loss is  4.6201
+epoch 120: train loss is  3.9190
+ >> Test Model
+Cycle 4/10 || labeled data size 800, test loss(MSE) =  3.3105
+1000 106108 10 107024
+>> Train vae and task model
+epoch 0: train loss is  75.9510
+epoch 20: train loss is  65.6539
+epoch 40: train loss is  9.1697
+epoch 60: train loss is  7.1156
+epoch 80: train loss is  5.1864
+epoch 100: train loss is  4.0602
+epoch 120: train loss is  3.5248
+ >> Test Model
+Cycle 5/10 || labeled data size 1000, test loss(MSE) =  2.9862
+1200 105908 10 107024
+>> Train vae and task model
+epoch 0: train loss is  75.6225
+epoch 20: train loss is  9.8196
+epoch 40: train loss is  7.3412
+epoch 60: train loss is  5.1885
+epoch 80: train loss is  4.0255
+epoch 100: train loss is  3.6160
+epoch 120: train loss is  3.2073
+ >> Test Model
+Cycle 6/10 || labeled data size 1200, test loss(MSE) =  2.6390
+1400 105708 9 107024
+>> Train vae and task model
+epoch 0: train loss is  75.8256
+epoch 20: train loss is  9.9404
+epoch 40: train loss is  5.9986
+epoch 60: train loss is  4.5691
+epoch 80: train loss is  3.8472
+epoch 100: train loss is  3.3095
+epoch 120: train loss is  2.9041
+ >> Test Model
+Cycle 7/10 || labeled data size 1400, test loss(MSE) =  2.3358
+1600 105508 9 107024
+>> Train vae and task model
+epoch 0: train loss is  75.8310
+epoch 20: train loss is  75.6135
+epoch 40: train loss is  75.4369
+epoch 60: train loss is  75.3243
+epoch 80: train loss is  75.3552
+epoch 100: train loss is  75.3975
+epoch 120: train loss is  75.3649
+ >> Test Model
+Cycle 8/10 || labeled data size 1600, test loss(MSE) =  75.1996
+1800 105308 9 107024
+>> Train vae and task model
+epoch 0: train loss is  75.5395
+epoch 20: train loss is  75.5096
+epoch 40: train loss is  75.6967
+epoch 60: train loss is  75.6569
+epoch 80: train loss is  75.7265
+epoch 100: train loss is  75.6303
+epoch 120: train loss is  75.2849
+ >> Test Model
+Cycle 9/10 || labeled data size 1800, test loss(MSE) =  75.1996
+2000 105108 9 107024
+>> Train vae and task model
+epoch 0: train loss is  75.9670
+epoch 20: train loss is  75.6236
+epoch 40: train loss is  7.1278
+epoch 60: train loss is  3.2953
+epoch 80: train loss is  2.7007
+epoch 100: train loss is  2.3319
+epoch 120: train loss is  2.1618
+ >> Test Model
+Cycle 10/10 || labeled data size 2000, test loss(MSE) =  1.7768
+Finished.
+>> Train vae and task model
+epoch 0: train loss is  1.0380
+epoch 20: train loss is  0.9582
+epoch 40: train loss is  0.9538
+epoch 60: train loss is  0.9508
+epoch 80: train loss is  0.9484
+epoch 100: train loss is  0.9388
+epoch 120: train loss is  0.8931
+ >> Test Model
+Cycle 1/10 || labeled data size 200, test loss(MSE) =  0.2399
+400 106708 133 107081
+>> Train vae and task model
+epoch 0: train loss is  0.9797
+epoch 20: train loss is  0.9513
+epoch 40: train loss is  0.9060
+epoch 60: train loss is  0.7293
+epoch 80: train loss is  0.8075
+epoch 100: train loss is  0.6894
+epoch 120: train loss is  0.6517
+ >> Test Model
+Cycle 2/10 || labeled data size 400, test loss(MSE) =  0.2399
+600 106508 6 107081
+>> Train vae and task model
+epoch 0: train loss is  1.0712
+epoch 20: train loss is  0.9515
+epoch 40: train loss is  0.9453
+epoch 60: train loss is  0.7847
+epoch 80: train loss is  0.8038
+epoch 100: train loss is  0.7195
+epoch 120: train loss is  0.6199
+ >> Test Model
+Cycle 3/10 || labeled data size 600, test loss(MSE) =  0.2399
+800 106308 6 107081
+>> Train vae and task model
+epoch 0: train loss is  0.9779
+epoch 20: train loss is  0.8997
+epoch 40: train loss is  0.7621
+epoch 60: train loss is  0.7341
+epoch 80: train loss is  0.6840
+epoch 100: train loss is  0.6289
+epoch 120: train loss is  0.6029
+ >> Test Model
+Cycle 4/10 || labeled data size 800, test loss(MSE) =  0.2399
+1000 106108 6 107081
+>> Train vae and task model
+epoch 0: train loss is  0.9782
+epoch 20: train loss is  0.8639
+epoch 40: train loss is  0.8001
+epoch 60: train loss is  0.7448
+epoch 80: train loss is  0.7187
+epoch 100: train loss is  0.6764
+epoch 120: train loss is  0.6167
+ >> Test Model
+Cycle 5/10 || labeled data size 1000, test loss(MSE) =  0.2399
+1200 105908 6 107081
+>> Train vae and task model
+epoch 0: train loss is  0.9773
+epoch 20: train loss is  0.8333
+epoch 40: train loss is  0.8012
+epoch 60: train loss is  0.7278
+epoch 80: train loss is  0.6569
+epoch 100: train loss is  0.6340
+epoch 120: train loss is  0.6327
+ >> Test Model
+Cycle 6/10 || labeled data size 1200, test loss(MSE) =  0.2399
+1400 105708 6 107081
+>> Train vae and task model
+epoch 0: train loss is  0.9769
+epoch 20: train loss is  0.8216
+epoch 40: train loss is  0.7900
+epoch 60: train loss is  0.7152
+epoch 80: train loss is  0.6609
+epoch 100: train loss is  0.6355
+epoch 120: train loss is  0.6362
+ >> Test Model
+Cycle 7/10 || labeled data size 1400, test loss(MSE) =  0.2399
+1600 105508 6 107081
+>> Train vae and task model
+epoch 0: train loss is  0.9762
+epoch 20: train loss is  0.8188
+epoch 40: train loss is  0.7479
+epoch 60: train loss is  0.7170
+epoch 80: train loss is  0.6783
+epoch 100: train loss is  0.6226
+epoch 120: train loss is  0.6019
+ >> Test Model
+Cycle 8/10 || labeled data size 1600, test loss(MSE) =  0.2399
+1800 105308 6 107081
+>> Train vae and task model
+epoch 0: train loss is  0.9755
+epoch 20: train loss is  0.8066
+epoch 40: train loss is  0.7463
+epoch 60: train loss is  0.7639
+epoch 80: train loss is  0.7598
+epoch 100: train loss is  0.6967
+epoch 120: train loss is  0.6643
+ >> Test Model
+Cycle 9/10 || labeled data size 1800, test loss(MSE) =  0.2399
+2000 105108 6 107081
+>> Train vae and task model
+epoch 0: train loss is  0.9743
+epoch 20: train loss is  0.8137
+epoch 40: train loss is  0.7891
+epoch 60: train loss is  0.7471
+epoch 80: train loss is  0.6898
+epoch 100: train loss is  0.6160
+epoch 120: train loss is  0.6180
+ >> Test Model
+Cycle 10/10 || labeled data size 2000, test loss(MSE) =  0.2399
+Finished.
+>> Train vae and task model
+epoch 0: train loss is  0.7775
+epoch 20: train loss is  0.7531
+epoch 40: train loss is  0.7489
+epoch 60: train loss is  0.7304
+epoch 80: train loss is  0.6682
+epoch 100: train loss is  0.5485
+epoch 120: train loss is  0.7793
+ >> Test Model
+Cycle 1/10 || labeled data size 200, test loss(MSE) =  0.0402
+400 106708 150 107030
+>> Train vae and task model
+epoch 0: train loss is  0.7775
+epoch 20: train loss is  0.7501
+epoch 40: train loss is  0.7157
+epoch 60: train loss is  0.6257
+epoch 80: train loss is  0.4942
+epoch 100: train loss is  0.5379
+epoch 120: train loss is  0.4938
+ >> Test Model
+Cycle 2/10 || labeled data size 400, test loss(MSE) =  0.0397
+600 106508 150 107030
+>> Train vae and task model
+epoch 0: train loss is  0.7795
+epoch 20: train loss is  0.7442
+epoch 40: train loss is  0.5940
+epoch 60: train loss is  0.5132
+epoch 80: train loss is  0.4703
+epoch 100: train loss is  0.4686
+epoch 120: train loss is  0.3831
+ >> Test Model
+Cycle 3/10 || labeled data size 600, test loss(MSE) =  0.0397
+800 106308 150 107105
+>> Train vae and task model
+epoch 0: train loss is  0.7790
+epoch 20: train loss is  0.7451
+epoch 40: train loss is  0.7322
+epoch 60: train loss is  0.6646
+epoch 80: train loss is  0.6065
+epoch 100: train loss is  0.5448
+epoch 120: train loss is  0.5166
+ >> Test Model
+Cycle 4/10 || labeled data size 800, test loss(MSE) =  0.0252
+1000 106108 150 107105
+>> Train vae and task model
+epoch 0: train loss is  0.7777
+epoch 20: train loss is  0.7259
+epoch 40: train loss is  0.5438
+epoch 60: train loss is  0.4885
+epoch 80: train loss is  0.4862
+epoch 100: train loss is  0.4845
+epoch 120: train loss is  0.4472
+ >> Test Model
+Cycle 5/10 || labeled data size 1000, test loss(MSE) =  0.0397
+1200 105908 150 107105
+>> Train vae and task model
+epoch 0: train loss is  0.7828
+epoch 20: train loss is  0.7206
+epoch 40: train loss is  0.5914
+epoch 60: train loss is  0.5601
+epoch 80: train loss is  0.5032
+epoch 100: train loss is  0.4854
+epoch 120: train loss is  0.4747
+ >> Test Model
+Cycle 6/10 || labeled data size 1200, test loss(MSE) =  0.0239
+1400 105708 150 107105
+>> Train vae and task model
+epoch 0: train loss is  0.7799
+epoch 20: train loss is  0.7012
+epoch 40: train loss is  0.5849
+epoch 60: train loss is  0.5844
+epoch 80: train loss is  0.5616
+epoch 100: train loss is  0.5042
+epoch 120: train loss is  0.4814
+ >> Test Model
+Cycle 7/10 || labeled data size 1400, test loss(MSE) =  0.0246
+1600 105508 66 107105
+>> Train vae and task model
+epoch 0: train loss is  0.7757
+epoch 20: train loss is  0.6738
+epoch 40: train loss is  0.6418
+epoch 60: train loss is  0.5762
+epoch 80: train loss is  0.5288
+epoch 100: train loss is  0.4903
+epoch 120: train loss is  0.5252
+ >> Test Model
+Cycle 8/10 || labeled data size 1600, test loss(MSE) =  0.0244
+1800 105308 66 107105
+>> Train vae and task model
+epoch 0: train loss is  0.8055
+epoch 20: train loss is  0.6935
+epoch 40: train loss is  0.6124
+epoch 60: train loss is  0.5631
+epoch 80: train loss is  0.5508
+epoch 100: train loss is  0.4988
+epoch 120: train loss is  0.5021
+ >> Test Model
+Cycle 9/10 || labeled data size 1800, test loss(MSE) =  0.0233
+2000 105108 66 107105
+>> Train vae and task model
+epoch 0: train loss is  0.7729
+epoch 20: train loss is  0.6320
+epoch 40: train loss is  0.5495
+epoch 60: train loss is  0.5151
+epoch 80: train loss is  0.4855
+epoch 100: train loss is  0.4612
+epoch 120: train loss is  0.4308
+ >> Test Model
+Cycle 10/10 || labeled data size 2000, test loss(MSE) =  0.0397
+Finished.
+>> Train vae and task model
+epoch 0: train loss is  0.9868
+epoch 20: train loss is  0.7650
+epoch 40: train loss is  0.7540
+epoch 60: train loss is  0.7435
+epoch 80: train loss is  0.7330
+epoch 100: train loss is  0.7235
+epoch 120: train loss is  0.7190
+ >> Test Model
+Cycle 1/10 || labeled data size 200, test loss(MSE) =  0.0283
+400 106708 109 106932
+>> Train vae and task model
+epoch 0: train loss is  0.9883
+epoch 20: train loss is  0.9543
+epoch 40: train loss is  0.8403
+epoch 60: train loss is  0.7424
+epoch 80: train loss is  0.7245
+epoch 100: train loss is  0.7287
+epoch 120: train loss is  0.7222
+ >> Test Model
+Cycle 2/10 || labeled data size 400, test loss(MSE) =  0.0251
+600 106508 109 107011
+>> Train vae and task model
+epoch 0: train loss is  0.9712
+epoch 20: train loss is  0.7461
+epoch 40: train loss is  0.7316
+epoch 60: train loss is  0.7243
+epoch 80: train loss is  0.7205
+epoch 100: train loss is  0.7172
+epoch 120: train loss is  0.7162
+ >> Test Model
+Cycle 3/10 || labeled data size 600, test loss(MSE) =  0.0237
+800 106308 109 107064
+>> Train vae and task model
+epoch 0: train loss is  0.9874
+epoch 20: train loss is  0.8172
+epoch 40: train loss is  0.7486
+epoch 60: train loss is  0.7291
+epoch 80: train loss is  0.7012
+epoch 100: train loss is  0.6877
+epoch 120: train loss is  0.6731
+ >> Test Model
+Cycle 4/10 || labeled data size 800, test loss(MSE) =  0.0220
+1000 106108 109 107064
+>> Train vae and task model
+epoch 0: train loss is  0.9886
+epoch 20: train loss is  0.7727
+epoch 40: train loss is  0.5967
+epoch 60: train loss is  0.5751
+epoch 80: train loss is  0.5751
+epoch 100: train loss is  0.5259
+epoch 120: train loss is  0.5066
+ >> Test Model
+Cycle 5/10 || labeled data size 1000, test loss(MSE) =  0.2510
+1200 105908 109 107070
+>> Train vae and task model
+epoch 0: train loss is  0.9891
+epoch 20: train loss is  0.7347
+epoch 40: train loss is  0.7232
+epoch 60: train loss is  0.7189
+epoch 80: train loss is  0.7049
+epoch 100: train loss is  0.6896
+epoch 120: train loss is  0.6289
+ >> Test Model
+Cycle 6/10 || labeled data size 1200, test loss(MSE) =  0.0223
+1400 105708 109 107090
+>> Train vae and task model
+epoch 0: train loss is  0.9390
+epoch 20: train loss is  0.7312
+epoch 40: train loss is  0.7241
+epoch 60: train loss is  0.7202
+epoch 80: train loss is  0.7125
+epoch 100: train loss is  0.7009
+epoch 120: train loss is  0.6596
+ >> Test Model
+Cycle 7/10 || labeled data size 1400, test loss(MSE) =  0.0204
+1600 105508 4 107090
+>> Train vae and task model
+epoch 0: train loss is  0.9875
+epoch 20: train loss is  0.7353
+epoch 40: train loss is  0.7261
+epoch 60: train loss is  0.7205
+epoch 80: train loss is  0.7161
+epoch 100: train loss is  0.6866
+epoch 120: train loss is  0.6392
+ >> Test Model
+Cycle 8/10 || labeled data size 1600, test loss(MSE) =  0.0220
+1800 105308 4 107090
+>> Train vae and task model
+epoch 0: train loss is  0.8736
+epoch 20: train loss is  0.7295
+epoch 40: train loss is  0.7240
+epoch 60: train loss is  0.7197
+epoch 80: train loss is  0.7124
+epoch 100: train loss is  0.7016
+epoch 120: train loss is  0.6617
+ >> Test Model
+Cycle 9/10 || labeled data size 1800, test loss(MSE) =  0.0214
+2000 105108 4 107090
+>> Train vae and task model
+epoch 0: train loss is  0.8560
+epoch 20: train loss is  0.7267
+epoch 40: train loss is  0.7191
+epoch 60: train loss is  0.7001
+epoch 80: train loss is  0.6889
+epoch 100: train loss is  0.6744
+epoch 120: train loss is  0.6746
+ >> Test Model
+Cycle 10/10 || labeled data size 2000, test loss(MSE) =  0.0206
+Finished.
+>> Train vae and task model
+epoch 0: train loss is  1181.0917
+epoch 20: train loss is  1177.0211
+epoch 40: train loss is  1174.2562
+epoch 60: train loss is  1107.1697
+epoch 80: train loss is  610.6326
+epoch 100: train loss is  272.5908
+epoch 120: train loss is  263.5996
+ >> Test Model
+Cycle 1/10 || labeled data size 200, test loss(MSE) =  224.9710
+400 106708 652 106967
+>> Train vae and task model
+epoch 0: train loss is  1179.3832
+epoch 20: train loss is  1187.2543
+epoch 40: train loss is  593.1537
+epoch 60: train loss is  268.1553
+epoch 80: train loss is  243.5193
+epoch 100: train loss is  227.0677
+epoch 120: train loss is  206.0549
+ >> Test Model
+Cycle 2/10 || labeled data size 400, test loss(MSE) =  194.6447
+600 106508 383 106967
+>> Train vae and task model
+epoch 0: train loss is  1179.7147
+epoch 20: train loss is  1157.0734
+epoch 40: train loss is  273.9418
+epoch 60: train loss is  245.3229
+epoch 80: train loss is  229.6466
+epoch 100: train loss is  206.8591
+epoch 120: train loss is  189.1226
+ >> Test Model
+Cycle 3/10 || labeled data size 600, test loss(MSE) =  178.8457
+800 106308 383 106967
+>> Train vae and task model
+epoch 0: train loss is  1181.7331
+epoch 20: train loss is  920.0250
+epoch 40: train loss is  250.3033
+epoch 60: train loss is  219.4490
+epoch 80: train loss is  201.4613
+epoch 100: train loss is  172.5712
+epoch 120: train loss is  163.2323
+ >> Test Model
+Cycle 4/10 || labeled data size 800, test loss(MSE) =  159.4055
+1000 106108 383 106967
+>> Train vae and task model
+epoch 0: train loss is  1168.1801
+epoch 20: train loss is  269.4245
+epoch 40: train loss is  226.6864
+epoch 60: train loss is  201.4097
+epoch 80: train loss is  176.4849
+epoch 100: train loss is  155.9204
+epoch 120: train loss is  146.1805
+ >> Test Model
+Cycle 5/10 || labeled data size 1000, test loss(MSE) =  149.9779
+1200 105908 383 106967
+>> Train vae and task model
+epoch 0: train loss is  1178.7615
+epoch 20: train loss is  281.3097
+epoch 40: train loss is  225.9158
+epoch 60: train loss is  191.7985
+epoch 80: train loss is  164.6138
+epoch 100: train loss is  147.4926
+epoch 120: train loss is  136.3180
+ >> Test Model
+Cycle 6/10 || labeled data size 1200, test loss(MSE) =  141.4643
+1400 105708 383 106967
+>> Train vae and task model
+epoch 0: train loss is  1182.6949
+epoch 20: train loss is  1182.5791
+epoch 40: train loss is  1182.5562
+epoch 60: train loss is  1182.6102
+epoch 80: train loss is  1182.4628
+epoch 100: train loss is  1182.6174
+epoch 120: train loss is  1182.4267
+ >> Test Model
+Cycle 7/10 || labeled data size 1400, test loss(MSE) =  1188.7562
+1600 105508 260 106967
+>> Train vae and task model
+epoch 0: train loss is  1189.4934
+epoch 20: train loss is  849.0516
+epoch 40: train loss is  222.4491
+epoch 60: train loss is  172.6125
+epoch 80: train loss is  149.5388
+epoch 100: train loss is  137.6913
+epoch 120: train loss is  125.2018
+ >> Test Model
+Cycle 8/10 || labeled data size 1600, test loss(MSE) =  132.8381
+1800 105308 152 106967
+>> Train vae and task model
+epoch 0: train loss is  1197.2420
+epoch 20: train loss is  244.7487
+epoch 40: train loss is  189.6697
+epoch 60: train loss is  159.2229
+epoch 80: train loss is  150.6619
+epoch 100: train loss is  139.0366
+epoch 120: train loss is  132.3184
+ >> Test Model
+Cycle 9/10 || labeled data size 1800, test loss(MSE) =  135.8490
+2000 105108 111 106967
+>> Train vae and task model
+epoch 0: train loss is  1191.5099
+epoch 20: train loss is  239.9938
+epoch 40: train loss is  181.9025
+epoch 60: train loss is  152.0471
+epoch 80: train loss is  138.6631
+epoch 100: train loss is  128.6977
+epoch 120: train loss is  122.1832
+ >> Test Model
+Cycle 10/10 || labeled data size 2000, test loss(MSE) =  126.9302
+Finished.
+>> Train vae and task model
+epoch 0: train loss is  0.8855
+epoch 20: train loss is  0.8611
+epoch 40: train loss is  0.8523
+epoch 60: train loss is  0.8268
+epoch 80: train loss is  0.6726
+epoch 100: train loss is  0.7718
+epoch 120: train loss is  0.7311
+ >> Test Model
+Cycle 1/10 || labeled data size 200, test loss(MSE) =  0.0202
+400 106708 519 106969
+>> Train vae and task model
+epoch 0: train loss is  0.7792
+epoch 20: train loss is  0.7324
+epoch 40: train loss is  0.7231
+epoch 60: train loss is  0.7194
+epoch 80: train loss is  0.7158
+epoch 100: train loss is  0.7043
+epoch 120: train loss is  0.6808
+ >> Test Model
+Cycle 2/10 || labeled data size 400, test loss(MSE) =  0.0154
+600 106508 65 106969
+>> Train vae and task model
+epoch 0: train loss is  0.8872
+epoch 20: train loss is  0.7352
+epoch 40: train loss is  0.7237
+epoch 60: train loss is  0.7161
+epoch 80: train loss is  0.6992
+epoch 100: train loss is  0.6508
+epoch 120: train loss is  0.6100
+ >> Test Model
+Cycle 3/10 || labeled data size 600, test loss(MSE) =  0.0170
+800 106308 65 106969
+>> Train vae and task model
+epoch 0: train loss is  0.7926
+epoch 20: train loss is  0.7255
+epoch 40: train loss is  0.7188
+epoch 60: train loss is  0.7138
+epoch 80: train loss is  0.7051
+epoch 100: train loss is  0.6946
+epoch 120: train loss is  0.6885
+ >> Test Model
+Cycle 4/10 || labeled data size 800, test loss(MSE) =  0.0111
+1000 106108 65 106969
+>> Train vae and task model
+epoch 0: train loss is  0.8858
+epoch 20: train loss is  0.7253
+epoch 40: train loss is  0.7173
+epoch 60: train loss is  0.6981
+epoch 80: train loss is  0.6648
+epoch 100: train loss is  0.6642
+epoch 120: train loss is  0.6339
+ >> Test Model
+Cycle 5/10 || labeled data size 1000, test loss(MSE) =  0.0121
+1200 105908 65 106969
+>> Train vae and task model
+epoch 0: train loss is  0.8852
+epoch 20: train loss is  0.6326
+epoch 40: train loss is  0.4627
+epoch 60: train loss is  0.4247
+epoch 80: train loss is  0.3715
+epoch 100: train loss is  0.3371
+epoch 120: train loss is  0.3029
+ >> Test Model
+Cycle 6/10 || labeled data size 1200, test loss(MSE) =  0.1485
+1400 105708 65 106969
+>> Train vae and task model
+epoch 0: train loss is  0.8303
+epoch 20: train loss is  0.7205
+epoch 40: train loss is  0.7145
+epoch 60: train loss is  0.7110
+epoch 80: train loss is  0.6973
+epoch 100: train loss is  0.6850
+epoch 120: train loss is  0.6859
+ >> Test Model
+Cycle 7/10 || labeled data size 1400, test loss(MSE) =  0.0078
+1600 105508 65 106985
+>> Train vae and task model
+epoch 0: train loss is  0.8841
+epoch 20: train loss is  0.7216
+epoch 40: train loss is  0.6822
+epoch 60: train loss is  0.6676
+epoch 80: train loss is  0.6659
+epoch 100: train loss is  0.6367
+epoch 120: train loss is  0.6527
+ >> Test Model
+Cycle 8/10 || labeled data size 1600, test loss(MSE) =  0.0126
+1800 105308 65 106985
+>> Train vae and task model
+epoch 0: train loss is  0.7777
+epoch 20: train loss is  0.7190
+epoch 40: train loss is  0.6973
+epoch 60: train loss is  0.6904
+epoch 80: train loss is  0.6698
+epoch 100: train loss is  0.6633
+epoch 120: train loss is  0.6546
+ >> Test Model
+Cycle 9/10 || labeled data size 1800, test loss(MSE) =  0.0103
+2000 105108 65 107032
+>> Train vae and task model
+epoch 0: train loss is  0.7828
+epoch 20: train loss is  0.7179
+epoch 40: train loss is  0.7113
+epoch 60: train loss is  0.6923
+epoch 80: train loss is  0.6881
+epoch 100: train loss is  0.6794
+epoch 120: train loss is  0.6634
+ >> Test Model
+Cycle 10/10 || labeled data size 2000, test loss(MSE) =  0.0078
+Finished.
+>> Train vae and task model
+epoch 0: train loss is  415.5372
+epoch 20: train loss is  415.1419
+epoch 40: train loss is  415.2016
+epoch 60: train loss is  415.4885
+epoch 80: train loss is  416.5808
+epoch 100: train loss is  416.2261
+epoch 120: train loss is  413.3727
+ >> Test Model
+Cycle 1/10 || labeled data size 200, test loss(MSE) =  411.2572
+400 106708 117 106761
+>> Train vae and task model
+epoch 0: train loss is  416.0678
+epoch 20: train loss is  416.4704
+epoch 40: train loss is  417.6955
+epoch 60: train loss is  412.3354
+epoch 80: train loss is  414.6787
+epoch 100: train loss is  413.9360
+epoch 120: train loss is  418.0528
+ >> Test Model
+Cycle 2/10 || labeled data size 400, test loss(MSE) =  411.2572
+600 106508 117 106815
+>> Train vae and task model
+epoch 0: train loss is  413.3419
+epoch 20: train loss is  413.2843
+epoch 40: train loss is  413.0541
+epoch 60: train loss is  413.3010
+epoch 80: train loss is  413.0696
+epoch 100: train loss is  413.1930
+epoch 120: train loss is  412.7718
+ >> Test Model
+Cycle 3/10 || labeled data size 600, test loss(MSE) =  411.2572
+800 106308 117 106883
+>> Train vae and task model
+epoch 0: train loss is  414.7908
+epoch 20: train loss is  413.0730
+epoch 40: train loss is  413.7512
+epoch 60: train loss is  413.9886
+epoch 80: train loss is  413.2931
+epoch 100: train loss is  413.6961
+epoch 120: train loss is  414.9431
+ >> Test Model
+Cycle 4/10 || labeled data size 800, test loss(MSE) =  411.2572
+1000 106108 76 106883
+>> Train vae and task model
+epoch 0: train loss is  413.4142
+epoch 20: train loss is  413.2405
+epoch 40: train loss is  413.0415
+epoch 60: train loss is  413.0897
+epoch 80: train loss is  412.9409
+epoch 100: train loss is  412.9315
+epoch 120: train loss is  412.9121
+ >> Test Model
+Cycle 5/10 || labeled data size 1000, test loss(MSE) =  411.2572
+1200 105908 76 106979
+>> Train vae and task model
+epoch 0: train loss is  413.3333
+epoch 20: train loss is  412.6760
+epoch 40: train loss is  412.4038
+epoch 60: train loss is  412.6205
+epoch 80: train loss is  412.5666
+epoch 100: train loss is  413.0491
+epoch 120: train loss is  411.9829
+ >> Test Model
+Cycle 6/10 || labeled data size 1200, test loss(MSE) =  411.2572
+1400 105708 76 106979
+>> Train vae and task model
+epoch 0: train loss is  412.9075
+epoch 20: train loss is  412.7448
+epoch 40: train loss is  412.4203
+epoch 60: train loss is  412.3731
+epoch 80: train loss is  412.3251
+epoch 100: train loss is  412.2467
+epoch 120: train loss is  412.2243
+ >> Test Model
+Cycle 7/10 || labeled data size 1400, test loss(MSE) =  411.2572
+1600 105508 76 106979
+>> Train vae and task model
+epoch 0: train loss is  412.5820
+epoch 20: train loss is  412.3744
+epoch 40: train loss is  412.2286
+epoch 60: train loss is  412.2296
+epoch 80: train loss is  411.9523
+epoch 100: train loss is  411.9695
+epoch 120: train loss is  412.1713
+ >> Test Model
+Cycle 8/10 || labeled data size 1600, test loss(MSE) =  411.2572
+1800 105308 76 106979
+>> Train vae and task model
+epoch 0: train loss is  413.3724
+epoch 20: train loss is  413.0077
+epoch 40: train loss is  412.6043
+epoch 60: train loss is  413.3566
+epoch 80: train loss is  410.6483
+epoch 100: train loss is  412.4566
+epoch 120: train loss is  411.8364
+ >> Test Model
+Cycle 9/10 || labeled data size 1800, test loss(MSE) =  411.2572
+2000 105108 76 106979
+>> Train vae and task model
+epoch 0: train loss is  412.1199
+epoch 20: train loss is  411.7176
+epoch 40: train loss is  411.9149
+epoch 60: train loss is  411.9176
+epoch 80: train loss is  411.8277
+epoch 100: train loss is  411.6688
+epoch 120: train loss is  411.6280
+ >> Test Model
+Cycle 10/10 || labeled data size 2000, test loss(MSE) =  411.2572
+Finished.
+>> Train vae and task model
+epoch 0: train loss is  416.0648
+epoch 20: train loss is  414.6642
+epoch 40: train loss is  416.0787
+epoch 60: train loss is  414.1880
+epoch 80: train loss is  415.2193
+epoch 100: train loss is  415.8372
+epoch 120: train loss is  415.6586
+ >> Test Model
+Cycle 1/10 || labeled data size 200, test loss(MSE) =  411.5845
+400 106708 296 107089
+>> Train vae and task model
+epoch 0: train loss is  413.7807
+epoch 20: train loss is  412.8665
+epoch 40: train loss is  414.9901
+epoch 60: train loss is  411.7193
+epoch 80: train loss is  409.9472
+epoch 100: train loss is  413.3479
+epoch 120: train loss is  409.2165
+ >> Test Model
+Cycle 2/10 || labeled data size 400, test loss(MSE) =  411.5845
+600 106508 296 107089
+>> Train vae and task model
+epoch 0: train loss is  412.9801
+epoch 20: train loss is  412.9034
+epoch 40: train loss is  412.4671
+epoch 60: train loss is  412.3439
+epoch 80: train loss is  412.6226
+epoch 100: train loss is  412.3724
+epoch 120: train loss is  412.0113
+ >> Test Model
+Cycle 3/10 || labeled data size 600, test loss(MSE) =  411.5845
+800 106308 85 107089
+>> Train vae and task model
+epoch 0: train loss is  413.1561
+epoch 20: train loss is  412.7942
+epoch 40: train loss is  412.6472
+epoch 60: train loss is  412.3894
+epoch 80: train loss is  413.3874
+epoch 100: train loss is  412.2960
+epoch 120: train loss is  412.0935
+ >> Test Model
+Cycle 4/10 || labeled data size 800, test loss(MSE) =  411.5845
+1000 106108 64 107089
+>> Train vae and task model
+epoch 0: train loss is  412.4730
+epoch 20: train loss is  412.2878
+epoch 40: train loss is  412.1777
+epoch 60: train loss is  412.0664
+epoch 80: train loss is  411.7935
+epoch 100: train loss is  411.8695
+epoch 120: train loss is  411.9117
+ >> Test Model
+Cycle 5/10 || labeled data size 1000, test loss(MSE) =  411.5845
+1200 105908 64 107089
+>> Train vae and task model
+epoch 0: train loss is  411.9764
+epoch 20: train loss is  412.6468
+epoch 40: train loss is  412.2261
+epoch 60: train loss is  412.2534
+epoch 80: train loss is  410.7087
+epoch 100: train loss is  412.1356
+epoch 120: train loss is  412.0856
+ >> Test Model
+Cycle 6/10 || labeled data size 1200, test loss(MSE) =  411.5845
+1400 105708 64 107089
+>> Train vae and task model
+epoch 0: train loss is  412.1937
+epoch 20: train loss is  412.0590
+epoch 40: train loss is  411.8261
+epoch 60: train loss is  411.7670
+epoch 80: train loss is  411.7083
+epoch 100: train loss is  411.7358
+epoch 120: train loss is  411.6776
+ >> Test Model
+Cycle 7/10 || labeled data size 1400, test loss(MSE) =  411.5845
+1600 105508 64 107089
+>> Train vae and task model
+epoch 0: train loss is  412.3678
+epoch 20: train loss is  412.1371
+epoch 40: train loss is  412.2389
+epoch 60: train loss is  412.0476
+epoch 80: train loss is  411.5070
+epoch 100: train loss is  411.5814
+epoch 120: train loss is  412.0659
+ >> Test Model
+Cycle 8/10 || labeled data size 1600, test loss(MSE) =  411.5845
+1800 105308 64 107089
+>> Train vae and task model
+epoch 0: train loss is  412.0172
+epoch 20: train loss is  413.1960
+epoch 40: train loss is  413.0936
+epoch 60: train loss is  412.1928
+epoch 80: train loss is  413.3564
+epoch 100: train loss is  413.7181
+epoch 120: train loss is  412.2245
+ >> Test Model
+Cycle 9/10 || labeled data size 1800, test loss(MSE) =  411.5845
+2000 105108 64 107089
+>> Train vae and task model
+epoch 0: train loss is  413.1723
+epoch 20: train loss is  412.9367
+epoch 40: train loss is  412.5020
+epoch 60: train loss is  412.5848
+epoch 80: train loss is  412.4437
+epoch 100: train loss is  412.3894
+epoch 120: train loss is  412.2137
+ >> Test Model
+Cycle 10/10 || labeled data size 2000, test loss(MSE) =  411.5845
+Finished.
+>> Train vae and task model
+epoch 0: train loss is  413.2995
+epoch 20: train loss is  414.7832
+epoch 40: train loss is  412.5463
+epoch 60: train loss is  412.1556
+epoch 80: train loss is  413.2459
+epoch 100: train loss is  413.5094
+epoch 120: train loss is  412.3296
+ >> Test Model
+Cycle 1/10 || labeled data size 200, test loss(MSE) =  411.0978
+400 106708 88 105923
+>> Train vae and task model
+epoch 0: train loss is  412.5092
+epoch 20: train loss is  410.9705
+epoch 40: train loss is  408.8166
+epoch 60: train loss is  411.8582
+epoch 80: train loss is  407.2174
+epoch 100: train loss is  409.6237
+epoch 120: train loss is  409.7521
+ >> Test Model
+Cycle 2/10 || labeled data size 400, test loss(MSE) =  411.0978
+600 106508 51 106920
+>> Train vae and task model
+epoch 0: train loss is  410.7317
+epoch 20: train loss is  410.7327
+epoch 40: train loss is  410.6684
+epoch 60: train loss is  410.7930
+epoch 80: train loss is  410.1708
+epoch 100: train loss is  410.2966
+epoch 120: train loss is  410.4439
+ >> Test Model
+Cycle 3/10 || labeled data size 600, test loss(MSE) =  411.0978
+800 106308 19 106920
+>> Train vae and task model
+epoch 0: train loss is  410.4233
+epoch 20: train loss is  410.6188
+epoch 40: train loss is  412.0656
+epoch 60: train loss is  410.6207
+epoch 80: train loss is  409.5653
+epoch 100: train loss is  410.7895
+epoch 120: train loss is  411.2677
+ >> Test Model
+Cycle 4/10 || labeled data size 800, test loss(MSE) =  411.0978
+1000 106108 19 106920
+>> Train vae and task model
+epoch 0: train loss is  410.3191
+epoch 20: train loss is  410.2333
+epoch 40: train loss is  410.0470
+epoch 60: train loss is  410.0169
+epoch 80: train loss is  409.8886
+epoch 100: train loss is  409.8357
+epoch 120: train loss is  409.7861
+ >> Test Model
+Cycle 5/10 || labeled data size 1000, test loss(MSE) =  411.0978
+1200 105908 19 106920
+>> Train vae and task model
+epoch 0: train loss is  411.1939
+epoch 20: train loss is  411.1475
+epoch 40: train loss is  410.4064
+epoch 60: train loss is  410.4681
+epoch 80: train loss is  410.3078
+epoch 100: train loss is  410.0692
+epoch 120: train loss is  409.9570
+ >> Test Model
+Cycle 6/10 || labeled data size 1200, test loss(MSE) =  411.0978
+1400 105708 19 106920
+>> Train vae and task model
+epoch 0: train loss is  410.9962
+epoch 20: train loss is  410.7156
+epoch 40: train loss is  410.6078
+epoch 60: train loss is  410.6048
+epoch 80: train loss is  410.5000
+epoch 100: train loss is  410.4811
+epoch 120: train loss is  410.4638
+ >> Test Model
+Cycle 7/10 || labeled data size 1400, test loss(MSE) =  411.0978
+1600 105508 19 107009
+>> Train vae and task model
+epoch 0: train loss is  410.3976
+epoch 20: train loss is  410.6271
+epoch 40: train loss is  410.2952
+epoch 60: train loss is  409.8965
+epoch 80: train loss is  410.3566
+epoch 100: train loss is  410.0030
+epoch 120: train loss is  409.9230
+ >> Test Model
+Cycle 8/10 || labeled data size 1600, test loss(MSE) =  411.0978
+1800 105308 19 107009
+>> Train vae and task model
+epoch 0: train loss is  412.1606
+epoch 20: train loss is  410.9720
+epoch 40: train loss is  409.0383
+epoch 60: train loss is  409.5940
+epoch 80: train loss is  411.4728
+epoch 100: train loss is  409.9786
+epoch 120: train loss is  411.5560
+ >> Test Model
+Cycle 9/10 || labeled data size 1800, test loss(MSE) =  411.0978
+2000 105108 19 107009
+>> Train vae and task model
+epoch 0: train loss is  410.9616
+epoch 20: train loss is  410.4346
+epoch 40: train loss is  410.5221
+epoch 60: train loss is  410.4250
+epoch 80: train loss is  410.2500
+epoch 100: train loss is  410.2104
+epoch 120: train loss is  410.3619
+ >> Test Model
+Cycle 10/10 || labeled data size 2000, test loss(MSE) =  411.0978
+Finished.
+>> Train vae and task model
+epoch 0: train loss is  410.5831
+epoch 20: train loss is  410.6074
+epoch 40: train loss is  410.7743
+epoch 60: train loss is  410.8989
+epoch 80: train loss is  410.9737
+epoch 100: train loss is  411.8930
+epoch 120: train loss is  411.0172
+ >> Test Model
+Cycle 1/10 || labeled data size 200, test loss(MSE) =  411.7941
+400 106708 58 107084
+>> Train vae and task model
+epoch 0: train loss is  415.4573
+epoch 20: train loss is  411.7979
+epoch 40: train loss is  412.8085
+epoch 60: train loss is  413.5823
+epoch 80: train loss is  413.9107
+epoch 100: train loss is  410.7567
+epoch 120: train loss is  410.5194
+ >> Test Model
+Cycle 2/10 || labeled data size 400, test loss(MSE) =  411.7941
+600 106508 58 107084
+>> Train vae and task model
+epoch 0: train loss is  413.5908
+epoch 20: train loss is  413.3762
+epoch 40: train loss is  412.8595
+epoch 60: train loss is  413.5514
+epoch 80: train loss is  412.9959
+epoch 100: train loss is  412.6995
+epoch 120: train loss is  412.9937
+ >> Test Model
+Cycle 3/10 || labeled data size 600, test loss(MSE) =  411.7941
+800 106308 58 107084
+>> Train vae and task model
+epoch 0: train loss is  414.3960
+epoch 20: train loss is  413.6703
+epoch 40: train loss is  412.0954
+epoch 60: train loss is  413.9732
+epoch 80: train loss is  413.7181
+epoch 100: train loss is  413.5118
+epoch 120: train loss is  412.2030
+ >> Test Model
+Cycle 4/10 || labeled data size 800, test loss(MSE) =  411.7941
+1000 106108 58 107084
+>> Train vae and task model
+epoch 0: train loss is  413.3289
+epoch 20: train loss is  413.1678
+epoch 40: train loss is  413.0907
+epoch 60: train loss is  412.9560
+epoch 80: train loss is  412.9242
+epoch 100: train loss is  412.7695
+epoch 120: train loss is  412.9231
+ >> Test Model
+Cycle 5/10 || labeled data size 1000, test loss(MSE) =  411.7941
+1200 105908 58 107084
+>> Train vae and task model
+epoch 0: train loss is  413.2880
+epoch 20: train loss is  413.4335
+epoch 40: train loss is  413.6240
+epoch 60: train loss is  413.3190
+epoch 80: train loss is  412.6211
+epoch 100: train loss is  412.6732
+epoch 120: train loss is  412.8023
+ >> Test Model
+Cycle 6/10 || labeled data size 1200, test loss(MSE) =  411.7941
+1400 105708 58 107084
+>> Train vae and task model
+epoch 0: train loss is  412.8030
+epoch 20: train loss is  412.6214
+epoch 40: train loss is  412.4699
+epoch 60: train loss is  412.4145
+epoch 80: train loss is  412.3764
+epoch 100: train loss is  412.3102
+epoch 120: train loss is  412.3010
+ >> Test Model
+Cycle 7/10 || labeled data size 1400, test loss(MSE) =  411.7941
+1600 105508 58 107084
+>> Train vae and task model
+epoch 0: train loss is  413.0296
+epoch 20: train loss is  413.0236
+epoch 40: train loss is  413.0221
+epoch 60: train loss is  412.7069
+epoch 80: train loss is  412.7341
+epoch 100: train loss is  412.5587
+epoch 120: train loss is  412.8193
+ >> Test Model
+Cycle 8/10 || labeled data size 1600, test loss(MSE) =  411.7941
+1800 105308 28 107084
+>> Train vae and task model
+epoch 0: train loss is  413.8042
+epoch 20: train loss is  415.3262
+epoch 40: train loss is  413.1654
+epoch 60: train loss is  414.2581
+epoch 80: train loss is  413.7265
+epoch 100: train loss is  414.5739
+epoch 120: train loss is  413.6377
+ >> Test Model
+Cycle 9/10 || labeled data size 1800, test loss(MSE) =  411.7941
+2000 105108 28 107084
+>> Train vae and task model
+epoch 0: train loss is  413.5290
+epoch 20: train loss is  413.1722
+epoch 40: train loss is  413.0238
+epoch 60: train loss is  413.1362
+epoch 80: train loss is  413.0942
+epoch 100: train loss is  412.8993
+epoch 120: train loss is  413.0389
+ >> Test Model
+Cycle 10/10 || labeled data size 2000, test loss(MSE) =  411.7941
+Finished.
+>> Train vae and task model
+epoch 0: train loss is  32.3898
+epoch 20: train loss is  32.5535
+epoch 40: train loss is  32.5257
+epoch 60: train loss is  32.0116
+epoch 80: train loss is  7.6355
+epoch 100: train loss is  5.5418
+epoch 120: train loss is  4.5616
+ >> Test Model
+Cycle 1/10 || labeled data size 200, test loss(MSE) =  3.2429
+400 106708 437 106772
+>> Train vae and task model
+epoch 0: train loss is  32.2581
+epoch 20: train loss is  22.9288
+epoch 40: train loss is  4.8537
+epoch 60: train loss is  4.1779
+epoch 80: train loss is  3.7098
+epoch 100: train loss is  3.3347
+epoch 120: train loss is  3.1731
+ >> Test Model
+Cycle 2/10 || labeled data size 400, test loss(MSE) =  2.3077
+600 106508 437 106772
+>> Train vae and task model
+epoch 0: train loss is  32.3649
+epoch 20: train loss is  6.6097
+epoch 40: train loss is  4.4117
+epoch 60: train loss is  3.5906
+epoch 80: train loss is  3.0585
+epoch 100: train loss is  2.6841
+epoch 120: train loss is  2.4278
+ >> Test Model
+Cycle 3/10 || labeled data size 600, test loss(MSE) =  1.8733
+800 106308 437 106772
+>> Train vae and task model
+epoch 0: train loss is  32.1681
+epoch 20: train loss is  5.4641
+epoch 40: train loss is  3.7943
+epoch 60: train loss is  3.1299
+epoch 80: train loss is  2.6547
+epoch 100: train loss is  2.4121
+epoch 120: train loss is  2.2003
+ >> Test Model
+Cycle 4/10 || labeled data size 800, test loss(MSE) =  1.6885
+1000 106108 437 107043
+>> Train vae and task model
+epoch 0: train loss is  32.3456
+epoch 20: train loss is  6.7395
+epoch 40: train loss is  4.0170
+epoch 60: train loss is  3.0428
+epoch 80: train loss is  2.5981
+epoch 100: train loss is  2.3565
+epoch 120: train loss is  2.1145
+ >> Test Model
+Cycle 5/10 || labeled data size 1000, test loss(MSE) =  1.5732
+1200 105908 299 107043
+>> Train vae and task model
+epoch 0: train loss is  32.1215
+epoch 20: train loss is  4.3366
+epoch 40: train loss is  3.1881
+epoch 60: train loss is  2.6606
+epoch 80: train loss is  2.3472
+epoch 100: train loss is  2.1513
+epoch 120: train loss is  1.9220
+ >> Test Model
+Cycle 6/10 || labeled data size 1200, test loss(MSE) =  1.4393
+1400 105708 151 107043
+>> Train vae and task model
+epoch 0: train loss is  32.1580
+epoch 20: train loss is  4.3600
+epoch 40: train loss is  3.1115
+epoch 60: train loss is  2.6479
+epoch 80: train loss is  2.3245
+epoch 100: train loss is  2.0818
+epoch 120: train loss is  1.9199
+ >> Test Model
+Cycle 7/10 || labeled data size 1400, test loss(MSE) =  1.3571
+1600 105508 149 107043
+>> Train vae and task model
+epoch 0: train loss is  32.1912
+epoch 20: train loss is  3.9652
+epoch 40: train loss is  2.8827
+epoch 60: train loss is  2.4200
+epoch 80: train loss is  2.0911
+epoch 100: train loss is  1.8350
+epoch 120: train loss is  1.6217
+ >> Test Model
+Cycle 8/10 || labeled data size 1600, test loss(MSE) =  1.1671
+1800 105308 149 107043
+>> Train vae and task model
+epoch 0: train loss is  32.3502
+epoch 20: train loss is  32.0902
+epoch 40: train loss is  31.7646
+epoch 60: train loss is  31.9527
+epoch 80: train loss is  31.8189
+epoch 100: train loss is  31.8117
+epoch 120: train loss is  1.8006
+ >> Test Model
+Cycle 9/10 || labeled data size 1800, test loss(MSE) =  1.1100
+2000 105108 149 107043
+>> Train vae and task model
+epoch 0: train loss is  32.1481
+epoch 20: train loss is  3.7373
+epoch 40: train loss is  2.6998
+epoch 60: train loss is  2.3127
+epoch 80: train loss is  2.0320
+epoch 100: train loss is  1.7683
+epoch 120: train loss is  1.5566
+ >> Test Model
+Cycle 10/10 || labeled data size 2000, test loss(MSE) =  1.0156
+Finished.

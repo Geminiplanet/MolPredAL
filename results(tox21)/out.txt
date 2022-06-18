@@ -1,0 +1,1512 @@
+>> Train vae and task model
+epoch 20, vae loss is 0.04879222810268402
+epoch 40, vae loss is 0.0410323403775692
+epoch 60, vae loss is 0.036630842834711075
+epoch 80, vae loss is 0.02746685966849327
+epoch 100, vae loss is 0.02634498104453087
+epoch 0: train loss is  1.7967, train_acc:  0.9733
+epoch 20: train loss is  1.4071, train_acc:  0.9733
+epoch 40: train loss is  1.0423, train_acc:  0.9733
+epoch 60: train loss is  1.0178, train_acc:  0.9733
+epoch 80: train loss is  1.0113, train_acc:  0.9733
+ >> Test Model
+Cycle 1/5 || labeled data size 300, test acc =  0.9602
+TA-VAAL iteration: 0 vae_loss: 1.491997241973877 dsc_loss: 1.3881721496582031
+TA-VAAL iteration: 100 vae_loss: 1.685896635055542 dsc_loss: 1.4033187627792358
+TA-VAAL iteration: 200 vae_loss: 1.708632230758667 dsc_loss: 1.3545924425125122
+TA-VAAL iteration: 300 vae_loss: 1.7991693019866943 dsc_loss: 1.3762809038162231
+TA-VAAL iteration: 400 vae_loss: 1.9750300645828247 dsc_loss: 1.3638718128204346
+TA-VAAL iteration: 500 vae_loss: 1.8990395069122314 dsc_loss: 1.3274463415145874
+TA-VAAL iteration: 600 vae_loss: 2.216953754425049 dsc_loss: 1.3627703189849854
+TA-VAAL iteration: 700 vae_loss: 2.4945831298828125 dsc_loss: 1.388960361480713
+TA-VAAL iteration: 800 vae_loss: 2.329862594604492 dsc_loss: 1.3476691246032715
+TA-VAAL iteration: 900 vae_loss: 2.6029582023620605 dsc_loss: 1.3533756732940674
+TA-VAAL iteration: 1000 vae_loss: 2.4487268924713135 dsc_loss: 1.3998774290084839
+TA-VAAL iteration: 1100 vae_loss: 2.3393352031707764 dsc_loss: 1.3468999862670898
+TA-VAAL iteration: 1200 vae_loss: 2.4414889812469482 dsc_loss: 1.3824870586395264
+TA-VAAL iteration: 1300 vae_loss: 2.7055554389953613 dsc_loss: 1.4047571420669556
+600 5632 10 6231
+>> Train vae and task model
+epoch 20, vae loss is 0.06924670934677124
+epoch 40, vae loss is 0.05579059198498726
+epoch 60, vae loss is 0.04310072958469391
+epoch 80, vae loss is 0.04187421873211861
+epoch 100, vae loss is 0.04110075905919075
+epoch 0: train loss is  1.7697, train_acc:  0.0217
+epoch 20: train loss is  1.5553, train_acc:  0.7983
+epoch 40: train loss is  1.0138, train_acc:  0.8650
+epoch 60: train loss is  0.7413, train_acc:  0.9100
+epoch 80: train loss is  0.6307, train_acc:  0.9133
+ >> Test Model
+Cycle 2/5 || labeled data size 600, test acc =  0.9019
+TA-VAAL iteration: 0 vae_loss: 1.6145232915878296 dsc_loss: 1.3850092887878418
+TA-VAAL iteration: 100 vae_loss: 3.7413153648376465 dsc_loss: 1.7363860607147217
+TA-VAAL iteration: 200 vae_loss: 1.6813424825668335 dsc_loss: 1.739989161491394
+TA-VAAL iteration: 300 vae_loss: 1.9922749996185303 dsc_loss: 1.3568931818008423
+TA-VAAL iteration: 400 vae_loss: 1.4720571041107178 dsc_loss: 1.4876139163970947
+TA-VAAL iteration: 500 vae_loss: 3.1102054119110107 dsc_loss: 1.8890738487243652
+TA-VAAL iteration: 600 vae_loss: 1.7125768661499023 dsc_loss: 1.716123104095459
+TA-VAAL iteration: 700 vae_loss: 1.3140560388565063 dsc_loss: 1.4237942695617676
+TA-VAAL iteration: 800 vae_loss: 1.949328899383545 dsc_loss: 1.3442569971084595
+TA-VAAL iteration: 900 vae_loss: 2.911428451538086 dsc_loss: 1.9475356340408325
+TA-VAAL iteration: 1000 vae_loss: 1.9364012479782104 dsc_loss: 1.7692813873291016
+TA-VAAL iteration: 1100 vae_loss: 1.5798486471176147 dsc_loss: 1.3115549087524414
+TA-VAAL iteration: 1200 vae_loss: 2.1014015674591064 dsc_loss: 1.325117588043213
+TA-VAAL iteration: 1300 vae_loss: 2.4409031867980957 dsc_loss: 1.9052238464355469
+900 5332 10 6231
+>> Train vae and task model
+epoch 20, vae loss is 0.10002437233924866
+epoch 40, vae loss is 0.06820305436849594
+epoch 60, vae loss is 0.06954091787338257
+epoch 80, vae loss is 0.06400000303983688
+epoch 100, vae loss is 0.06219686567783356
+epoch 0: train loss is  1.7655, train_acc:  0.9722
+epoch 20: train loss is  1.0890, train_acc:  0.9722
+epoch 40: train loss is  1.0319, train_acc:  0.9722
+epoch 60: train loss is  1.5939, train_acc:  0.9722
+epoch 80: train loss is  1.1422, train_acc:  0.9722
+ >> Test Model
+Cycle 3/5 || labeled data size 900, test acc =  0.9602
+TA-VAAL iteration: 0 vae_loss: 1.5007576942443848 dsc_loss: 1.3889529705047607
+TA-VAAL iteration: 100 vae_loss: 1.899092197418213 dsc_loss: 1.3287043571472168
+TA-VAAL iteration: 200 vae_loss: 1.4048341512680054 dsc_loss: 1.5499510765075684
+TA-VAAL iteration: 300 vae_loss: 1.7368217706680298 dsc_loss: 1.4111647605895996
+TA-VAAL iteration: 400 vae_loss: 1.2327702045440674 dsc_loss: 1.2895948886871338
+TA-VAAL iteration: 500 vae_loss: 1.5184049606323242 dsc_loss: 1.4289093017578125
+TA-VAAL iteration: 600 vae_loss: 1.5180065631866455 dsc_loss: 1.3566665649414062
+TA-VAAL iteration: 700 vae_loss: 1.1307340860366821 dsc_loss: 1.7177236080169678
+TA-VAAL iteration: 800 vae_loss: 1.7264184951782227 dsc_loss: 1.4657633304595947
+TA-VAAL iteration: 900 vae_loss: 1.4486536979675293 dsc_loss: 1.2605767250061035
+TA-VAAL iteration: 1000 vae_loss: 1.0680654048919678 dsc_loss: 1.6182931661605835
+TA-VAAL iteration: 1100 vae_loss: 1.6236000061035156 dsc_loss: 1.3242120742797852
+TA-VAAL iteration: 1200 vae_loss: 1.333431601524353 dsc_loss: 1.3250281810760498
+TA-VAAL iteration: 1300 vae_loss: 1.3147966861724854 dsc_loss: 1.5129814147949219
+1200 5032 10 6231
+>> Train vae and task model
+epoch 20, vae loss is 0.10701070725917816
+epoch 40, vae loss is 0.08438491821289062
+epoch 60, vae loss is 0.08199729770421982
+epoch 80, vae loss is 0.08126350492238998
+epoch 100, vae loss is 0.0789506584405899
+epoch 0: train loss is  1.8146, train_acc:  0.9725
+epoch 20: train loss is  1.1768, train_acc:  0.9725
+epoch 40: train loss is  1.2740, train_acc:  0.9725
+epoch 60: train loss is  1.3509, train_acc:  0.9725
+epoch 80: train loss is  1.1675, train_acc:  0.9725
+ >> Test Model
+Cycle 4/5 || labeled data size 1200, test acc =  0.9602
+TA-VAAL iteration: 0 vae_loss: 1.4590858221054077 dsc_loss: 1.3923258781433105
+TA-VAAL iteration: 100 vae_loss: 1.7235305309295654 dsc_loss: 1.4490538835525513
+TA-VAAL iteration: 200 vae_loss: 1.3370383977890015 dsc_loss: 1.5803617238998413
+TA-VAAL iteration: 300 vae_loss: 1.2199469804763794 dsc_loss: 1.4441733360290527
+TA-VAAL iteration: 400 vae_loss: 1.2936815023422241 dsc_loss: 1.6401902437210083
+TA-VAAL iteration: 500 vae_loss: 0.9935905933380127 dsc_loss: 1.5050148963928223
+TA-VAAL iteration: 600 vae_loss: 1.2601263523101807 dsc_loss: 1.989820122718811
+TA-VAAL iteration: 700 vae_loss: 1.077060341835022 dsc_loss: 1.4983839988708496
+TA-VAAL iteration: 800 vae_loss: 1.4418437480926514 dsc_loss: 1.7346196174621582
+TA-VAAL iteration: 900 vae_loss: 0.9587256908416748 dsc_loss: 1.5273654460906982
+TA-VAAL iteration: 1000 vae_loss: 1.4511542320251465 dsc_loss: 1.9043837785720825
+TA-VAAL iteration: 1100 vae_loss: 1.0617561340332031 dsc_loss: 1.503548502922058
+TA-VAAL iteration: 1200 vae_loss: 1.5195014476776123 dsc_loss: 1.8008999824523926
+TA-VAAL iteration: 1300 vae_loss: 1.0750043392181396 dsc_loss: 1.494358777999878
+1500 4732 10 6231
+>> Train vae and task model
+epoch 20, vae loss is 0.11885962635278702
+epoch 40, vae loss is 0.10229205340147018
+epoch 60, vae loss is 0.09888105094432831
+epoch 80, vae loss is 0.09782089293003082
+epoch 100, vae loss is 0.09688139706850052
+epoch 0: train loss is  1.9147, train_acc:  0.2140
+epoch 20: train loss is  1.1892, train_acc:  0.8633
+epoch 40: train loss is  1.1294, train_acc:  0.8893
+epoch 60: train loss is  1.1755, train_acc:  0.9327
+epoch 80: train loss is  1.0673, train_acc:  0.9140
+ >> Test Model
+Cycle 5/5 || labeled data size 1500, test acc =  0.9442
+Finished.
+>> Train vae and task model
+epoch 20, vae loss is 0.05658815801143646
+epoch 40, vae loss is 0.04478259012103081
+epoch 60, vae loss is 0.039722368121147156
+epoch 80, vae loss is 0.031064022332429886
+epoch 100, vae loss is 0.03000688925385475
+epoch 0: train loss is  2.2308, train_acc:  0.0367
+epoch 20: train loss is  1.8325, train_acc:  0.4433
+epoch 40: train loss is  1.3079, train_acc:  0.5900
+epoch 60: train loss is  1.0192, train_acc:  0.5967
+epoch 80: train loss is  1.2957, train_acc:  0.8167
+ >> Test Model
+Cycle 1/5 || labeled data size 300, test acc =  0.7986
+TA-VAAL iteration: 0 vae_loss: 1.5041393041610718 dsc_loss: 1.390310287475586
+TA-VAAL iteration: 100 vae_loss: 1.4397177696228027 dsc_loss: 1.3831489086151123
+TA-VAAL iteration: 200 vae_loss: 1.3988656997680664 dsc_loss: 1.3546397686004639
+TA-VAAL iteration: 300 vae_loss: 1.5323913097381592 dsc_loss: 1.3962734937667847
+TA-VAAL iteration: 400 vae_loss: 1.6791846752166748 dsc_loss: 1.3688454627990723
+TA-VAAL iteration: 500 vae_loss: 1.575743317604065 dsc_loss: 1.33872652053833
+TA-VAAL iteration: 600 vae_loss: 1.5370314121246338 dsc_loss: 1.3777756690979004
+TA-VAAL iteration: 700 vae_loss: 1.8866384029388428 dsc_loss: 1.3461717367172241
+TA-VAAL iteration: 800 vae_loss: 1.9030890464782715 dsc_loss: 1.334414005279541
+TA-VAAL iteration: 900 vae_loss: 1.7395340204238892 dsc_loss: 1.3839826583862305
+TA-VAAL iteration: 1000 vae_loss: 1.9424138069152832 dsc_loss: 1.3630218505859375
+TA-VAAL iteration: 1100 vae_loss: 1.8965437412261963 dsc_loss: 1.3555762767791748
+TA-VAAL iteration: 1200 vae_loss: 1.9139515161514282 dsc_loss: 1.369197130203247
+TA-VAAL iteration: 1300 vae_loss: 2.028042793273926 dsc_loss: 1.3356419801712036
+600 5632 4 6230
+>> Train vae and task model
+epoch 20, vae loss is 0.07618196308612823
+epoch 40, vae loss is 0.06012485921382904
+epoch 60, vae loss is 0.04800375923514366
+epoch 80, vae loss is 0.04571247100830078
+epoch 100, vae loss is 0.044522885233163834
+epoch 0: train loss is  2.0149, train_acc:  0.9700
+epoch 20: train loss is  1.9871, train_acc:  0.9700
+epoch 40: train loss is  1.5654, train_acc:  0.9700
+epoch 60: train loss is  1.2883, train_acc:  0.9700
+epoch 80: train loss is  1.2712, train_acc:  0.9700
+ >> Test Model
+Cycle 2/5 || labeled data size 600, test acc =  0.9692
+TA-VAAL iteration: 0 vae_loss: 1.5491544008255005 dsc_loss: 1.3876848220825195
+TA-VAAL iteration: 100 vae_loss: 3.3566863536834717 dsc_loss: 1.8654314279556274
+TA-VAAL iteration: 200 vae_loss: 2.2753164768218994 dsc_loss: 1.4195784330368042
+TA-VAAL iteration: 300 vae_loss: 2.0780575275421143 dsc_loss: 1.4534099102020264
+TA-VAAL iteration: 400 vae_loss: 3.79445743560791 dsc_loss: 1.1559028625488281
+TA-VAAL iteration: 500 vae_loss: 2.2630650997161865 dsc_loss: 1.5421481132507324
+TA-VAAL iteration: 600 vae_loss: 2.0833706855773926 dsc_loss: 1.3384897708892822
+TA-VAAL iteration: 700 vae_loss: 2.2909867763519287 dsc_loss: 1.4044626951217651
+TA-VAAL iteration: 800 vae_loss: 2.9386816024780273 dsc_loss: 1.3840596675872803
+TA-VAAL iteration: 900 vae_loss: 2.3288888931274414 dsc_loss: 1.4002795219421387
+TA-VAAL iteration: 1000 vae_loss: 2.1999409198760986 dsc_loss: 1.354379653930664
+TA-VAAL iteration: 1100 vae_loss: 3.628695487976074 dsc_loss: 1.3335322141647339
+TA-VAAL iteration: 1200 vae_loss: 2.48762845993042 dsc_loss: 1.4273014068603516
+TA-VAAL iteration: 1300 vae_loss: 2.3570241928100586 dsc_loss: 1.4038584232330322
+900 5332 4 6230
+>> Train vae and task model
+epoch 20, vae loss is 0.11474602669477463
+epoch 40, vae loss is 0.07317214459180832
+epoch 60, vae loss is 0.06951632350683212
+epoch 80, vae loss is 0.06766722351312637
+epoch 100, vae loss is 0.06397129595279694
+epoch 0: train loss is  1.9042, train_acc:  0.0289
+epoch 20: train loss is  1.0788, train_acc:  0.8833
+epoch 40: train loss is  1.3253, train_acc:  0.9311
+epoch 60: train loss is  1.0305, train_acc:  0.9033
+epoch 80: train loss is  1.1077, train_acc:  0.9278
+ >> Test Model
+Cycle 3/5 || labeled data size 900, test acc =  0.9378
+TA-VAAL iteration: 0 vae_loss: 1.5947389602661133 dsc_loss: 1.3860310316085815
+TA-VAAL iteration: 100 vae_loss: 1.6377332210540771 dsc_loss: 1.3321770429611206
+TA-VAAL iteration: 200 vae_loss: 1.9670695066452026 dsc_loss: 1.3718857765197754
+TA-VAAL iteration: 300 vae_loss: 1.3682223558425903 dsc_loss: 1.3328216075897217
+TA-VAAL iteration: 400 vae_loss: 1.659562110900879 dsc_loss: 1.3817436695098877
+TA-VAAL iteration: 500 vae_loss: 1.4148023128509521 dsc_loss: 1.2888981103897095
+TA-VAAL iteration: 600 vae_loss: 1.594732642173767 dsc_loss: 1.3900024890899658
+TA-VAAL iteration: 700 vae_loss: 1.36319899559021 dsc_loss: 1.212922215461731
+TA-VAAL iteration: 800 vae_loss: 1.4181090593338013 dsc_loss: 1.3973175287246704
+TA-VAAL iteration: 900 vae_loss: 1.3519011735916138 dsc_loss: 1.263681411743164
+TA-VAAL iteration: 1000 vae_loss: 1.7234902381896973 dsc_loss: 1.3602290153503418
+TA-VAAL iteration: 1100 vae_loss: 1.270843505859375 dsc_loss: 1.3268227577209473
+TA-VAAL iteration: 1200 vae_loss: 1.4732942581176758 dsc_loss: 1.4238801002502441
+TA-VAAL iteration: 1300 vae_loss: 1.4590787887573242 dsc_loss: 1.3204154968261719
+1200 5032 4 6230
+>> Train vae and task model
+epoch 20, vae loss is 0.10849098861217499
+epoch 40, vae loss is 0.08606408536434174
+epoch 60, vae loss is 0.08420687913894653
+epoch 80, vae loss is 0.08220947533845901
+epoch 100, vae loss is 0.08139719069004059
+epoch 0: train loss is  1.9360, train_acc:  0.0417
+epoch 20: train loss is  1.0359, train_acc:  0.8475
+epoch 40: train loss is  1.1519, train_acc:  0.9258
+epoch 60: train loss is  0.9421, train_acc:  0.9350
+epoch 80: train loss is  0.9022, train_acc:  0.9250
+ >> Test Model
+Cycle 4/5 || labeled data size 1200, test acc =  0.9294
+TA-VAAL iteration: 0 vae_loss: 1.4588441848754883 dsc_loss: 1.3878185749053955
+TA-VAAL iteration: 100 vae_loss: 1.291947603225708 dsc_loss: 1.4027981758117676
+TA-VAAL iteration: 200 vae_loss: 1.1485482454299927 dsc_loss: 1.4116400480270386
+TA-VAAL iteration: 300 vae_loss: 1.3525627851486206 dsc_loss: 1.4179184436798096
+TA-VAAL iteration: 400 vae_loss: 1.862598180770874 dsc_loss: 1.2516038417816162
+TA-VAAL iteration: 500 vae_loss: 1.7786058187484741 dsc_loss: 1.3937397003173828
+TA-VAAL iteration: 600 vae_loss: 1.4527413845062256 dsc_loss: 1.3422094583511353
+TA-VAAL iteration: 700 vae_loss: 1.8368220329284668 dsc_loss: 1.3775579929351807
+TA-VAAL iteration: 800 vae_loss: 1.66950261592865 dsc_loss: 1.329754114151001
+TA-VAAL iteration: 900 vae_loss: 1.9062693119049072 dsc_loss: 1.4099005460739136
+TA-VAAL iteration: 1000 vae_loss: 1.5120011568069458 dsc_loss: 1.39445161819458
+TA-VAAL iteration: 1100 vae_loss: 1.9432783126831055 dsc_loss: 1.4322354793548584
+TA-VAAL iteration: 1200 vae_loss: 1.4913328886032104 dsc_loss: 1.4208601713180542
+TA-VAAL iteration: 1300 vae_loss: 1.8903560638427734 dsc_loss: 1.435077428817749
+1500 4732 4 6230
+>> Train vae and task model
+epoch 20, vae loss is 0.11439001560211182
+epoch 40, vae loss is 0.1020449623465538
+epoch 60, vae loss is 0.09961981326341629
+epoch 80, vae loss is 0.09737041592597961
+epoch 100, vae loss is 0.09605232626199722
+epoch 0: train loss is  1.8799, train_acc:  0.9740
+epoch 20: train loss is  1.0600, train_acc:  0.8200
+epoch 40: train loss is  1.1597, train_acc:  0.8567
+epoch 60: train loss is  1.1536, train_acc:  0.7573
+epoch 80: train loss is  1.0392, train_acc:  0.8873
+ >> Test Model
+Cycle 5/5 || labeled data size 1500, test acc =  0.9031
+Finished.
+>> Train vae and task model
+epoch 20, vae loss is 0.050919562578201294
+epoch 40, vae loss is 0.041497327387332916
+epoch 60, vae loss is 0.036920562386512756
+epoch 80, vae loss is 0.028627142310142517
+epoch 100, vae loss is 0.02589322254061699
+epoch 0: train loss is  2.0629, train_acc:  0.1200
+epoch 20: train loss is  2.0955, train_acc:  0.4967
+epoch 40: train loss is  1.7526, train_acc:  0.5700
+epoch 60: train loss is  1.5784, train_acc:  0.6533
+epoch 80: train loss is  1.3919, train_acc:  0.6700
+ >> Test Model
+Cycle 1/5 || labeled data size 300, test acc =  0.6831
+TA-VAAL iteration: 0 vae_loss: 1.5661896467208862 dsc_loss: 1.3856481313705444
+TA-VAAL iteration: 100 vae_loss: 1.6174139976501465 dsc_loss: 1.392565131187439
+TA-VAAL iteration: 200 vae_loss: 1.7661532163619995 dsc_loss: 1.3736889362335205
+TA-VAAL iteration: 300 vae_loss: 1.653547763824463 dsc_loss: 1.37535560131073
+TA-VAAL iteration: 400 vae_loss: 1.9586254358291626 dsc_loss: 1.3629908561706543
+TA-VAAL iteration: 500 vae_loss: 1.8944203853607178 dsc_loss: 1.3529160022735596
+TA-VAAL iteration: 600 vae_loss: 2.0054354667663574 dsc_loss: 1.351710557937622
+TA-VAAL iteration: 700 vae_loss: 2.158862590789795 dsc_loss: 1.3531349897384644
+TA-VAAL iteration: 800 vae_loss: 2.3257253170013428 dsc_loss: 1.3616551160812378
+TA-VAAL iteration: 900 vae_loss: 3.3704891204833984 dsc_loss: 1.399101734161377
+TA-VAAL iteration: 1000 vae_loss: 2.139802932739258 dsc_loss: 1.395427942276001
+TA-VAAL iteration: 1100 vae_loss: 2.9654479026794434 dsc_loss: 1.335924744606018
+TA-VAAL iteration: 1200 vae_loss: 3.3228096961975098 dsc_loss: 1.340442180633545
+TA-VAAL iteration: 1300 vae_loss: 3.3583273887634277 dsc_loss: 1.329925298690796
+600 5632 5 6220
+>> Train vae and task model
+epoch 20, vae loss is 0.06828741729259491
+epoch 40, vae loss is 0.05060766637325287
+epoch 60, vae loss is 0.04219784215092659
+epoch 80, vae loss is 0.04076266288757324
+epoch 100, vae loss is 0.039746444672346115
+epoch 0: train loss is  2.0062, train_acc:  0.8983
+epoch 20: train loss is  1.7139, train_acc:  0.6383
+epoch 40: train loss is  1.4915, train_acc:  0.6467
+epoch 60: train loss is  1.3285, train_acc:  0.7200
+epoch 80: train loss is  1.3432, train_acc:  0.7067
+ >> Test Model
+Cycle 2/5 || labeled data size 600, test acc =  0.7024
+TA-VAAL iteration: 0 vae_loss: 1.5067839622497559 dsc_loss: 1.3895193338394165
+TA-VAAL iteration: 100 vae_loss: 1.1770306825637817 dsc_loss: 1.4048138856887817
+TA-VAAL iteration: 200 vae_loss: 1.927028775215149 dsc_loss: 1.4293090105056763
+TA-VAAL iteration: 300 vae_loss: 1.7641345262527466 dsc_loss: 1.4134297370910645
+TA-VAAL iteration: 400 vae_loss: 1.7516415119171143 dsc_loss: 1.3097656965255737
+TA-VAAL iteration: 500 vae_loss: 1.581916332244873 dsc_loss: 1.3531873226165771
+TA-VAAL iteration: 600 vae_loss: 2.000307559967041 dsc_loss: 1.4712992906570435
+TA-VAAL iteration: 700 vae_loss: 2.2097036838531494 dsc_loss: 1.4125468730926514
+TA-VAAL iteration: 800 vae_loss: 1.4488967657089233 dsc_loss: 1.391357183456421
+TA-VAAL iteration: 900 vae_loss: 2.1732702255249023 dsc_loss: 1.3587950468063354
+TA-VAAL iteration: 1000 vae_loss: 1.9396309852600098 dsc_loss: 1.3712190389633179
+TA-VAAL iteration: 1100 vae_loss: 2.0875792503356934 dsc_loss: 1.3080799579620361
+TA-VAAL iteration: 1200 vae_loss: 1.773566722869873 dsc_loss: 1.2973378896713257
+TA-VAAL iteration: 1300 vae_loss: 2.2067534923553467 dsc_loss: 1.3877267837524414
+900 5332 5 6220
+>> Train vae and task model
+epoch 20, vae loss is 0.10687418282032013
+epoch 40, vae loss is 0.0709981694817543
+epoch 60, vae loss is 0.0659671425819397
+epoch 80, vae loss is 0.06689553707838058
+epoch 100, vae loss is 0.06195962429046631
+epoch 0: train loss is  1.9019, train_acc:  0.9033
+epoch 20: train loss is  1.6491, train_acc:  0.9033
+epoch 40: train loss is  1.3773, train_acc:  0.9033
+epoch 60: train loss is  1.5245, train_acc:  0.9033
+epoch 80: train loss is  1.9611, train_acc:  0.9033
+ >> Test Model
+Cycle 3/5 || labeled data size 900, test acc =  0.9012
+TA-VAAL iteration: 0 vae_loss: 1.5937349796295166 dsc_loss: 1.3864797353744507
+TA-VAAL iteration: 100 vae_loss: 2.129595994949341 dsc_loss: 1.4349373579025269
+TA-VAAL iteration: 200 vae_loss: 1.5180777311325073 dsc_loss: 1.2711057662963867
+TA-VAAL iteration: 300 vae_loss: 2.677082061767578 dsc_loss: 1.47109055519104
+TA-VAAL iteration: 400 vae_loss: 1.3200420141220093 dsc_loss: 1.3425042629241943
+TA-VAAL iteration: 500 vae_loss: 1.2797127962112427 dsc_loss: 1.2878131866455078
+TA-VAAL iteration: 600 vae_loss: 1.8750983476638794 dsc_loss: 1.3873255252838135
+TA-VAAL iteration: 700 vae_loss: 1.1867786645889282 dsc_loss: 1.2897424697875977
+TA-VAAL iteration: 800 vae_loss: 1.8109707832336426 dsc_loss: 1.54593026638031
+TA-VAAL iteration: 900 vae_loss: 1.4687474966049194 dsc_loss: 1.36468505859375
+TA-VAAL iteration: 1000 vae_loss: 1.098770260810852 dsc_loss: 1.3178642988204956
+TA-VAAL iteration: 1100 vae_loss: 2.1497933864593506 dsc_loss: 1.4366141557693481
+TA-VAAL iteration: 1200 vae_loss: 1.3993146419525146 dsc_loss: 1.359476089477539
+TA-VAAL iteration: 1300 vae_loss: 1.351874589920044 dsc_loss: 1.298568844795227
+1200 5032 5 6220
+>> Train vae and task model
+epoch 20, vae loss is 0.10963060706853867
+epoch 40, vae loss is 0.08523964881896973
+epoch 60, vae loss is 0.08258865028619766
+epoch 80, vae loss is 0.08243097364902496
+epoch 100, vae loss is 0.08004473149776459
+epoch 0: train loss is  1.9556, train_acc:  0.9050
+epoch 20: train loss is  1.5595, train_acc:  0.9050
+epoch 40: train loss is  1.5411, train_acc:  0.9050
+epoch 60: train loss is  1.4134, train_acc:  0.9050
+epoch 80: train loss is  1.3844, train_acc:  0.9050
+ >> Test Model
+Cycle 4/5 || labeled data size 1200, test acc =  0.9012
+TA-VAAL iteration: 0 vae_loss: 1.405559778213501 dsc_loss: 1.3959159851074219
+TA-VAAL iteration: 100 vae_loss: 3.914961814880371 dsc_loss: 2.163649082183838
+TA-VAAL iteration: 200 vae_loss: 1.4179246425628662 dsc_loss: 1.7039775848388672
+TA-VAAL iteration: 300 vae_loss: 1.8567403554916382 dsc_loss: 1.6095772981643677
+TA-VAAL iteration: 400 vae_loss: 1.6351933479309082 dsc_loss: 1.3955318927764893
+TA-VAAL iteration: 500 vae_loss: 1.5890061855316162 dsc_loss: 1.4513111114501953
+TA-VAAL iteration: 600 vae_loss: 1.8064007759094238 dsc_loss: 1.4180998802185059
+TA-VAAL iteration: 700 vae_loss: 1.6664496660232544 dsc_loss: 1.4627008438110352
+TA-VAAL iteration: 800 vae_loss: 1.8155677318572998 dsc_loss: 1.3619439601898193
+TA-VAAL iteration: 900 vae_loss: 1.6789367198944092 dsc_loss: 1.4560649394989014
+TA-VAAL iteration: 1000 vae_loss: 1.6912915706634521 dsc_loss: 1.4126005172729492
+TA-VAAL iteration: 1100 vae_loss: 1.6554828882217407 dsc_loss: 1.4501152038574219
+TA-VAAL iteration: 1200 vae_loss: 1.7770456075668335 dsc_loss: 1.3763837814331055
+TA-VAAL iteration: 1300 vae_loss: 1.6322953701019287 dsc_loss: 1.4816697835922241
+1500 4732 5 6231
+>> Train vae and task model
+epoch 20, vae loss is 0.11977984756231308
+epoch 40, vae loss is 0.10437072813510895
+epoch 60, vae loss is 0.09951028227806091
+epoch 80, vae loss is 0.09818219393491745
+epoch 100, vae loss is 0.09697484225034714
+epoch 0: train loss is  1.9287, train_acc:  0.9113
+epoch 20: train loss is  1.4611, train_acc:  0.9113
+epoch 40: train loss is  1.4579, train_acc:  0.9113
+epoch 60: train loss is  1.5037, train_acc:  0.9113
+epoch 80: train loss is  1.3558, train_acc:  0.9113
+ >> Test Model
+Cycle 5/5 || labeled data size 1500, test acc =  0.9012
+Finished.
+>> Train vae and task model
+epoch 20, vae loss is 0.05335649102926254
+epoch 40, vae loss is 0.04416383430361748
+epoch 60, vae loss is 0.03722216933965683
+epoch 80, vae loss is 0.030291832983493805
+epoch 100, vae loss is 0.027002789080142975
+epoch 0: train loss is  2.0127, train_acc:  0.0400
+epoch 20: train loss is  1.7834, train_acc:  0.7200
+epoch 40: train loss is  1.3142, train_acc:  0.6500
+epoch 60: train loss is  1.2497, train_acc:  0.8267
+epoch 80: train loss is  1.2056, train_acc:  0.7433
+ >> Test Model
+Cycle 1/5 || labeled data size 300, test acc =  0.8031
+TA-VAAL iteration: 0 vae_loss: 1.5594584941864014 dsc_loss: 1.3882901668548584
+TA-VAAL iteration: 100 vae_loss: 1.6646538972854614 dsc_loss: 1.3797075748443604
+TA-VAAL iteration: 200 vae_loss: 2.066509246826172 dsc_loss: 1.3612239360809326
+TA-VAAL iteration: 300 vae_loss: 2.077810049057007 dsc_loss: 1.3589528799057007
+TA-VAAL iteration: 400 vae_loss: 2.328453540802002 dsc_loss: 1.3661675453186035
+TA-VAAL iteration: 500 vae_loss: 2.2198877334594727 dsc_loss: 1.3550633192062378
+TA-VAAL iteration: 600 vae_loss: 1.8743488788604736 dsc_loss: 1.3563116788864136
+TA-VAAL iteration: 700 vae_loss: 2.3892173767089844 dsc_loss: 1.3609055280685425
+TA-VAAL iteration: 800 vae_loss: 2.4916582107543945 dsc_loss: 1.3553441762924194
+TA-VAAL iteration: 900 vae_loss: 2.886523723602295 dsc_loss: 1.3644030094146729
+TA-VAAL iteration: 1000 vae_loss: 2.5558054447174072 dsc_loss: 1.3800928592681885
+TA-VAAL iteration: 1100 vae_loss: 2.080817937850952 dsc_loss: 1.3580958843231201
+TA-VAAL iteration: 1200 vae_loss: 1.984910011291504 dsc_loss: 1.348036766052246
+TA-VAAL iteration: 1300 vae_loss: 2.1539931297302246 dsc_loss: 1.3644596338272095
+600 5632 4 6215
+>> Train vae and task model
+epoch 20, vae loss is 0.0739779993891716
+epoch 40, vae loss is 0.056204866617918015
+epoch 60, vae loss is 0.04570323973894119
+epoch 80, vae loss is 0.04396698623895645
+epoch 100, vae loss is 0.044537123292684555
+epoch 0: train loss is  1.9508, train_acc:  0.9583
+epoch 20: train loss is  1.3444, train_acc:  0.5517
+epoch 40: train loss is  1.1654, train_acc:  0.5817
+epoch 60: train loss is  1.1495, train_acc:  0.7550
+epoch 80: train loss is  1.0125, train_acc:  0.7850
+ >> Test Model
+Cycle 2/5 || labeled data size 600, test acc =  0.7396
+TA-VAAL iteration: 0 vae_loss: 1.5557531118392944 dsc_loss: 1.3848973512649536
+TA-VAAL iteration: 100 vae_loss: 2.291095733642578 dsc_loss: 1.8604329824447632
+TA-VAAL iteration: 200 vae_loss: 1.9643733501434326 dsc_loss: 1.7371747493743896
+TA-VAAL iteration: 300 vae_loss: 1.1436363458633423 dsc_loss: 1.4483559131622314
+TA-VAAL iteration: 400 vae_loss: 2.0142464637756348 dsc_loss: 1.4807987213134766
+TA-VAAL iteration: 500 vae_loss: 2.6347596645355225 dsc_loss: 1.8069190979003906
+TA-VAAL iteration: 600 vae_loss: 1.9490067958831787 dsc_loss: 1.737862229347229
+TA-VAAL iteration: 700 vae_loss: 1.4915146827697754 dsc_loss: 1.4486968517303467
+TA-VAAL iteration: 800 vae_loss: 2.546950101852417 dsc_loss: 1.2943795919418335
+TA-VAAL iteration: 900 vae_loss: 2.2184009552001953 dsc_loss: 1.6789543628692627
+TA-VAAL iteration: 1000 vae_loss: 1.740027666091919 dsc_loss: 1.5456596612930298
+TA-VAAL iteration: 1100 vae_loss: 2.0241849422454834 dsc_loss: 1.4141942262649536
+TA-VAAL iteration: 1200 vae_loss: 1.818359613418579 dsc_loss: 1.4211211204528809
+TA-VAAL iteration: 1300 vae_loss: 1.9514989852905273 dsc_loss: 1.4581823348999023
+900 5332 4 6226
+>> Train vae and task model
+epoch 20, vae loss is 0.1132768839597702
+epoch 40, vae loss is 0.07323668897151947
+epoch 60, vae loss is 0.06791097670793533
+epoch 80, vae loss is 0.06906025111675262
+epoch 100, vae loss is 0.06450317054986954
+epoch 0: train loss is  1.8892, train_acc:  0.9578
+epoch 20: train loss is  1.3539, train_acc:  0.9578
+epoch 40: train loss is  1.2306, train_acc:  0.4867
+epoch 60: train loss is  1.1912, train_acc:  0.5978
+epoch 80: train loss is  1.1953, train_acc:  0.4711
+ >> Test Model
+Cycle 3/5 || labeled data size 900, test acc =  0.4965
+TA-VAAL iteration: 0 vae_loss: 1.709436058998108 dsc_loss: 1.3874211311340332
+TA-VAAL iteration: 100 vae_loss: 1.1747643947601318 dsc_loss: 1.3024351596832275
+TA-VAAL iteration: 200 vae_loss: 1.0620989799499512 dsc_loss: 1.61795175075531
+TA-VAAL iteration: 300 vae_loss: 1.5852071046829224 dsc_loss: 1.4230210781097412
+TA-VAAL iteration: 400 vae_loss: 1.255622386932373 dsc_loss: 1.2750558853149414
+TA-VAAL iteration: 500 vae_loss: 0.8338564038276672 dsc_loss: 1.9009366035461426
+TA-VAAL iteration: 600 vae_loss: 1.9897116422653198 dsc_loss: 1.482970952987671
+TA-VAAL iteration: 700 vae_loss: 1.351806879043579 dsc_loss: 1.168842077255249
+TA-VAAL iteration: 800 vae_loss: 1.7327089309692383 dsc_loss: 1.6139979362487793
+TA-VAAL iteration: 900 vae_loss: 1.6510818004608154 dsc_loss: 1.1499286890029907
+TA-VAAL iteration: 1000 vae_loss: 0.8864684700965881 dsc_loss: 2.2663588523864746
+TA-VAAL iteration: 1100 vae_loss: 1.861504077911377 dsc_loss: 1.2873001098632812
+TA-VAAL iteration: 1200 vae_loss: 1.6244195699691772 dsc_loss: 1.2725715637207031
+TA-VAAL iteration: 1300 vae_loss: 1.057896375656128 dsc_loss: 1.567208170890808
+1200 5032 4 6227
+>> Train vae and task model
+epoch 20, vae loss is 0.11696075648069382
+epoch 40, vae loss is 0.08777043223381042
+epoch 60, vae loss is 0.08405791223049164
+epoch 80, vae loss is 0.08263902366161346
+epoch 100, vae loss is 0.08328522741794586
+epoch 0: train loss is  1.8422, train_acc:  0.9633
+epoch 20: train loss is  1.2702, train_acc:  0.9633
+epoch 40: train loss is  1.2722, train_acc:  0.9633
+epoch 60: train loss is  1.2820, train_acc:  0.9633
+epoch 80: train loss is  1.2629, train_acc:  0.9633
+ >> Test Model
+Cycle 4/5 || labeled data size 1200, test acc =  0.9615
+TA-VAAL iteration: 0 vae_loss: 1.4590861797332764 dsc_loss: 1.3928245306015015
+TA-VAAL iteration: 100 vae_loss: 1.4917964935302734 dsc_loss: 1.5194618701934814
+TA-VAAL iteration: 200 vae_loss: 1.3077552318572998 dsc_loss: 1.228763461112976
+TA-VAAL iteration: 300 vae_loss: 2.0972776412963867 dsc_loss: 1.522220253944397
+TA-VAAL iteration: 400 vae_loss: 1.1032849550247192 dsc_loss: 1.3281779289245605
+TA-VAAL iteration: 500 vae_loss: 2.133981704711914 dsc_loss: 1.5227938890457153
+TA-VAAL iteration: 600 vae_loss: 1.1535987854003906 dsc_loss: 1.375389575958252
+TA-VAAL iteration: 700 vae_loss: 1.917918086051941 dsc_loss: 1.4996426105499268
+TA-VAAL iteration: 800 vae_loss: 1.5217487812042236 dsc_loss: 1.31229567527771
+TA-VAAL iteration: 900 vae_loss: 1.9622323513031006 dsc_loss: 1.5001076459884644
+TA-VAAL iteration: 1000 vae_loss: 1.3723794221878052 dsc_loss: 1.3368650674819946
+TA-VAAL iteration: 1100 vae_loss: 1.7644704580307007 dsc_loss: 1.4346342086791992
+TA-VAAL iteration: 1200 vae_loss: 1.479560375213623 dsc_loss: 1.3608191013336182
+TA-VAAL iteration: 1300 vae_loss: 1.8661912679672241 dsc_loss: 1.4307063817977905
+1500 4732 4 6229
+>> Train vae and task model
+epoch 20, vae loss is 0.11498292535543442
+epoch 40, vae loss is 0.10203187167644501
+epoch 60, vae loss is 0.09979983419179916
+epoch 80, vae loss is 0.09880491346120834
+epoch 100, vae loss is 0.09723757207393646
+epoch 0: train loss is  1.9285, train_acc:  0.9607
+epoch 20: train loss is  1.3875, train_acc:  0.9607
+epoch 40: train loss is  1.3501, train_acc:  0.9607
+epoch 60: train loss is  1.3344, train_acc:  0.9607
+epoch 80: train loss is  1.3301, train_acc:  0.9607
+ >> Test Model
+Cycle 5/5 || labeled data size 1500, test acc =  0.9615
+Finished.
+>> Train vae and task model
+epoch 20, vae loss is 0.049198392778635025
+epoch 40, vae loss is 0.04349847510457039
+epoch 60, vae loss is 0.038860466331243515
+epoch 80, vae loss is 0.029751360416412354
+epoch 100, vae loss is 0.025998061522841454
+epoch 0: train loss is  1.8587, train_acc:  0.9100
+epoch 20: train loss is  1.9046, train_acc:  0.9100
+epoch 40: train loss is  1.9031, train_acc:  0.9100
+epoch 60: train loss is  1.9306, train_acc:  0.9100
+epoch 80: train loss is  1.8785, train_acc:  0.9100
+ >> Test Model
+Cycle 1/5 || labeled data size 300, test acc =  0.8987
+TA-VAAL iteration: 0 vae_loss: 1.3834855556488037 dsc_loss: 1.4060304164886475
+TA-VAAL iteration: 100 vae_loss: 1.5017038583755493 dsc_loss: 1.386366367340088
+TA-VAAL iteration: 200 vae_loss: 1.488089680671692 dsc_loss: 1.3877270221710205
+TA-VAAL iteration: 300 vae_loss: 1.477673053741455 dsc_loss: 1.3828821182250977
+TA-VAAL iteration: 400 vae_loss: 1.489014983177185 dsc_loss: 1.3818178176879883
+TA-VAAL iteration: 500 vae_loss: 1.6626486778259277 dsc_loss: 1.3881272077560425
+TA-VAAL iteration: 600 vae_loss: 1.4753949642181396 dsc_loss: 1.3850961923599243
+TA-VAAL iteration: 700 vae_loss: 1.6359511613845825 dsc_loss: 1.3832240104675293
+TA-VAAL iteration: 800 vae_loss: 1.5046849250793457 dsc_loss: 1.3872476816177368
+TA-VAAL iteration: 900 vae_loss: 1.5622681379318237 dsc_loss: 1.3807634115219116
+TA-VAAL iteration: 1000 vae_loss: 1.6366771459579468 dsc_loss: 1.383659839630127
+TA-VAAL iteration: 1100 vae_loss: 1.7522790431976318 dsc_loss: 1.3915807008743286
+TA-VAAL iteration: 1200 vae_loss: 1.633530616760254 dsc_loss: 1.3790093660354614
+TA-VAAL iteration: 1300 vae_loss: 1.8138431310653687 dsc_loss: 1.3813698291778564
+600 5632 18 6223
+>> Train vae and task model
+epoch 20, vae loss is 0.07049442082643509
+epoch 40, vae loss is 0.05961082875728607
+epoch 60, vae loss is 0.04356703907251358
+epoch 80, vae loss is 0.04244321957230568
+epoch 100, vae loss is 0.04180564731359482
+epoch 0: train loss is  1.8931, train_acc:  0.7350
+epoch 20: train loss is  1.5192, train_acc:  0.9117
+epoch 40: train loss is  1.4770, train_acc:  0.9117
+epoch 60: train loss is  1.4240, train_acc:  0.9117
+epoch 80: train loss is  1.3369, train_acc:  0.9117
+ >> Test Model
+Cycle 2/5 || labeled data size 600, test acc =  0.8987
+TA-VAAL iteration: 0 vae_loss: 1.5132324695587158 dsc_loss: 1.3891773223876953
+TA-VAAL iteration: 100 vae_loss: 2.358337640762329 dsc_loss: 1.3548002243041992
+TA-VAAL iteration: 200 vae_loss: 2.310537815093994 dsc_loss: 1.3870370388031006
+TA-VAAL iteration: 300 vae_loss: 3.1250534057617188 dsc_loss: 1.6002004146575928
+TA-VAAL iteration: 400 vae_loss: 1.6757376194000244 dsc_loss: 1.4672549962997437
+TA-VAAL iteration: 500 vae_loss: 2.2639923095703125 dsc_loss: 1.355485439300537
+TA-VAAL iteration: 600 vae_loss: 2.787191152572632 dsc_loss: 1.4980390071868896
+TA-VAAL iteration: 700 vae_loss: 3.6234238147735596 dsc_loss: 1.7397685050964355
+TA-VAAL iteration: 800 vae_loss: 2.2427258491516113 dsc_loss: 1.3501166105270386
+TA-VAAL iteration: 900 vae_loss: 2.34065318107605 dsc_loss: 1.386122226715088
+TA-VAAL iteration: 1000 vae_loss: 3.024228811264038 dsc_loss: 1.5545892715454102
+TA-VAAL iteration: 1100 vae_loss: 3.6679797172546387 dsc_loss: 1.5853744745254517
+TA-VAAL iteration: 1200 vae_loss: 2.2706496715545654 dsc_loss: 1.2940146923065186
+TA-VAAL iteration: 1300 vae_loss: 2.733205795288086 dsc_loss: 1.4092540740966797
+900 5332 15 6223
+>> Train vae and task model
+epoch 20, vae loss is 0.10295597463846207
+epoch 40, vae loss is 0.07630464434623718
+epoch 60, vae loss is 0.06414323300123215
+epoch 80, vae loss is 0.06591129302978516
+epoch 100, vae loss is 0.06341200321912766
+epoch 0: train loss is  1.8721, train_acc:  0.5233
+epoch 20: train loss is  1.8731, train_acc:  0.9056
+epoch 40: train loss is  2.0141, train_acc:  0.9056
+epoch 60: train loss is  1.6815, train_acc:  0.9056
+epoch 80: train loss is  1.4777, train_acc:  0.9056
+ >> Test Model
+Cycle 3/5 || labeled data size 900, test acc =  0.8987
+TA-VAAL iteration: 0 vae_loss: 1.6543186902999878 dsc_loss: 1.38704514503479
+TA-VAAL iteration: 100 vae_loss: 1.4608805179595947 dsc_loss: 1.3814499378204346
+TA-VAAL iteration: 200 vae_loss: 1.5471720695495605 dsc_loss: 1.394966721534729
+TA-VAAL iteration: 300 vae_loss: 1.64474618434906 dsc_loss: 1.3771562576293945
+TA-VAAL iteration: 400 vae_loss: 1.664399266242981 dsc_loss: 1.3793866634368896
+TA-VAAL iteration: 500 vae_loss: 1.5777344703674316 dsc_loss: 1.3276300430297852
+TA-VAAL iteration: 600 vae_loss: 1.7101715803146362 dsc_loss: 1.3874781131744385
+TA-VAAL iteration: 700 vae_loss: 1.8376963138580322 dsc_loss: 1.3464381694793701
+TA-VAAL iteration: 800 vae_loss: 1.843230962753296 dsc_loss: 1.4368982315063477
+TA-VAAL iteration: 900 vae_loss: 1.6131550073623657 dsc_loss: 1.3803813457489014
+TA-VAAL iteration: 1000 vae_loss: 2.008850336074829 dsc_loss: 1.406458854675293
+TA-VAAL iteration: 1100 vae_loss: 1.5935851335525513 dsc_loss: 1.375403881072998
+TA-VAAL iteration: 1200 vae_loss: 1.9169737100601196 dsc_loss: 1.4059864282608032
+TA-VAAL iteration: 1300 vae_loss: 1.54127836227417 dsc_loss: 1.3730547428131104
+1200 5032 15 6228
+>> Train vae and task model
+epoch 20, vae loss is 0.11560756713151932
+epoch 40, vae loss is 0.08551515638828278
+epoch 60, vae loss is 0.08193113654851913
+epoch 80, vae loss is 0.08076370507478714
+epoch 100, vae loss is 0.08057395368814468
+epoch 0: train loss is  1.8951, train_acc:  0.9117
+epoch 20: train loss is  1.5921, train_acc:  0.9117
+epoch 40: train loss is  1.5118, train_acc:  0.9117
+epoch 60: train loss is  1.4270, train_acc:  0.9117
+epoch 80: train loss is  1.4363, train_acc:  0.9117
+ >> Test Model
+Cycle 4/5 || labeled data size 1200, test acc =  0.8987
+TA-VAAL iteration: 0 vae_loss: 1.5235861539840698 dsc_loss: 1.3907526731491089
+TA-VAAL iteration: 100 vae_loss: 2.4349427223205566 dsc_loss: 1.2880918979644775
+TA-VAAL iteration: 200 vae_loss: 2.088209629058838 dsc_loss: 1.3926907777786255
+TA-VAAL iteration: 300 vae_loss: 2.6662850379943848 dsc_loss: 1.3567423820495605
+TA-VAAL iteration: 400 vae_loss: 1.7584517002105713 dsc_loss: 1.3734489679336548
+TA-VAAL iteration: 500 vae_loss: 2.6262528896331787 dsc_loss: 1.4019546508789062
+TA-VAAL iteration: 600 vae_loss: 1.3864530324935913 dsc_loss: 1.4068864583969116
+TA-VAAL iteration: 700 vae_loss: 2.977304220199585 dsc_loss: 1.4496188163757324
+TA-VAAL iteration: 800 vae_loss: 1.3976013660430908 dsc_loss: 1.2823145389556885
+TA-VAAL iteration: 900 vae_loss: 2.8930327892303467 dsc_loss: 1.4515860080718994
+TA-VAAL iteration: 1000 vae_loss: 1.6765077114105225 dsc_loss: 1.3074476718902588
+TA-VAAL iteration: 1100 vae_loss: 2.284731149673462 dsc_loss: 1.3305343389511108
+TA-VAAL iteration: 1200 vae_loss: 1.6923738718032837 dsc_loss: 1.3769254684448242
+TA-VAAL iteration: 1300 vae_loss: 2.4995388984680176 dsc_loss: 1.3854902982711792
+1500 4732 4 6228
+>> Train vae and task model
+epoch 20, vae loss is 0.12424249202013016
+epoch 40, vae loss is 0.10074082016944885
+epoch 60, vae loss is 0.0972251370549202
+epoch 80, vae loss is 0.09649010002613068
+epoch 100, vae loss is 0.09592022746801376
+epoch 0: train loss is  1.9099, train_acc:  0.9093
+epoch 20: train loss is  1.4772, train_acc:  0.9093
+epoch 40: train loss is  1.4793, train_acc:  0.9093
+epoch 60: train loss is  1.4676, train_acc:  0.9093
+epoch 80: train loss is  1.4349, train_acc:  0.9093
+ >> Test Model
+Cycle 5/5 || labeled data size 1500, test acc =  0.8987
+Finished.
+>> Train vae and task model
+epoch 20, vae loss is 0.049388788640499115
+epoch 40, vae loss is 0.04107926785945892
+epoch 60, vae loss is 0.037546269595623016
+epoch 80, vae loss is 0.028063073754310608
+epoch 100, vae loss is 0.026277821511030197
+epoch 0: train loss is  1.9557, train_acc:  0.9667
+epoch 20: train loss is  1.7071, train_acc:  0.9667
+epoch 40: train loss is  1.5201, train_acc:  0.9667
+epoch 60: train loss is  1.3546, train_acc:  0.9667
+epoch 80: train loss is  1.3550, train_acc:  0.7967
+ >> Test Model
+Cycle 1/5 || labeled data size 300, test acc =  0.5144
+TA-VAAL iteration: 0 vae_loss: 1.5191172361373901 dsc_loss: 1.387924075126648
+TA-VAAL iteration: 100 vae_loss: 1.5568283796310425 dsc_loss: 1.4006328582763672
+TA-VAAL iteration: 200 vae_loss: 1.3781206607818604 dsc_loss: 1.3560221195220947
+TA-VAAL iteration: 300 vae_loss: 1.664919137954712 dsc_loss: 1.3472036123275757
+TA-VAAL iteration: 400 vae_loss: 1.759900689125061 dsc_loss: 1.390729308128357
+TA-VAAL iteration: 500 vae_loss: 1.5202982425689697 dsc_loss: 1.3571586608886719
+TA-VAAL iteration: 600 vae_loss: 1.7450140714645386 dsc_loss: 1.337212085723877
+TA-VAAL iteration: 700 vae_loss: 1.8666574954986572 dsc_loss: 1.374858021736145
+TA-VAAL iteration: 800 vae_loss: 2.003492832183838 dsc_loss: 1.3560421466827393
+TA-VAAL iteration: 900 vae_loss: 2.0258231163024902 dsc_loss: 1.3489711284637451
+TA-VAAL iteration: 1000 vae_loss: 2.0001068115234375 dsc_loss: 1.3512864112854004
+TA-VAAL iteration: 1100 vae_loss: 2.0142111778259277 dsc_loss: 1.3761415481567383
+TA-VAAL iteration: 1200 vae_loss: 2.8065927028656006 dsc_loss: 1.381603479385376
+TA-VAAL iteration: 1300 vae_loss: 2.627960443496704 dsc_loss: 1.3680169582366943
+600 5632 1 6229
+>> Train vae and task model
+epoch 20, vae loss is 0.072806216776371
+epoch 40, vae loss is 0.0558357760310173
+epoch 60, vae loss is 0.045444317162036896
+epoch 80, vae loss is 0.04385404288768768
+epoch 100, vae loss is 0.0441528782248497
+epoch 0: train loss is  1.8331, train_acc:  0.9667
+epoch 20: train loss is  1.3633, train_acc:  0.9667
+epoch 40: train loss is  1.2065, train_acc:  0.9667
+epoch 60: train loss is  1.1745, train_acc:  0.9667
+epoch 80: train loss is  1.0882, train_acc:  0.9667
+ >> Test Model
+Cycle 2/5 || labeled data size 600, test acc =  0.9551
+TA-VAAL iteration: 0 vae_loss: 1.5236514806747437 dsc_loss: 1.3891422748565674
+TA-VAAL iteration: 100 vae_loss: 1.822237253189087 dsc_loss: 2.164440870285034
+TA-VAAL iteration: 200 vae_loss: 1.9677927494049072 dsc_loss: 1.3604018688201904
+TA-VAAL iteration: 300 vae_loss: 1.9944196939468384 dsc_loss: 1.2379919290542603
+TA-VAAL iteration: 400 vae_loss: 2.6685538291931152 dsc_loss: 1.2861520051956177
+TA-VAAL iteration: 500 vae_loss: 1.6633681058883667 dsc_loss: 1.7487167119979858
+TA-VAAL iteration: 600 vae_loss: 1.676056146621704 dsc_loss: 1.328122854232788
+TA-VAAL iteration: 700 vae_loss: 1.597651720046997 dsc_loss: 1.2557189464569092
+TA-VAAL iteration: 800 vae_loss: 2.387472152709961 dsc_loss: 1.3665521144866943
+TA-VAAL iteration: 900 vae_loss: 1.7319648265838623 dsc_loss: 1.5617246627807617
+TA-VAAL iteration: 1000 vae_loss: 1.652706503868103 dsc_loss: 1.417007565498352
+TA-VAAL iteration: 1100 vae_loss: 1.5234836339950562 dsc_loss: 1.5230772495269775
+TA-VAAL iteration: 1200 vae_loss: 1.6925410032272339 dsc_loss: 1.495051622390747
+TA-VAAL iteration: 1300 vae_loss: 1.6638120412826538 dsc_loss: 1.4599660634994507
+900 5332 1 6229
+>> Train vae and task model
+epoch 20, vae loss is 0.113186314702034
+epoch 40, vae loss is 0.07210993766784668
+epoch 60, vae loss is 0.06735623627901077
+epoch 80, vae loss is 0.06715337932109833
+epoch 100, vae loss is 0.06441706418991089
+epoch 0: train loss is  1.8281, train_acc:  0.9633
+epoch 20: train loss is  1.2919, train_acc:  0.9633
+epoch 40: train loss is  1.2147, train_acc:  0.9633
+epoch 60: train loss is  1.1730, train_acc:  0.9633
+epoch 80: train loss is  1.1660, train_acc:  0.9633
+ >> Test Model
+Cycle 3/5 || labeled data size 900, test acc =  0.9551
+TA-VAAL iteration: 0 vae_loss: 1.6615707874298096 dsc_loss: 1.3882681131362915
+TA-VAAL iteration: 100 vae_loss: 1.0497584342956543 dsc_loss: 1.197657585144043
+TA-VAAL iteration: 200 vae_loss: 0.8836323618888855 dsc_loss: 1.781039834022522
+TA-VAAL iteration: 300 vae_loss: 2.0126988887786865 dsc_loss: 1.4737305641174316
+TA-VAAL iteration: 400 vae_loss: 1.402108073234558 dsc_loss: 1.1871707439422607
+TA-VAAL iteration: 500 vae_loss: 1.035264015197754 dsc_loss: 1.8669681549072266
+TA-VAAL iteration: 600 vae_loss: 1.9550288915634155 dsc_loss: 1.3299167156219482
+TA-VAAL iteration: 700 vae_loss: 1.3780193328857422 dsc_loss: 1.17755126953125
+TA-VAAL iteration: 800 vae_loss: 1.8229806423187256 dsc_loss: 1.3836249113082886
+TA-VAAL iteration: 900 vae_loss: 1.7953284978866577 dsc_loss: 1.1863676309585571
+TA-VAAL iteration: 1000 vae_loss: 1.1255958080291748 dsc_loss: 1.7274398803710938
+TA-VAAL iteration: 1100 vae_loss: 1.8456660509109497 dsc_loss: 1.293860912322998
+TA-VAAL iteration: 1200 vae_loss: 1.7134350538253784 dsc_loss: 1.2369496822357178
+TA-VAAL iteration: 1300 vae_loss: 0.8978995084762573 dsc_loss: 2.0313754081726074
+1200 5032 1 6229
+>> Train vae and task model
+epoch 20, vae loss is 0.12101233005523682
+epoch 40, vae loss is 0.08453232795000076
+epoch 60, vae loss is 0.0833071768283844
+epoch 80, vae loss is 0.08301389217376709
+epoch 100, vae loss is 0.08048150688409805
+epoch 0: train loss is  1.9084, train_acc:  0.5792
+epoch 20: train loss is  1.3060, train_acc:  0.7892
+epoch 40: train loss is  1.2894, train_acc:  0.7542
+epoch 60: train loss is  1.3818, train_acc:  0.8100
+epoch 80: train loss is  1.3410, train_acc:  0.8167
+ >> Test Model
+Cycle 4/5 || labeled data size 1200, test acc =  0.8204
+TA-VAAL iteration: 0 vae_loss: 1.6311142444610596 dsc_loss: 1.3863673210144043
+TA-VAAL iteration: 100 vae_loss: 1.6711483001708984 dsc_loss: 1.350874662399292
+TA-VAAL iteration: 200 vae_loss: 0.7183775305747986 dsc_loss: 3.024064540863037
+TA-VAAL iteration: 300 vae_loss: 1.849932074546814 dsc_loss: 1.3946533203125
+TA-VAAL iteration: 400 vae_loss: 0.7875115275382996 dsc_loss: 2.7109928131103516
+TA-VAAL iteration: 500 vae_loss: 1.6266114711761475 dsc_loss: 1.3712447881698608
+TA-VAAL iteration: 600 vae_loss: 0.8239163160324097 dsc_loss: 2.5307698249816895
+TA-VAAL iteration: 700 vae_loss: 1.689141869544983 dsc_loss: 1.3669788837432861
+TA-VAAL iteration: 800 vae_loss: 0.8038705587387085 dsc_loss: 2.518111228942871
+TA-VAAL iteration: 900 vae_loss: 1.6573700904846191 dsc_loss: 1.3734822273254395
+TA-VAAL iteration: 1000 vae_loss: 0.8816310167312622 dsc_loss: 2.339193820953369
+TA-VAAL iteration: 1100 vae_loss: 1.7256579399108887 dsc_loss: 1.3912787437438965
+TA-VAAL iteration: 1200 vae_loss: 0.8832876086235046 dsc_loss: 2.364089012145996
+TA-VAAL iteration: 1300 vae_loss: 1.7183961868286133 dsc_loss: 1.3856089115142822
+1500 4732 1 6229
+>> Train vae and task model
+epoch 20, vae loss is 0.11221659183502197
+epoch 40, vae loss is 0.09951268881559372
+epoch 60, vae loss is 0.09880384057760239
+epoch 80, vae loss is 0.09623900800943375
+epoch 100, vae loss is 0.095880888402462
+epoch 0: train loss is  1.9222, train_acc:  0.9613
+epoch 20: train loss is  1.9227, train_acc:  0.9613
+epoch 40: train loss is  1.5365, train_acc:  0.9613
+epoch 60: train loss is  1.5304, train_acc:  0.9613
+epoch 80: train loss is  1.5285, train_acc:  0.9613
+ >> Test Model
+Cycle 5/5 || labeled data size 1500, test acc =  0.9551
+Finished.
+>> Train vae and task model
+epoch 20, vae loss is 0.04899503290653229
+epoch 40, vae loss is 0.04022258520126343
+epoch 60, vae loss is 0.03407517075538635
+epoch 80, vae loss is 0.026544228196144104
+epoch 100, vae loss is 0.02554631233215332
+epoch 0: train loss is  2.1824, train_acc:  0.0300
+epoch 20: train loss is  2.0622, train_acc:  0.4700
+epoch 40: train loss is  1.7709, train_acc:  0.5733
+epoch 60: train loss is  1.9009, train_acc:  0.5367
+epoch 80: train loss is  1.6765, train_acc:  0.6833
+ >> Test Model
+Cycle 1/5 || labeled data size 300, test acc =  0.5991
+TA-VAAL iteration: 0 vae_loss: 1.4801949262619019 dsc_loss: 1.3879355192184448
+TA-VAAL iteration: 100 vae_loss: 1.5549427270889282 dsc_loss: 1.4054508209228516
+TA-VAAL iteration: 200 vae_loss: 1.5417728424072266 dsc_loss: 1.3773937225341797
+TA-VAAL iteration: 300 vae_loss: 1.4673738479614258 dsc_loss: 1.3823226690292358
+TA-VAAL iteration: 400 vae_loss: 1.4985442161560059 dsc_loss: 1.369469404220581
+TA-VAAL iteration: 500 vae_loss: 1.5594918727874756 dsc_loss: 1.3686671257019043
+TA-VAAL iteration: 600 vae_loss: 1.5092657804489136 dsc_loss: 1.3773671388626099
+TA-VAAL iteration: 700 vae_loss: 1.6059153079986572 dsc_loss: 1.3744027614593506
+TA-VAAL iteration: 800 vae_loss: 1.420393705368042 dsc_loss: 1.360065221786499
+TA-VAAL iteration: 900 vae_loss: 1.6107776165008545 dsc_loss: 1.3285905122756958
+TA-VAAL iteration: 1000 vae_loss: 2.0202059745788574 dsc_loss: 1.341521978378296
+TA-VAAL iteration: 1100 vae_loss: 1.8939692974090576 dsc_loss: 1.3165264129638672
+TA-VAAL iteration: 1200 vae_loss: 1.8967046737670898 dsc_loss: 1.366999864578247
+TA-VAAL iteration: 1300 vae_loss: 2.0370142459869385 dsc_loss: 1.4062349796295166
+600 5632 1 6228
+>> Train vae and task model
+epoch 20, vae loss is 0.07265474647283554
+epoch 40, vae loss is 0.0543995127081871
+epoch 60, vae loss is 0.045570291578769684
+epoch 80, vae loss is 0.04421927034854889
+epoch 100, vae loss is 0.04326596483588219
+epoch 0: train loss is  2.0893, train_acc:  0.9733
+epoch 20: train loss is  2.0231, train_acc:  0.9733
+epoch 40: train loss is  2.0728, train_acc:  0.9733
+epoch 60: train loss is  1.9895, train_acc:  0.9733
+epoch 80: train loss is  2.0064, train_acc:  0.9733
+ >> Test Model
+Cycle 2/5 || labeled data size 600, test acc =  0.9763
+TA-VAAL iteration: 0 vae_loss: 1.534015417098999 dsc_loss: 1.3876326084136963
+TA-VAAL iteration: 100 vae_loss: 1.4291566610336304 dsc_loss: 1.386276364326477
+TA-VAAL iteration: 200 vae_loss: 1.4586992263793945 dsc_loss: 1.3861780166625977
+TA-VAAL iteration: 300 vae_loss: 1.476257085800171 dsc_loss: 1.3881868124008179
+TA-VAAL iteration: 400 vae_loss: 1.5868726968765259 dsc_loss: 1.3837401866912842
+TA-VAAL iteration: 500 vae_loss: 1.6725819110870361 dsc_loss: 1.3842670917510986
+TA-VAAL iteration: 600 vae_loss: 1.7257119417190552 dsc_loss: 1.3867640495300293
+TA-VAAL iteration: 700 vae_loss: 1.7167962789535522 dsc_loss: 1.3897809982299805
+TA-VAAL iteration: 800 vae_loss: 1.8630566596984863 dsc_loss: 1.3871797323226929
+TA-VAAL iteration: 900 vae_loss: 1.7793586254119873 dsc_loss: 1.387406349182129
+TA-VAAL iteration: 1000 vae_loss: 1.7719181776046753 dsc_loss: 1.3877880573272705
+TA-VAAL iteration: 1100 vae_loss: 1.8280142545700073 dsc_loss: 1.3764562606811523
+TA-VAAL iteration: 1200 vae_loss: 1.7797133922576904 dsc_loss: 1.3880833387374878
+TA-VAAL iteration: 1300 vae_loss: 1.6769652366638184 dsc_loss: 1.3873021602630615
+900 5332 1 6229
+>> Train vae and task model
+epoch 20, vae loss is 0.1080554872751236
+epoch 40, vae loss is 0.07800676673650742
+epoch 60, vae loss is 0.07014860212802887
+epoch 80, vae loss is 0.0690520703792572
+epoch 100, vae loss is 0.06880904734134674
+epoch 0: train loss is  1.8289, train_acc:  0.9789
+epoch 20: train loss is  1.2875, train_acc:  0.9789
+epoch 40: train loss is  1.4068, train_acc:  0.9789
+epoch 60: train loss is  1.3997, train_acc:  0.9789
+epoch 80: train loss is  1.3461, train_acc:  0.9789
+ >> Test Model
+Cycle 3/5 || labeled data size 900, test acc =  0.9763
+TA-VAAL iteration: 0 vae_loss: 1.5336201190948486 dsc_loss: 1.3886421918869019
+TA-VAAL iteration: 100 vae_loss: 1.469517469406128 dsc_loss: 1.3197543621063232
+TA-VAAL iteration: 200 vae_loss: 1.6987217664718628 dsc_loss: 1.425002098083496
+TA-VAAL iteration: 300 vae_loss: 2.4929866790771484 dsc_loss: 1.4409785270690918
+TA-VAAL iteration: 400 vae_loss: 1.3198336362838745 dsc_loss: 1.4858577251434326
+TA-VAAL iteration: 500 vae_loss: 1.7621005773544312 dsc_loss: 1.377083420753479
+TA-VAAL iteration: 600 vae_loss: 1.6204640865325928 dsc_loss: 1.4263150691986084
+TA-VAAL iteration: 700 vae_loss: 1.2849466800689697 dsc_loss: 1.5204966068267822
+TA-VAAL iteration: 800 vae_loss: 1.5511245727539062 dsc_loss: 1.4743685722351074
+TA-VAAL iteration: 900 vae_loss: 1.5249695777893066 dsc_loss: 1.3613688945770264
+TA-VAAL iteration: 1000 vae_loss: 1.236079216003418 dsc_loss: 1.555796504020691
+TA-VAAL iteration: 1100 vae_loss: 1.5320039987564087 dsc_loss: 1.431564211845398
+TA-VAAL iteration: 1200 vae_loss: 1.4645826816558838 dsc_loss: 1.3598145246505737
+TA-VAAL iteration: 1300 vae_loss: 1.3628259897232056 dsc_loss: 1.412672758102417
+1200 5032 1 6229
+>> Train vae and task model
+epoch 20, vae loss is 0.1247120350599289
+epoch 40, vae loss is 0.08667102456092834
+epoch 60, vae loss is 0.08483260869979858
+epoch 80, vae loss is 0.0831834077835083
+epoch 100, vae loss is 0.08068929612636566
+epoch 0: train loss is  1.8810, train_acc:  0.9792
+epoch 20: train loss is  1.3864, train_acc:  0.9792
+epoch 40: train loss is  1.4765, train_acc:  0.9792
+epoch 60: train loss is  1.4176, train_acc:  0.9792
+epoch 80: train loss is  1.4636, train_acc:  0.9792
+ >> Test Model
+Cycle 4/5 || labeled data size 1200, test acc =  0.9763
+TA-VAAL iteration: 0 vae_loss: 1.4495240449905396 dsc_loss: 1.3937160968780518
+TA-VAAL iteration: 100 vae_loss: 1.511548399925232 dsc_loss: 1.1644411087036133
+TA-VAAL iteration: 200 vae_loss: 1.7713490724563599 dsc_loss: 1.2532119750976562
+TA-VAAL iteration: 300 vae_loss: 1.7627575397491455 dsc_loss: 1.2472349405288696
+TA-VAAL iteration: 400 vae_loss: 1.8448235988616943 dsc_loss: 1.262061357498169
+TA-VAAL iteration: 500 vae_loss: 1.8365020751953125 dsc_loss: 1.2202074527740479
+TA-VAAL iteration: 600 vae_loss: 1.8389177322387695 dsc_loss: 1.2702128887176514
+TA-VAAL iteration: 700 vae_loss: 1.7961901426315308 dsc_loss: 1.2550454139709473
+TA-VAAL iteration: 800 vae_loss: 1.792742371559143 dsc_loss: 1.249671459197998
+TA-VAAL iteration: 900 vae_loss: 1.801925778388977 dsc_loss: 1.2563287019729614
+TA-VAAL iteration: 1000 vae_loss: 1.7723305225372314 dsc_loss: 1.2500770092010498
+TA-VAAL iteration: 1100 vae_loss: 1.79339599609375 dsc_loss: 1.2606143951416016
+TA-VAAL iteration: 1200 vae_loss: 1.8316733837127686 dsc_loss: 1.2531265020370483
+TA-VAAL iteration: 1300 vae_loss: 1.8191272020339966 dsc_loss: 1.270845651626587
+1500 4732 1 6229
+>> Train vae and task model
+epoch 20, vae loss is 0.11750522255897522
+epoch 40, vae loss is 0.10313426703214645
+epoch 60, vae loss is 0.10042279958724976
+epoch 80, vae loss is 0.0988859161734581
+epoch 100, vae loss is 0.09794188290834427
+epoch 0: train loss is  1.9133, train_acc:  0.9793
+epoch 20: train loss is  1.8835, train_acc:  0.9793
+epoch 40: train loss is  1.8774, train_acc:  0.9793
+epoch 60: train loss is  1.4082, train_acc:  0.9793
+epoch 80: train loss is  1.3426, train_acc:  0.9793
+ >> Test Model
+Cycle 5/5 || labeled data size 1500, test acc =  0.9763
+Finished.
+>> Train vae and task model
+epoch 20, vae loss is 0.04888979345560074
+epoch 40, vae loss is 0.0399988517165184
+epoch 60, vae loss is 0.03921717405319214
+epoch 80, vae loss is 0.02995825931429863
+epoch 100, vae loss is 0.028502430766820908
+epoch 0: train loss is  1.9046, train_acc:  0.8833
+epoch 20: train loss is  1.9217, train_acc:  0.8833
+epoch 40: train loss is  1.9393, train_acc:  0.8833
+epoch 60: train loss is  1.9715, train_acc:  0.8833
+epoch 80: train loss is  1.8659, train_acc:  0.8833
+ >> Test Model
+Cycle 1/5 || labeled data size 300, test acc =  0.8794
+TA-VAAL iteration: 0 vae_loss: 1.5380866527557373 dsc_loss: 1.3876237869262695
+TA-VAAL iteration: 100 vae_loss: 1.4944278001785278 dsc_loss: 1.3860019445419312
+TA-VAAL iteration: 200 vae_loss: 1.4978041648864746 dsc_loss: 1.3861674070358276
+TA-VAAL iteration: 300 vae_loss: 1.5185672044754028 dsc_loss: 1.3842506408691406
+TA-VAAL iteration: 400 vae_loss: 1.572021484375 dsc_loss: 1.3871225118637085
+TA-VAAL iteration: 500 vae_loss: 1.4972163438796997 dsc_loss: 1.3874324560165405
+TA-VAAL iteration: 600 vae_loss: 1.6273562908172607 dsc_loss: 1.3845901489257812
+TA-VAAL iteration: 700 vae_loss: 1.6365516185760498 dsc_loss: 1.3849668502807617
+TA-VAAL iteration: 800 vae_loss: 1.7037744522094727 dsc_loss: 1.3831243515014648
+TA-VAAL iteration: 900 vae_loss: 1.6861815452575684 dsc_loss: 1.381687045097351
+TA-VAAL iteration: 1000 vae_loss: 1.7013416290283203 dsc_loss: 1.3843052387237549
+TA-VAAL iteration: 1100 vae_loss: 1.9923443794250488 dsc_loss: 1.3848888874053955
+TA-VAAL iteration: 1200 vae_loss: 1.9518463611602783 dsc_loss: 1.3827235698699951
+TA-VAAL iteration: 1300 vae_loss: 1.687753438949585 dsc_loss: 1.3947887420654297
+600 5632 2 6231
+>> Train vae and task model
+epoch 20, vae loss is 0.07331611961126328
+epoch 40, vae loss is 0.05829353630542755
+epoch 60, vae loss is 0.045365750789642334
+epoch 80, vae loss is 0.04344570264220238
+epoch 100, vae loss is 0.042601365596055984
+epoch 0: train loss is  1.9667, train_acc:  0.8700
+epoch 20: train loss is  1.8440, train_acc:  0.8700
+epoch 40: train loss is  1.6498, train_acc:  0.8700
+epoch 60: train loss is  1.6311, train_acc:  0.8700
+epoch 80: train loss is  1.6627, train_acc:  0.8700
+ >> Test Model
+Cycle 2/5 || labeled data size 600, test acc =  0.8794
+TA-VAAL iteration: 0 vae_loss: 1.7076255083084106 dsc_loss: 1.388528823852539
+TA-VAAL iteration: 100 vae_loss: 2.1068098545074463 dsc_loss: 1.3004119396209717
+TA-VAAL iteration: 200 vae_loss: 2.280151844024658 dsc_loss: 1.5874381065368652
+TA-VAAL iteration: 300 vae_loss: 1.6431186199188232 dsc_loss: 1.930857539176941
+TA-VAAL iteration: 400 vae_loss: 2.006715774536133 dsc_loss: 1.3097660541534424
+TA-VAAL iteration: 500 vae_loss: 1.8563308715820312 dsc_loss: 1.2600537538528442
+TA-VAAL iteration: 600 vae_loss: 1.4673435688018799 dsc_loss: 1.8676769733428955
+TA-VAAL iteration: 700 vae_loss: 1.4069430828094482 dsc_loss: 1.8024868965148926
+TA-VAAL iteration: 800 vae_loss: 1.8939846754074097 dsc_loss: 1.3208622932434082
+TA-VAAL iteration: 900 vae_loss: 1.9339154958724976 dsc_loss: 1.3476126194000244
+TA-VAAL iteration: 1000 vae_loss: 1.4444388151168823 dsc_loss: 1.8590105772018433
+TA-VAAL iteration: 1100 vae_loss: 2.0627124309539795 dsc_loss: 1.346321702003479
+TA-VAAL iteration: 1200 vae_loss: 1.8787095546722412 dsc_loss: 1.2766321897506714
+TA-VAAL iteration: 1300 vae_loss: 1.7974284887313843 dsc_loss: 1.5121700763702393
+900 5332 2 6231
+>> Train vae and task model
+epoch 20, vae loss is 0.10390704870223999
+epoch 40, vae loss is 0.07088932394981384
+epoch 60, vae loss is 0.06948056817054749
+epoch 80, vae loss is 0.06308422237634659
+epoch 100, vae loss is 0.06604991108179092
+epoch 0: train loss is  1.8857, train_acc:  0.8733
+epoch 20: train loss is  1.7552, train_acc:  0.8667
+epoch 40: train loss is  1.5297, train_acc:  0.6611
+epoch 60: train loss is  1.6980, train_acc:  0.6200
+epoch 80: train loss is  1.4671, train_acc:  0.6556
+ >> Test Model
+Cycle 3/5 || labeled data size 900, test acc =  0.5805
+TA-VAAL iteration: 0 vae_loss: 1.6548925638198853 dsc_loss: 1.3884220123291016
+TA-VAAL iteration: 100 vae_loss: 1.5696015357971191 dsc_loss: 1.5662245750427246
+TA-VAAL iteration: 200 vae_loss: 1.312461256980896 dsc_loss: 1.3412954807281494
+TA-VAAL iteration: 300 vae_loss: 1.3059839010238647 dsc_loss: 1.4401423931121826
+TA-VAAL iteration: 400 vae_loss: 1.6080090999603271 dsc_loss: 1.4146785736083984
+TA-VAAL iteration: 500 vae_loss: 1.2993687391281128 dsc_loss: 1.1886264085769653
+TA-VAAL iteration: 600 vae_loss: 1.4818432331085205 dsc_loss: 1.4592599868774414
+TA-VAAL iteration: 700 vae_loss: 1.3983759880065918 dsc_loss: 1.3762500286102295
+TA-VAAL iteration: 800 vae_loss: 1.3429696559906006 dsc_loss: 1.5802780389785767
+TA-VAAL iteration: 900 vae_loss: 1.519362449645996 dsc_loss: 1.3251007795333862
+TA-VAAL iteration: 1000 vae_loss: 1.470618724822998 dsc_loss: 1.3788974285125732
+TA-VAAL iteration: 1100 vae_loss: 1.1016261577606201 dsc_loss: 1.4478298425674438
+TA-VAAL iteration: 1200 vae_loss: 1.5003385543823242 dsc_loss: 1.4086952209472656
+TA-VAAL iteration: 1300 vae_loss: 1.4672338962554932 dsc_loss: 1.1981995105743408
+1200 5032 1 6231
+>> Train vae and task model
+epoch 20, vae loss is 0.11636904627084732
+epoch 40, vae loss is 0.08334264159202576
+epoch 60, vae loss is 0.08143089711666107
+epoch 80, vae loss is 0.07996878027915955
+epoch 100, vae loss is 0.07981953769922256
+epoch 0: train loss is  2.0043, train_acc:  0.3308
+epoch 20: train loss is  1.6090, train_acc:  0.6367
+epoch 40: train loss is  1.5687, train_acc:  0.6658
+epoch 60: train loss is  1.4747, train_acc:  0.6742
+epoch 80: train loss is  1.4131, train_acc:  0.6933
+ >> Test Model
+Cycle 4/5 || labeled data size 1200, test acc =  0.6363
+TA-VAAL iteration: 0 vae_loss: 1.5325673818588257 dsc_loss: 1.387453556060791
+TA-VAAL iteration: 100 vae_loss: 2.434849977493286 dsc_loss: 1.7456738948822021
+TA-VAAL iteration: 200 vae_loss: 1.356555700302124 dsc_loss: 1.4441399574279785
+TA-VAAL iteration: 300 vae_loss: 1.7041635513305664 dsc_loss: 1.5665316581726074
+TA-VAAL iteration: 400 vae_loss: 1.5352314710617065 dsc_loss: 1.4573900699615479
+TA-VAAL iteration: 500 vae_loss: 1.3672913312911987 dsc_loss: 1.598036766052246
+TA-VAAL iteration: 600 vae_loss: 1.4677804708480835 dsc_loss: 1.4403551816940308
+TA-VAAL iteration: 700 vae_loss: 1.2821295261383057 dsc_loss: 1.5400115251541138
+TA-VAAL iteration: 800 vae_loss: 1.5004987716674805 dsc_loss: 1.4280577898025513
+TA-VAAL iteration: 900 vae_loss: 1.7183517217636108 dsc_loss: 1.6374943256378174
+TA-VAAL iteration: 1000 vae_loss: 1.4703501462936401 dsc_loss: 1.417752742767334
+TA-VAAL iteration: 1100 vae_loss: 1.6987323760986328 dsc_loss: 1.6032397747039795
+TA-VAAL iteration: 1200 vae_loss: 1.5419025421142578 dsc_loss: 1.4106144905090332
+TA-VAAL iteration: 1300 vae_loss: 1.507676601409912 dsc_loss: 1.5475819110870361
+1500 4732 1 6231
+>> Train vae and task model
+epoch 20, vae loss is 0.11001314967870712
+epoch 40, vae loss is 0.09766504168510437
+epoch 60, vae loss is 0.09562709927558899
+epoch 80, vae loss is 0.09410864114761353
+epoch 100, vae loss is 0.09370122849941254
+epoch 0: train loss is  1.9694, train_acc:  0.8673
+epoch 20: train loss is  1.6706, train_acc:  0.8673
+epoch 40: train loss is  1.6779, train_acc:  0.8673
+epoch 60: train loss is  1.6236, train_acc:  0.8673
+epoch 80: train loss is  1.6360, train_acc:  0.8673
+ >> Test Model
+Cycle 5/5 || labeled data size 1500, test acc =  0.8794
+Finished.
+>> Train vae and task model
+epoch 20, vae loss is 0.04966680705547333
+epoch 40, vae loss is 0.044226840138435364
+epoch 60, vae loss is 0.03996457904577255
+epoch 80, vae loss is 0.02849995344877243
+epoch 100, vae loss is 0.02682390995323658
+epoch 0: train loss is  1.5991, train_acc:  0.9867
+epoch 20: train loss is  1.6880, train_acc:  0.9867
+epoch 40: train loss is  1.5991, train_acc:  0.9867
+epoch 60: train loss is  1.6878, train_acc:  0.9867
+epoch 80: train loss is  1.6878, train_acc:  0.9867
+ >> Test Model
+Cycle 1/5 || labeled data size 300, test acc =  0.9660
+TA-VAAL iteration: 0 vae_loss: 1.4962724447250366 dsc_loss: 1.3896303176879883
+TA-VAAL iteration: 100 vae_loss: 1.4732331037521362 dsc_loss: 1.3864710330963135
+TA-VAAL iteration: 200 vae_loss: 1.5053627490997314 dsc_loss: 1.3859930038452148
+TA-VAAL iteration: 300 vae_loss: 1.547217607498169 dsc_loss: 1.3861968517303467
+TA-VAAL iteration: 400 vae_loss: 1.5365394353866577 dsc_loss: 1.3839612007141113
+TA-VAAL iteration: 500 vae_loss: 1.5657578706741333 dsc_loss: 1.3864365816116333
+TA-VAAL iteration: 600 vae_loss: 1.6387261152267456 dsc_loss: 1.3863611221313477
+TA-VAAL iteration: 700 vae_loss: 1.6001710891723633 dsc_loss: 1.3849756717681885
+TA-VAAL iteration: 800 vae_loss: 1.6183428764343262 dsc_loss: 1.3861048221588135
+TA-VAAL iteration: 900 vae_loss: 1.666576623916626 dsc_loss: 1.385035514831543
+TA-VAAL iteration: 1000 vae_loss: 1.602351427078247 dsc_loss: 1.386988878250122
+TA-VAAL iteration: 1100 vae_loss: 1.7215909957885742 dsc_loss: 1.3849862813949585
+TA-VAAL iteration: 1200 vae_loss: 1.6706392765045166 dsc_loss: 1.3863908052444458
+TA-VAAL iteration: 1300 vae_loss: 1.7111949920654297 dsc_loss: 1.3860656023025513
+600 5632 21 6217
+>> Train vae and task model
+epoch 20, vae loss is 0.07177377492189407
+epoch 40, vae loss is 0.06433730572462082
+epoch 60, vae loss is 0.045193497091531754
+epoch 80, vae loss is 0.04254817217588425
+epoch 100, vae loss is 0.04208018258213997
+epoch 0: train loss is  1.8873, train_acc:  0.9717
+epoch 20: train loss is  1.9124, train_acc:  0.9717
+epoch 40: train loss is  1.8999, train_acc:  0.9717
+epoch 60: train loss is  1.9253, train_acc:  0.9717
+epoch 80: train loss is  1.8995, train_acc:  0.9717
+ >> Test Model
+Cycle 2/5 || labeled data size 600, test acc =  0.9660
+TA-VAAL iteration: 0 vae_loss: 1.640845775604248 dsc_loss: 1.3874247074127197
+TA-VAAL iteration: 100 vae_loss: 1.4832960367202759 dsc_loss: 1.386128306388855
+TA-VAAL iteration: 200 vae_loss: 1.4398131370544434 dsc_loss: 1.386229157447815
+TA-VAAL iteration: 300 vae_loss: 1.4413716793060303 dsc_loss: 1.386343240737915
+TA-VAAL iteration: 400 vae_loss: 1.4944050312042236 dsc_loss: 1.3860840797424316
+TA-VAAL iteration: 500 vae_loss: 1.4651646614074707 dsc_loss: 1.3861160278320312
+TA-VAAL iteration: 600 vae_loss: 1.4620254039764404 dsc_loss: 1.386582851409912
+TA-VAAL iteration: 700 vae_loss: 1.463071584701538 dsc_loss: 1.387070655822754
+TA-VAAL iteration: 800 vae_loss: 1.510866403579712 dsc_loss: 1.3851492404937744
+TA-VAAL iteration: 900 vae_loss: 1.501598834991455 dsc_loss: 1.3860524892807007
+TA-VAAL iteration: 1000 vae_loss: 1.4856270551681519 dsc_loss: 1.3875041007995605
+TA-VAAL iteration: 1100 vae_loss: 1.5128488540649414 dsc_loss: 1.3836383819580078
+TA-VAAL iteration: 1200 vae_loss: 1.4913709163665771 dsc_loss: 1.3853819370269775
+TA-VAAL iteration: 1300 vae_loss: 1.477587103843689 dsc_loss: 1.3871371746063232
+900 5332 10 6230
+>> Train vae and task model
+epoch 20, vae loss is 0.10383433848619461
+epoch 40, vae loss is 0.07501866668462753
+epoch 60, vae loss is 0.06930448859930038
+epoch 80, vae loss is 0.07038149982690811
+epoch 100, vae loss is 0.07080307602882385
+epoch 0: train loss is  1.8585, train_acc:  0.0278
+epoch 20: train loss is  2.2749, train_acc:  0.9722
+epoch 40: train loss is  2.0318, train_acc:  0.9722
+epoch 60: train loss is  1.4246, train_acc:  0.9722
+epoch 80: train loss is  1.4591, train_acc:  0.9722
+ >> Test Model
+Cycle 3/5 || labeled data size 900, test acc =  0.9660
+TA-VAAL iteration: 0 vae_loss: 1.5583640336990356 dsc_loss: 1.3868211507797241
+TA-VAAL iteration: 100 vae_loss: 1.42306649684906 dsc_loss: 1.3108915090560913
+TA-VAAL iteration: 200 vae_loss: 1.4303839206695557 dsc_loss: 1.3266886472702026
+TA-VAAL iteration: 300 vae_loss: 1.6562647819519043 dsc_loss: 1.055316686630249
+TA-VAAL iteration: 400 vae_loss: 3.550349473953247 dsc_loss: 1.581680178642273
+TA-VAAL iteration: 500 vae_loss: 1.0517174005508423 dsc_loss: 1.0792661905288696
+TA-VAAL iteration: 600 vae_loss: 1.8720718622207642 dsc_loss: 1.2916209697723389
+TA-VAAL iteration: 700 vae_loss: 1.0035802125930786 dsc_loss: 0.924013614654541
+TA-VAAL iteration: 800 vae_loss: 3.927854537963867 dsc_loss: 2.447888135910034
+TA-VAAL iteration: 900 vae_loss: 1.4702059030532837 dsc_loss: 0.6949760913848877
+TA-VAAL iteration: 1000 vae_loss: 3.274172782897949 dsc_loss: 1.5387365818023682
+TA-VAAL iteration: 1100 vae_loss: 0.9867131114006042 dsc_loss: 1.0339149236679077
+TA-VAAL iteration: 1200 vae_loss: 2.4438729286193848 dsc_loss: 1.3000231981277466
+TA-VAAL iteration: 1300 vae_loss: 0.705925464630127 dsc_loss: 1.548298954963684
+1200 5032 10 6230
+>> Train vae and task model
+epoch 20, vae loss is 0.1184840053319931
+epoch 40, vae loss is 0.08773483335971832
+epoch 60, vae loss is 0.08260935544967651
+epoch 80, vae loss is 0.08095988631248474
+epoch 100, vae loss is 0.0796833485364914
+epoch 0: train loss is  1.8761, train_acc:  0.9717
+epoch 20: train loss is  1.5524, train_acc:  0.9717
+epoch 40: train loss is  1.4620, train_acc:  0.9717
+epoch 60: train loss is  1.4026, train_acc:  0.9717
+epoch 80: train loss is  1.5117, train_acc:  0.9717
+ >> Test Model
+Cycle 4/5 || labeled data size 1200, test acc =  0.9660
+TA-VAAL iteration: 0 vae_loss: 1.5173107385635376 dsc_loss: 1.389251947402954
+TA-VAAL iteration: 100 vae_loss: 1.7181222438812256 dsc_loss: 1.4306309223175049
+TA-VAAL iteration: 200 vae_loss: 1.8380863666534424 dsc_loss: 1.4171018600463867
+TA-VAAL iteration: 300 vae_loss: 1.2025290727615356 dsc_loss: 1.4598710536956787
+TA-VAAL iteration: 400 vae_loss: 1.7670979499816895 dsc_loss: 1.4369566440582275
+TA-VAAL iteration: 500 vae_loss: 1.460994005203247 dsc_loss: 1.385640025138855
+TA-VAAL iteration: 600 vae_loss: 1.734359860420227 dsc_loss: 1.411690354347229
+TA-VAAL iteration: 700 vae_loss: 1.4020075798034668 dsc_loss: 1.3981249332427979
+TA-VAAL iteration: 800 vae_loss: 1.721503496170044 dsc_loss: 1.4210433959960938
+TA-VAAL iteration: 900 vae_loss: 1.3662697076797485 dsc_loss: 1.4030030965805054
+TA-VAAL iteration: 1000 vae_loss: 1.7114094495773315 dsc_loss: 1.4379938840866089
+TA-VAAL iteration: 1100 vae_loss: 1.4806207418441772 dsc_loss: 1.3922048807144165
+TA-VAAL iteration: 1200 vae_loss: 1.7857309579849243 dsc_loss: 1.4410154819488525
+TA-VAAL iteration: 1300 vae_loss: 1.364464521408081 dsc_loss: 1.401721715927124
+1500 4732 4 6230
+>> Train vae and task model
+epoch 20, vae loss is 0.11921724677085876
+epoch 40, vae loss is 0.10171441733837128
+epoch 60, vae loss is 0.09884421527385712
+epoch 80, vae loss is 0.09715521335601807
+epoch 100, vae loss is 0.09695319086313248
+epoch 0: train loss is  2.0356, train_acc:  0.0347
+epoch 20: train loss is  1.8458, train_acc:  0.6387
+epoch 40: train loss is  1.7564, train_acc:  0.7287
+epoch 60: train loss is  1.7677, train_acc:  0.7360
+epoch 80: train loss is  1.8152, train_acc:  0.8313
+ >> Test Model
+Cycle 5/5 || labeled data size 1500, test acc =  0.7922
+Finished.
+>> Train vae and task model
+epoch 20, vae loss is 0.049058832228183746
+epoch 40, vae loss is 0.04365409165620804
+epoch 60, vae loss is 0.03876527398824692
+epoch 80, vae loss is 0.029414908960461617
+epoch 100, vae loss is 0.02668130397796631
+epoch 0: train loss is  1.9296, train_acc:  0.0433
+epoch 20: train loss is  1.7454, train_acc:  0.9133
+epoch 40: train loss is  1.4636, train_acc:  0.6567
+epoch 60: train loss is  1.5197, train_acc:  0.7700
+epoch 80: train loss is  1.3789, train_acc:  0.7200
+ >> Test Model
+Cycle 1/5 || labeled data size 300, test acc =  0.7973
+TA-VAAL iteration: 0 vae_loss: 1.5157413482666016 dsc_loss: 1.3920056819915771
+TA-VAAL iteration: 100 vae_loss: 1.6300419569015503 dsc_loss: 1.400962233543396
+TA-VAAL iteration: 200 vae_loss: 1.6233407258987427 dsc_loss: 1.3751330375671387
+TA-VAAL iteration: 300 vae_loss: 1.7046170234680176 dsc_loss: 1.3947172164916992
+TA-VAAL iteration: 400 vae_loss: 1.7047607898712158 dsc_loss: 1.3762030601501465
+TA-VAAL iteration: 500 vae_loss: 1.6386436223983765 dsc_loss: 1.375006914138794
+TA-VAAL iteration: 600 vae_loss: 1.826661467552185 dsc_loss: 1.3793423175811768
+TA-VAAL iteration: 700 vae_loss: 1.931238055229187 dsc_loss: 1.3697503805160522
+TA-VAAL iteration: 800 vae_loss: 1.8726451396942139 dsc_loss: 1.3572731018066406
+TA-VAAL iteration: 900 vae_loss: 2.2139737606048584 dsc_loss: 1.3717436790466309
+TA-VAAL iteration: 1000 vae_loss: 2.662774085998535 dsc_loss: 1.346988558769226
+TA-VAAL iteration: 1100 vae_loss: 2.3892662525177 dsc_loss: 1.3305745124816895
+TA-VAAL iteration: 1200 vae_loss: 2.2696995735168457 dsc_loss: 1.3512964248657227
+TA-VAAL iteration: 1300 vae_loss: 2.8833093643188477 dsc_loss: 1.3211498260498047
+600 5632 7 6214
+>> Train vae and task model
+epoch 20, vae loss is 0.06893553584814072
+epoch 40, vae loss is 0.05177399516105652
+epoch 60, vae loss is 0.043880365788936615
+epoch 80, vae loss is 0.042461786419153214
+epoch 100, vae loss is 0.041715893894433975
+epoch 0: train loss is  2.0075, train_acc:  0.9500
+epoch 20: train loss is  1.7262, train_acc:  0.9500
+epoch 40: train loss is  1.7218, train_acc:  0.9500
+epoch 60: train loss is  1.5706, train_acc:  0.9500
+epoch 80: train loss is  1.6388, train_acc:  0.9500
+ >> Test Model
+Cycle 2/5 || labeled data size 600, test acc =  0.9519
+TA-VAAL iteration: 0 vae_loss: 1.534766674041748 dsc_loss: 1.3862056732177734
+TA-VAAL iteration: 100 vae_loss: 1.649538278579712 dsc_loss: 1.3969578742980957
+TA-VAAL iteration: 200 vae_loss: 2.036247730255127 dsc_loss: 1.3108525276184082
+TA-VAAL iteration: 300 vae_loss: 1.7380906343460083 dsc_loss: 1.416197419166565
+TA-VAAL iteration: 400 vae_loss: 1.8225995302200317 dsc_loss: 1.3825984001159668
+TA-VAAL iteration: 500 vae_loss: 1.8318393230438232 dsc_loss: 1.3628941774368286
+TA-VAAL iteration: 600 vae_loss: 1.7914210557937622 dsc_loss: 1.4078618288040161
+TA-VAAL iteration: 700 vae_loss: 1.8029093742370605 dsc_loss: 1.3479502201080322
+TA-VAAL iteration: 800 vae_loss: 1.5386403799057007 dsc_loss: 1.3686602115631104
+TA-VAAL iteration: 900 vae_loss: 2.2242321968078613 dsc_loss: 1.3786473274230957
+TA-VAAL iteration: 1000 vae_loss: 1.9872279167175293 dsc_loss: 1.3884050846099854
+TA-VAAL iteration: 1100 vae_loss: 1.7370306253433228 dsc_loss: 1.5201518535614014
+TA-VAAL iteration: 1200 vae_loss: 1.703217625617981 dsc_loss: 1.3552486896514893
+TA-VAAL iteration: 1300 vae_loss: 2.2886979579925537 dsc_loss: 1.2848384380340576
+900 5332 7 6230
+>> Train vae and task model
+epoch 20, vae loss is 0.10315306484699249
+epoch 40, vae loss is 0.07296552509069443
+epoch 60, vae loss is 0.06919499486684799
+epoch 80, vae loss is 0.06632871180772781
+epoch 100, vae loss is 0.06649631261825562
+epoch 0: train loss is  1.8624, train_acc:  0.9556
+epoch 20: train loss is  2.2469, train_acc:  0.9556
+epoch 40: train loss is  1.4214, train_acc:  0.9556
+epoch 60: train loss is  1.7993, train_acc:  0.9556
+epoch 80: train loss is  1.5361, train_acc:  0.9533
+ >> Test Model
+Cycle 3/5 || labeled data size 900, test acc =  0.9519
+TA-VAAL iteration: 0 vae_loss: 1.540378451347351 dsc_loss: 1.3875651359558105
+TA-VAAL iteration: 100 vae_loss: 1.3810478448867798 dsc_loss: 1.4405090808868408
+TA-VAAL iteration: 200 vae_loss: 1.195586919784546 dsc_loss: 1.4993607997894287
+TA-VAAL iteration: 300 vae_loss: 1.4269840717315674 dsc_loss: 1.5084335803985596
+TA-VAAL iteration: 400 vae_loss: 1.6533491611480713 dsc_loss: 1.3302836418151855
+TA-VAAL iteration: 500 vae_loss: 1.094658374786377 dsc_loss: 1.3821512460708618
+TA-VAAL iteration: 600 vae_loss: 1.9710853099822998 dsc_loss: 1.4430201053619385
+TA-VAAL iteration: 700 vae_loss: 1.447487711906433 dsc_loss: 1.2443809509277344
+TA-VAAL iteration: 800 vae_loss: 1.3899645805358887 dsc_loss: 1.693403959274292
+TA-VAAL iteration: 900 vae_loss: 1.7872744798660278 dsc_loss: 1.2660154104232788
+TA-VAAL iteration: 1000 vae_loss: 1.3663506507873535 dsc_loss: 1.5222872495651245
+TA-VAAL iteration: 1100 vae_loss: 1.4908714294433594 dsc_loss: 1.3318474292755127
+TA-VAAL iteration: 1200 vae_loss: 1.8377602100372314 dsc_loss: 1.3527730703353882
+TA-VAAL iteration: 1300 vae_loss: 1.133039116859436 dsc_loss: 1.4901707172393799
+1200 5032 7 6230
+>> Train vae and task model
+epoch 20, vae loss is 0.109684057533741
+epoch 40, vae loss is 0.0868024080991745
+epoch 60, vae loss is 0.08408082276582718
+epoch 80, vae loss is 0.08202431350946426
+epoch 100, vae loss is 0.0822441577911377
+epoch 0: train loss is  1.8813, train_acc:  0.5525
+epoch 20: train loss is  1.9383, train_acc:  0.9575
+epoch 40: train loss is  1.9088, train_acc:  0.9575
+epoch 60: train loss is  1.9090, train_acc:  0.9575
+epoch 80: train loss is  1.9383, train_acc:  0.9575
+ >> Test Model
+Cycle 4/5 || labeled data size 1200, test acc =  0.9519
+TA-VAAL iteration: 0 vae_loss: 1.5702688694000244 dsc_loss: 1.386549711227417
+TA-VAAL iteration: 100 vae_loss: 1.479291319847107 dsc_loss: 1.38619065284729
+TA-VAAL iteration: 200 vae_loss: 1.4729619026184082 dsc_loss: 1.3863675594329834
+TA-VAAL iteration: 300 vae_loss: 1.4574670791625977 dsc_loss: 1.3855310678482056
+TA-VAAL iteration: 400 vae_loss: 1.5066003799438477 dsc_loss: 1.3866829872131348
+TA-VAAL iteration: 500 vae_loss: 1.5114974975585938 dsc_loss: 1.3847825527191162
+TA-VAAL iteration: 600 vae_loss: 1.542301058769226 dsc_loss: 1.3850985765457153
+TA-VAAL iteration: 700 vae_loss: 1.5238254070281982 dsc_loss: 1.3842052221298218
+TA-VAAL iteration: 800 vae_loss: 1.4696519374847412 dsc_loss: 1.3825352191925049
+TA-VAAL iteration: 900 vae_loss: 1.5888123512268066 dsc_loss: 1.383376121520996
+TA-VAAL iteration: 1000 vae_loss: 1.6039994955062866 dsc_loss: 1.3806027173995972
+TA-VAAL iteration: 1100 vae_loss: 1.559266448020935 dsc_loss: 1.3822746276855469
+TA-VAAL iteration: 1200 vae_loss: 1.5609498023986816 dsc_loss: 1.3762309551239014
+TA-VAAL iteration: 1300 vae_loss: 1.5787150859832764 dsc_loss: 1.382434606552124
+1500 4732 7 6230
+>> Train vae and task model
+epoch 20, vae loss is 0.11723018437623978
+epoch 40, vae loss is 0.10152584314346313
+epoch 60, vae loss is 0.09952691942453384
+epoch 80, vae loss is 0.09796205163002014
+epoch 100, vae loss is 0.0970301404595375
+epoch 0: train loss is  1.9412, train_acc:  0.9540
+epoch 20: train loss is  1.6468, train_acc:  0.9307
+epoch 40: train loss is  1.6031, train_acc:  0.9527
+epoch 60: train loss is  1.6286, train_acc:  0.9540
+epoch 80: train loss is  1.6161, train_acc:  0.9540
+ >> Test Model
+Cycle 5/5 || labeled data size 1500, test acc =  0.9519
+Finished.
+>> Train vae and task model
+epoch 20, vae loss is 0.04918496310710907
+epoch 40, vae loss is 0.04132363200187683
+epoch 60, vae loss is 0.037011388689279556
+epoch 80, vae loss is 0.027734987437725067
+epoch 100, vae loss is 0.02588115632534027
+epoch 0: train loss is  1.8571, train_acc:  0.1100
+epoch 20: train loss is  1.5706, train_acc:  0.5967
+epoch 40: train loss is  1.3793, train_acc:  0.6633
+epoch 60: train loss is  1.3359, train_acc:  0.6067
+epoch 80: train loss is  1.2263, train_acc:  0.6267
+ >> Test Model
+Cycle 1/5 || labeled data size 300, test acc =  0.6222
+TA-VAAL iteration: 0 vae_loss: 1.5507153272628784 dsc_loss: 1.3848724365234375
+TA-VAAL iteration: 100 vae_loss: 1.7520036697387695 dsc_loss: 1.407761573791504
+TA-VAAL iteration: 200 vae_loss: 1.6189231872558594 dsc_loss: 1.3652456998825073
+TA-VAAL iteration: 300 vae_loss: 1.6713796854019165 dsc_loss: 1.371556043624878
+TA-VAAL iteration: 400 vae_loss: 1.7610124349594116 dsc_loss: 1.3802615404129028
+TA-VAAL iteration: 500 vae_loss: 1.8299126625061035 dsc_loss: 1.3496289253234863
+TA-VAAL iteration: 600 vae_loss: 2.2436304092407227 dsc_loss: 1.3758459091186523
+TA-VAAL iteration: 700 vae_loss: 1.8895410299301147 dsc_loss: 1.3979264497756958
+TA-VAAL iteration: 800 vae_loss: 2.0792832374572754 dsc_loss: 1.3704992532730103
+TA-VAAL iteration: 900 vae_loss: 2.0399281978607178 dsc_loss: 1.373500108718872
+TA-VAAL iteration: 1000 vae_loss: 2.4128365516662598 dsc_loss: 1.3794276714324951
+TA-VAAL iteration: 1100 vae_loss: 2.5050768852233887 dsc_loss: 1.3506120443344116
+TA-VAAL iteration: 1200 vae_loss: 2.595075845718384 dsc_loss: 1.3765473365783691
+TA-VAAL iteration: 1300 vae_loss: 2.661623954772949 dsc_loss: 1.3646607398986816
+600 5632 0 6230
+>> Train vae and task model
+epoch 20, vae loss is 0.06821256875991821
+epoch 40, vae loss is 0.055385950952768326
+epoch 60, vae loss is 0.04280097410082817
+epoch 80, vae loss is 0.04111476242542267
+epoch 100, vae loss is 0.03981257602572441
+epoch 0: train loss is  1.9220, train_acc:  0.1100
+epoch 20: train loss is  1.8379, train_acc:  0.8900
+epoch 40: train loss is  1.4191, train_acc:  0.6417
+epoch 60: train loss is  1.3750, train_acc:  0.6150
+epoch 80: train loss is  1.3319, train_acc:  0.6933
+ >> Test Model
+Cycle 2/5 || labeled data size 600, test acc =  0.6921
+TA-VAAL iteration: 0 vae_loss: 1.4237653017044067 dsc_loss: 1.3963643312454224
+TA-VAAL iteration: 100 vae_loss: 2.1261515617370605 dsc_loss: 1.2986890077590942
+TA-VAAL iteration: 200 vae_loss: 2.194272756576538 dsc_loss: 1.4396517276763916
+TA-VAAL iteration: 300 vae_loss: 1.7620792388916016 dsc_loss: 1.3730512857437134
+TA-VAAL iteration: 400 vae_loss: 2.990051507949829 dsc_loss: 1.4303677082061768
+TA-VAAL iteration: 500 vae_loss: 3.335519313812256 dsc_loss: 1.5152394771575928
+TA-VAAL iteration: 600 vae_loss: 2.4151148796081543 dsc_loss: 1.4624509811401367
+TA-VAAL iteration: 700 vae_loss: 1.7345199584960938 dsc_loss: 1.4002711772918701
+TA-VAAL iteration: 800 vae_loss: 3.000548839569092 dsc_loss: 1.3210350275039673
+TA-VAAL iteration: 900 vae_loss: 3.2781996726989746 dsc_loss: 1.5420148372650146
+TA-VAAL iteration: 1000 vae_loss: 2.2356247901916504 dsc_loss: 1.3896021842956543
+TA-VAAL iteration: 1100 vae_loss: 2.616715431213379 dsc_loss: 1.5055696964263916
+TA-VAAL iteration: 1200 vae_loss: 3.154054641723633 dsc_loss: 1.3473002910614014
+TA-VAAL iteration: 1300 vae_loss: 1.9917784929275513 dsc_loss: 1.4277660846710205
+900 5332 0 6230
+>> Train vae and task model
+epoch 20, vae loss is 0.1006825864315033
+epoch 40, vae loss is 0.06671489030122757
+epoch 60, vae loss is 0.06588634848594666
+epoch 80, vae loss is 0.065818652510643
+epoch 100, vae loss is 0.060988862067461014
+epoch 0: train loss is  1.8747, train_acc:  0.8778
+epoch 20: train loss is  1.4138, train_acc:  0.8778
+epoch 40: train loss is  1.6473, train_acc:  0.8778
+epoch 60: train loss is  1.3349, train_acc:  0.8778
+epoch 80: train loss is  1.4871, train_acc:  0.8778
+ >> Test Model
+Cycle 3/5 || labeled data size 900, test acc =  0.8833
+TA-VAAL iteration: 0 vae_loss: 1.446770191192627 dsc_loss: 1.3951416015625
+TA-VAAL iteration: 100 vae_loss: 1.225434422492981 dsc_loss: 1.2883241176605225
+TA-VAAL iteration: 200 vae_loss: 1.0645095109939575 dsc_loss: 1.7429254055023193
+TA-VAAL iteration: 300 vae_loss: 1.7772001028060913 dsc_loss: 1.3755569458007812
+TA-VAAL iteration: 400 vae_loss: 1.4511055946350098 dsc_loss: 1.3076186180114746
+TA-VAAL iteration: 500 vae_loss: 0.9924042224884033 dsc_loss: 1.9293749332427979
+TA-VAAL iteration: 600 vae_loss: 1.6800968647003174 dsc_loss: 1.3641399145126343
+TA-VAAL iteration: 700 vae_loss: 1.3939906358718872 dsc_loss: 1.3205344676971436
+TA-VAAL iteration: 800 vae_loss: 1.9729430675506592 dsc_loss: 1.3457317352294922
+TA-VAAL iteration: 900 vae_loss: 1.4784642457962036 dsc_loss: 1.2783894538879395
+TA-VAAL iteration: 1000 vae_loss: 1.3413013219833374 dsc_loss: 1.7138590812683105
+TA-VAAL iteration: 1100 vae_loss: 1.7022150754928589 dsc_loss: 1.2741477489471436
+TA-VAAL iteration: 1200 vae_loss: 1.957715392112732 dsc_loss: 1.3246201276779175
+TA-VAAL iteration: 1300 vae_loss: 0.9610863327980042 dsc_loss: 1.8842450380325317
+1200 5032 0 6230
+>> Train vae and task model
+epoch 20, vae loss is 0.12221792340278625
+epoch 40, vae loss is 0.08209235966205597
+epoch 60, vae loss is 0.07885552942752838
+epoch 80, vae loss is 0.07759587466716766
+epoch 100, vae loss is 0.07669442892074585
+epoch 0: train loss is  1.9653, train_acc:  0.8733
+epoch 20: train loss is  1.5378, train_acc:  0.8733
+epoch 40: train loss is  1.4864, train_acc:  0.8733
+epoch 60: train loss is  1.4893, train_acc:  0.8733
+epoch 80: train loss is  1.4494, train_acc:  0.8733
+ >> Test Model
+Cycle 4/5 || labeled data size 1200, test acc =  0.8833
+TA-VAAL iteration: 0 vae_loss: 1.4874212741851807 dsc_loss: 1.391268253326416
+TA-VAAL iteration: 100 vae_loss: 3.2835168838500977 dsc_loss: 1.4905980825424194
+TA-VAAL iteration: 200 vae_loss: 2.033160924911499 dsc_loss: 1.3906636238098145
+TA-VAAL iteration: 300 vae_loss: 2.939021587371826 dsc_loss: 1.4577083587646484
+TA-VAAL iteration: 400 vae_loss: 2.3476943969726562 dsc_loss: 1.4219787120819092
+TA-VAAL iteration: 500 vae_loss: 2.6140992641448975 dsc_loss: 1.440279483795166
+TA-VAAL iteration: 600 vae_loss: 2.2095701694488525 dsc_loss: 1.4430062770843506
+TA-VAAL iteration: 700 vae_loss: 1.9781951904296875 dsc_loss: 1.3860583305358887
+TA-VAAL iteration: 800 vae_loss: 1.6265544891357422 dsc_loss: 1.5234586000442505
+TA-VAAL iteration: 900 vae_loss: 1.9940069913864136 dsc_loss: 1.406130313873291
+TA-VAAL iteration: 1000 vae_loss: 1.5321674346923828 dsc_loss: 1.561150074005127
+TA-VAAL iteration: 1100 vae_loss: 2.122797727584839 dsc_loss: 1.4117066860198975
+TA-VAAL iteration: 1200 vae_loss: 1.5851794481277466 dsc_loss: 1.5431208610534668
+TA-VAAL iteration: 1300 vae_loss: 2.150409460067749 dsc_loss: 1.4061057567596436
+1500 4732 0 6230
+>> Train vae and task model
+epoch 20, vae loss is 0.11322489380836487
+epoch 40, vae loss is 0.0996759757399559
+epoch 60, vae loss is 0.09753825515508652
+epoch 80, vae loss is 0.09603840112686157
+epoch 100, vae loss is 0.09530113637447357
+epoch 0: train loss is  1.9833, train_acc:  0.5107
+epoch 20: train loss is  1.5946, train_acc:  0.5253
+epoch 40: train loss is  1.4940, train_acc:  0.6087
+epoch 60: train loss is  1.4598, train_acc:  0.6587
+epoch 80: train loss is  1.4147, train_acc:  0.6907
+ >> Test Model
+Cycle 5/5 || labeled data size 1500, test acc =  0.6434
+Finished.
+>> Train vae and task model
+epoch 20, vae loss is 0.04758206009864807
+epoch 40, vae loss is 0.041154421865940094
+epoch 60, vae loss is 0.03701648861169815
+epoch 80, vae loss is 0.029808253049850464
+epoch 100, vae loss is 0.02550129033625126
+epoch 0: train loss is  2.0699, train_acc:  0.2267
+epoch 20: train loss is  1.8354, train_acc:  0.4433
+epoch 40: train loss is  1.5287, train_acc:  0.6533
+epoch 60: train loss is  1.6077, train_acc:  0.6967
+epoch 80: train loss is  1.4014, train_acc:  0.7800
+ >> Test Model
+Cycle 1/5 || labeled data size 300, test acc =  0.6536
+TA-VAAL iteration: 0 vae_loss: 1.5113177299499512 dsc_loss: 1.3886706829071045
+TA-VAAL iteration: 100 vae_loss: 1.750460147857666 dsc_loss: 1.3996694087982178
+TA-VAAL iteration: 200 vae_loss: 1.6303995847702026 dsc_loss: 1.3951863050460815
+TA-VAAL iteration: 300 vae_loss: 1.6489839553833008 dsc_loss: 1.3772094249725342
+TA-VAAL iteration: 400 vae_loss: 1.629699945449829 dsc_loss: 1.359363317489624
+TA-VAAL iteration: 500 vae_loss: 1.843673586845398 dsc_loss: 1.363922357559204
+TA-VAAL iteration: 600 vae_loss: 1.9037830829620361 dsc_loss: 1.3477437496185303
+TA-VAAL iteration: 700 vae_loss: 2.1572422981262207 dsc_loss: 1.3633341789245605
+TA-VAAL iteration: 800 vae_loss: 2.1991939544677734 dsc_loss: 1.3511329889297485
+TA-VAAL iteration: 900 vae_loss: 2.731776237487793 dsc_loss: 1.3587546348571777
+TA-VAAL iteration: 1000 vae_loss: 2.490205764770508 dsc_loss: 1.3583251237869263
+TA-VAAL iteration: 1100 vae_loss: 2.346336841583252 dsc_loss: 1.3565673828125
+TA-VAAL iteration: 1200 vae_loss: 2.5482518672943115 dsc_loss: 1.3623958826065063
+TA-VAAL iteration: 1300 vae_loss: 3.284390449523926 dsc_loss: 1.3849284648895264
+600 5632 1 6229
+>> Train vae and task model
+epoch 20, vae loss is 0.06718922406435013
+epoch 40, vae loss is 0.05874541401863098
+epoch 60, vae loss is 0.04170352965593338
+epoch 80, vae loss is 0.0404181182384491
+epoch 100, vae loss is 0.03948664665222168
+epoch 0: train loss is  1.9930, train_acc:  0.9450
+epoch 20: train loss is  1.6443, train_acc:  0.6133
+epoch 40: train loss is  1.4836, train_acc:  0.6317
+epoch 60: train loss is  1.4737, train_acc:  0.6467
+epoch 80: train loss is  1.4907, train_acc:  0.6483
+ >> Test Model
+Cycle 2/5 || labeled data size 600, test acc =  0.5208
+TA-VAAL iteration: 0 vae_loss: 1.4718122482299805 dsc_loss: 1.390596628189087
+TA-VAAL iteration: 100 vae_loss: 1.6926181316375732 dsc_loss: 1.2633086442947388
+TA-VAAL iteration: 200 vae_loss: 2.0642218589782715 dsc_loss: 1.4238276481628418
+TA-VAAL iteration: 300 vae_loss: 1.8409357070922852 dsc_loss: 1.2729123830795288
+TA-VAAL iteration: 400 vae_loss: 2.2133960723876953 dsc_loss: 1.5561881065368652
+TA-VAAL iteration: 500 vae_loss: 1.9835796356201172 dsc_loss: 1.321245551109314
+TA-VAAL iteration: 600 vae_loss: 1.5384598970413208 dsc_loss: 1.3921431303024292
+TA-VAAL iteration: 700 vae_loss: 1.7417302131652832 dsc_loss: 1.325334072113037
+TA-VAAL iteration: 800 vae_loss: 2.142686367034912 dsc_loss: 1.4300782680511475
+TA-VAAL iteration: 900 vae_loss: 1.7312068939208984 dsc_loss: 1.325127124786377
+TA-VAAL iteration: 1000 vae_loss: 1.3125697374343872 dsc_loss: 1.3725850582122803
+TA-VAAL iteration: 1100 vae_loss: 1.5827584266662598 dsc_loss: 1.368459701538086
+TA-VAAL iteration: 1200 vae_loss: 2.1311025619506836 dsc_loss: 1.3260879516601562
+TA-VAAL iteration: 1300 vae_loss: 1.3667426109313965 dsc_loss: 1.443798542022705
+900 5332 1 6229
+>> Train vae and task model
+epoch 20, vae loss is 0.10291474312543869
+epoch 40, vae loss is 0.07333578169345856
+epoch 60, vae loss is 0.06944116950035095
+epoch 80, vae loss is 0.0694042518734932
+epoch 100, vae loss is 0.07094903290271759
+epoch 0: train loss is  1.9380, train_acc:  0.9444
+epoch 20: train loss is  1.9361, train_acc:  0.9422
+epoch 40: train loss is  1.9372, train_acc:  0.9444
+epoch 60: train loss is  2.2516, train_acc:  0.9444
+epoch 80: train loss is  1.9395, train_acc:  0.9444
+ >> Test Model
+Cycle 3/5 || labeled data size 900, test acc =  0.9468
+TA-VAAL iteration: 0 vae_loss: 1.5968366861343384 dsc_loss: 1.3856761455535889
+TA-VAAL iteration: 100 vae_loss: 1.4677149057388306 dsc_loss: 1.3862063884735107
+TA-VAAL iteration: 200 vae_loss: 1.5355761051177979 dsc_loss: 1.3910894393920898
+TA-VAAL iteration: 300 vae_loss: 1.6724152565002441 dsc_loss: 1.371544599533081
+TA-VAAL iteration: 400 vae_loss: 1.7911297082901 dsc_loss: 1.387516736984253
+TA-VAAL iteration: 500 vae_loss: 1.8653812408447266 dsc_loss: 1.3747129440307617
+TA-VAAL iteration: 600 vae_loss: 2.5651397705078125 dsc_loss: 1.397760272026062
+TA-VAAL iteration: 700 vae_loss: 2.3578524589538574 dsc_loss: 1.3466706275939941
+TA-VAAL iteration: 800 vae_loss: 2.4237208366394043 dsc_loss: 1.3935834169387817
+TA-VAAL iteration: 900 vae_loss: 1.795165777206421 dsc_loss: 1.401093602180481
+TA-VAAL iteration: 1000 vae_loss: 1.9651356935501099 dsc_loss: 1.3796403408050537
+TA-VAAL iteration: 1100 vae_loss: 2.201458692550659 dsc_loss: 1.3866796493530273
+TA-VAAL iteration: 1200 vae_loss: 2.2378692626953125 dsc_loss: 1.3810195922851562
+TA-VAAL iteration: 1300 vae_loss: 2.2904415130615234 dsc_loss: 1.3712897300720215
+1200 5032 1 6229
+>> Train vae and task model
+epoch 20, vae loss is 0.11542890220880508
+epoch 40, vae loss is 0.08362875133752823
+epoch 60, vae loss is 0.08298567682504654
+epoch 80, vae loss is 0.0806557759642601
+epoch 100, vae loss is 0.07881515473127365
+epoch 0: train loss is  2.0801, train_acc:  0.9417
+epoch 20: train loss is  1.6637, train_acc:  0.9417
+epoch 40: train loss is  1.6263, train_acc:  0.9417
+epoch 60: train loss is  1.6126, train_acc:  0.9417
+epoch 80: train loss is  1.5697, train_acc:  0.9417
+ >> Test Model
+Cycle 4/5 || labeled data size 1200, test acc =  0.9468
+TA-VAAL iteration: 0 vae_loss: 1.4835429191589355 dsc_loss: 1.3904616832733154
+TA-VAAL iteration: 100 vae_loss: 1.7887625694274902 dsc_loss: 1.4513044357299805
+TA-VAAL iteration: 200 vae_loss: 2.070925712585449 dsc_loss: 1.3748624324798584
+TA-VAAL iteration: 300 vae_loss: 1.1862813234329224 dsc_loss: 1.6012279987335205
+TA-VAAL iteration: 400 vae_loss: 1.9432532787322998 dsc_loss: 1.4662588834762573
+TA-VAAL iteration: 500 vae_loss: 1.2934638261795044 dsc_loss: 1.4310013055801392
+TA-VAAL iteration: 600 vae_loss: 1.7994016408920288 dsc_loss: 1.39792799949646
+TA-VAAL iteration: 700 vae_loss: 1.464450716972351 dsc_loss: 1.4132781028747559
+TA-VAAL iteration: 800 vae_loss: 1.8576581478118896 dsc_loss: 1.3938679695129395
+TA-VAAL iteration: 900 vae_loss: 1.4861435890197754 dsc_loss: 1.4155950546264648
+TA-VAAL iteration: 1000 vae_loss: 1.7596253156661987 dsc_loss: 1.3369805812835693
+TA-VAAL iteration: 1100 vae_loss: 1.5391989946365356 dsc_loss: 1.4094350337982178
+TA-VAAL iteration: 1200 vae_loss: 1.885448932647705 dsc_loss: 1.381534457206726
+TA-VAAL iteration: 1300 vae_loss: 1.4991629123687744 dsc_loss: 1.4034154415130615
+1500 4732 1 6229
+>> Train vae and task model
+epoch 20, vae loss is 0.11883386969566345
+epoch 40, vae loss is 0.10031008720397949
+epoch 60, vae loss is 0.09593306481838226
+epoch 80, vae loss is 0.09432772547006607
+epoch 100, vae loss is 0.09426005929708481
+epoch 0: train loss is  2.0148, train_acc:  0.9440
+epoch 20: train loss is  2.0121, train_acc:  0.9440
+epoch 40: train loss is  2.0014, train_acc:  0.9440
+epoch 60: train loss is  2.0258, train_acc:  0.9440
+epoch 80: train loss is  2.0220, train_acc:  0.9440
+ >> Test Model
+Cycle 5/5 || labeled data size 1500, test acc =  0.9468
+Finished.
