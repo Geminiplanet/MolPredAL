@@ -6,12 +6,11 @@ import torch.nn as nn
 import torch.nn.functional as F
 from torch import optim
 from torch.utils.data import DataLoader, SubsetRandomSampler
-from tqdm import tqdm
 
 from config import *
 from data.sampler import SubsetSequentialSampler
 from dataset import load_qm9_dataset
-from models import MolecularVAE, Predictor, Discriminator
+from models import Predictor, Discriminator, AE
 
 
 def vae_loss(x, recon, mu, logvar, beta):
@@ -32,12 +31,12 @@ def vae_loss(x, recon, mu, logvar, beta):
 def read_data(dataloader, labels=True):
     if labels:
         while True:
-            for data, label in dataloader:
-                yield data.float(), label
+            for data, length, prop in dataloader:
+                yield data, length, prop
     else:
         while True:
-            for data, _, in dataloader:
-                yield data.float()
+            for data, length, _ in dataloader:
+                yield data, length
 
 
 def symbol_vec(batch_x, recon_x):
@@ -54,12 +53,11 @@ def symbol_vec(batch_x, recon_x):
 
 def main():
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
-    method = 'RANDOM'
+    method = 'VAAL'
     results = open(f'results_{method}_QM9_{CYCLES}CYCLES.txt', 'w')
-    for task_num in range(8):
+    for task_num in range(3, 5):
         # load dataset
-        data_train, data_test, _ = load_qm9_dataset('data/qm9.csv', task_num)
-        data_unlabeled = data_train
+        data_train, data_test, data_unlabeled = load_qm9_dataset('data/qm9.csv', task_num)
         indices = list(range(data_train.len))
         random.shuffle(indices)
         labeled_set = indices[:ADDENNUM]
@@ -73,30 +71,43 @@ def main():
             print('>> Train vae and task model')
             random.shuffle(unlabeled_set)
             subset = unlabeled_set[:SUBSET]
-            task_vae = MolecularVAE().to(device)
-            optim_vae = optim.Adam(task_vae.parameters(), lr=LR)
-            criterion = torch.nn.L1Loss()
-            task_model = Predictor().to(device)
-            optim_task = optim.Adam(task_model.parameters(), lr=LR)
-            for epoch in range(120):
-                task_model.train()
-                task_vae.train()
+
+            task_ae = AE(seq_len=MAX_QM9_LEN, fea_num=len(QM9_CHAR_LIST), hidden_dim=LATENT_DIM, layers=1)
+            optim_ae = optim.Adam(task_ae.parameters(), lr=LR)
+            criterion_ae = nn.CrossEntropyLoss()
+
+            task_pred = Predictor(hidden_dim=LATENT_DIM, prop_num=1).to(device)
+            optim_pred = optim.Adam(task_pred.parameters(), lr=LR)
+            criterion_pred = nn.L1Loss()
+
+            for epoch in range(121):
+                task_ae.train()
+                task_pred.train()
                 losses = []
                 for data in train_loader:
-                    optim_task.zero_grad()
-                    optim_vae.zero_grad()
-                    batch_x, batch_p = data
-                    batch_x = batch_x.float().to(device)
+                    batch_x, batch_l, batch_p = data
+                    batch_x = batch_x.to(device)
+                    batch_l = batch_l.to(device)
                     batch_p = batch_p.to(device)
-                    recon_x, z_mean, z_logvar = task_vae(batch_x)
-                    output = task_model(z_mean)
-                    target_loss = criterion(output.view(-1), batch_p)
-                    loss = target_loss + vae_loss(batch_x, recon_x, z_mean, z_logvar, BETA)
-                    # print(target_loss, vae_loss(batch_x, recon_x, z_mean, z_logvar, BETA))
-                    loss.backward()
-                    optim_task.step()
-                    optim_vae.step()
+
+                    noise = torch.normal(mean=torch.zeros(BATCH, LATENT_DIM), std=0.2 * np.power(0.99, epoch) + 0.02)
+                    output, z = task_ae(batch_x, batch_l, noise)
+                    ae_loss = criterion_ae(output.reshape(-1, len(QM9_CHAR_LIST)), batch_x.reshape(-1))
+
+                    # z = task_ae.Enc(batch_x, batch_l)
+                    pred_p = task_pred(z)
+                    target_loss = criterion_pred(pred_p, batch_p)
+
+                    loss = target_loss + ae_loss
+
+                    optim_ae.zero_grad()
+                    optim_pred.zero_grad()
+                    loss.backward(retain_graph=True)
+                    optim_ae.step()
+                    optim_pred.step()
+
                     losses.append(loss.item())
+
                 train_loss = np.array(losses).mean()
                 if epoch % 10 == 0:
                     # symbol_vec(batch_x, recon_x)
@@ -104,19 +115,20 @@ def main():
 
             # test task model
             print(" >> Test Model")
-            task_vae.eval()
-            task_model.eval()
+            task_ae.eval()
+            task_pred.eval()
             outputs = []
             labels = []
             with torch.no_grad():
                 for data in test_loader:
-                    batch_x, batch_p = data
-                    batch_x = batch_x.float().to(device)
-                    z_mean, _ = task_vae.encode(batch_x)
-                    output = task_model(z_mean)
+                    batch_x, batch_l, batch_p = data
+                    batch_x = batch_x.to(device)
+                    batch_l = batch_l.to(device)
+                    z = task_ae.Enc(batch_x, batch_l)
+                    output = task_pred(z)
                     outputs.append(output.cpu())
                     labels.append(batch_p.cpu())
-            test_loss = criterion(torch.cat(outputs).view(-1), torch.cat(labels)).item()
+            test_loss = criterion_pred(torch.cat(outputs).view(-1), torch.cat(labels)).item()
             print(
                 f'Cycle {cycle + 1}/{CYCLES} || labeled data size {len(labeled_set)}, test loss(MAE) = {test_loss: .5f}')
             np.array([method, QM9_TASKS[task_num], cycle + 1, CYCLES, len(labeled_set), test_loss]).tofile(results,
@@ -131,17 +143,16 @@ def main():
                 # Get the indices of the unlabeled samples to train on next cycle
                 unlabeled_loader = DataLoader(data_unlabeled, batch_size=BATCH,
                                               sampler=SubsetSequentialSampler(subset), pin_memory=True)
-                labeled_loader = DataLoader(data_unlabeled, batch_size=BATCH, sampler=SubsetSequentialSampler(labeled_set),
+                labeled_loader = DataLoader(data_unlabeled, batch_size=BATCH,
+                                            sampler=SubsetSequentialSampler(labeled_set),
                                             pin_memory=True)
 
                 # train VAAL
-                vaal_vae = MolecularVAE().to(device)
+                vaal_ae = AE(MAX_QM9_LEN, len(QM9_CHAR_LIST), LATENT_DIM, 1).to(device)
                 discriminator = Discriminator(LATENT_DIM).to(device)
-                optim_vaal_vae = optim.Adam(vaal_vae.parameters(), lr=LR)
+                optim_vaal_ae = optim.Adam(vaal_ae.parameters(), lr=LR)
                 optim_discriminator = optim.Adam(discriminator.parameters(), lr=LR)
-                task_model.to(device)
-                task_vae.to(device)
-                vaal_vae.train()
+                vaal_ae.train()
                 discriminator.train()
 
                 adversary_param = 1
@@ -152,69 +163,68 @@ def main():
                 bce_loss = nn.BCELoss()
 
                 labeled_data = read_data(labeled_loader)
-                unlabeled_data = read_data(unlabeled_loader)
+                unlabeled_data = read_data(unlabeled_loader, labels=False)
 
-                train_iterations = (ADDENNUM * cycle + len(subset)) * 10 // BATCH
+                train_iterations = (ADDENNUM * cycle + len(subset)) * 30 // BATCH
 
                 for iter_count in range(train_iterations):
-                    labeled_imgs, labels = next(labeled_data)
-                    unlabeled_imgs = next(unlabeled_data)[0]
+                    labeled_x, labeled_l, labeled_p = next(labeled_data)
+                    unlabeled_x, unlabeled_l = next(unlabeled_data)
 
-                    labeled_imgs = labeled_imgs.to(device)
-                    unlabeled_imgs = unlabeled_imgs.to(device)
+                    labeled_x = labeled_x.to(device)
+                    labeled_l = labeled_l.to(device)
+
+                    unlabeled_x = unlabeled_x.to(device)
+                    unlabeled_l = unlabeled_l.to(device)
 
                     # VAE step
                     for count in range(num_vae_steps):  # num_vae_steps
+                        noise = torch.normal(mean=torch.zeros(BATCH, LATENT_DIM),
+                                             std=0.2 * np.power(0.99, iter_count) + 0.02)
+                        recon, z = vaal_ae(labeled_x, labeled_l, noise)
+                        unsup_loss = criterion_ae(recon.reshape(-1, len(QM9_CHAR_LIST)), labeled_x.reshape(-1))
+                        unlab_recon, unlab_z = vaal_ae(unlabeled_x, unlabeled_l, noise)
+                        transductive_loss = criterion_ae(unlab_recon.reshape(-1, len(QM9_CHAR_LIST)),
+                                                         unlabeled_x.reshape(-1))
 
-                        recon, mu, logvar = vaal_vae(labeled_imgs)
-                        unsup_loss = vae_loss(labeled_imgs, recon, mu, logvar, beta)
-                        unlab_recon, unlab_mu, unlab_logvar = vaal_vae(unlabeled_imgs)
-                        transductive_loss = vae_loss(unlabeled_imgs, unlab_recon, unlab_mu, unlab_logvar, beta)
+                        labeled_preds = discriminator(z)
+                        unlabeled_preds = discriminator(unlab_z)
 
-                        labeled_preds = discriminator(mu)
-                        unlabeled_preds = discriminator(unlab_mu)
-
-                        lab_real_preds = torch.ones(labeled_imgs.size(0))
-                        unlab_real_preds = torch.ones(unlabeled_imgs.size(0))
+                        lab_real_preds = torch.ones(labeled_x.size(0))
+                        unlab_real_preds = torch.ones(unlabeled_x.size(0))
 
                         lab_real_preds = lab_real_preds.to(device)
                         unlab_real_preds = unlab_real_preds.to(device)
 
-                        # lab_real_preds = torch.ones(labeled_imgs.size(0))
-                        # unlab_fake_preds = torch.zeros(unlabeled_imgs.size(0))
-                        #
-                        # lab_real_preds = lab_real_preds.to(device)
-                        # unlab_fake_preds = unlab_fake_preds.to(device)
-
                         dsc_loss = bce_loss(labeled_preds[:, 0], lab_real_preds) + \
                                    bce_loss(unlabeled_preds[:, 0], unlab_real_preds)
                         total_vae_loss = unsup_loss + transductive_loss + adversary_param * dsc_loss
-                        # print(f"unsup_loss: {unsup_loss:.5f} transductive_loss:{transductive_loss:.5f}")
-
-                        optim_vaal_vae.zero_grad()
+                        # print(f"unsup_loss: {unsup_loss:.5f} transductive_loss:{transductive_loss:.5f} dsc_loss:{dsc_loss:.5f}")
+                        optim_vaal_ae.zero_grad()
                         total_vae_loss.backward()
-                        optim_vaal_vae.step()
-                        # # sample new batch if needed to train the adversarial network
-                        if count < (num_vae_steps - 1):
-                            labeled_imgs, _ = next(labeled_data)
-                        unlabeled_imgs = next(unlabeled_data)[0]
+                        optim_vaal_ae.step()
 
-                        with torch.cuda.device(CUDA_VISIBLE_DEVICES):
-                            labeled_imgs = labeled_imgs.cuda()
-                        unlabeled_imgs = unlabeled_imgs.cuda()
-                        labels = labels.cuda()
+                        # # sample new batch if needed to train the adversarial network
+                        # if count < (num_vae_steps - 1):
+                        #     labeled_imgs, _ = next(labeled_data)
+                        #     unlabeled_imgs = next(unlabeled_data)[0]
+                        #
+                        #     with torch.cuda.device(CUDA_VISIBLE_DEVICES):
+                        #         labeled_imgs = labeled_imgs.cuda()
+                        #     unlabeled_imgs = unlabeled_imgs.cuda()
+                        #     labels = labels.cuda()
 
                     # Discriminator step
                     for count in range(num_adv_steps):
                         with torch.no_grad():
-                            _, mu, _ = vaal_vae(labeled_imgs)
-                            _, unlab_mu, _ = vaal_vae(unlabeled_imgs)
+                            z = vaal_ae.Enc(labeled_x, labeled_l)
+                            unlab_z = vaal_ae.Enc(unlabeled_x, unlabeled_l)
 
-                        labeled_preds = discriminator(mu)
-                        unlabeled_preds = discriminator(unlab_mu)
+                        labeled_preds = discriminator(z)
+                        unlabeled_preds = discriminator(unlab_z)
 
-                        lab_real_preds = torch.ones(labeled_imgs.size(0))
-                        unlab_fake_preds = torch.zeros(unlabeled_imgs.size(0))
+                        lab_real_preds = torch.ones(labeled_x.size(0))
+                        unlab_fake_preds = torch.zeros(unlabeled_x.size(0))
 
                         lab_real_preds = lab_real_preds.to(device)
                         unlab_fake_preds = unlab_fake_preds.to(device)
@@ -231,11 +241,12 @@ def main():
                         print(f"VAAL iteration: {iter_count} vae_loss: {total_vae_loss: .5f} dsc_loss: {dsc_loss: .5f}")
 
                 all_preds, all_indices = [], []
-                for batch_x, _ in unlabeled_loader:
-                    batch_x = batch_x.float().to(device)
+                for batch_x, batch_l, _ in unlabeled_loader:
+                    batch_x = batch_x.to(device)
+                    batch_l = batch_l.to(device)
                     with torch.no_grad():
-                        _, mu, _ = vaal_vae(batch_x)
-                        preds = discriminator(mu)
+                        z = vaal_ae.Enc(batch_x, batch_l)
+                        preds = discriminator(z)
 
                     preds = preds.cpu().data
                     all_preds.extend(preds)

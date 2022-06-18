@@ -5,6 +5,13 @@ import torch.nn.functional as F
 from config import *
 
 
+def vec_to_char(out_num):
+    stri = ""
+    for cha in out_num:
+        stri += QM9_CHAR_LIST[cha]
+    return stri
+
+
 class LossNet(nn.Module):
     def __init__(self, feature_sizes=[10, 5], num_channels=[15, 15], interm_dim=15):
         super(LossNet, self).__init__()
@@ -92,21 +99,33 @@ class MolecularVAE(nn.Module):
 # ta-vaal predictor
 
 class Predictor(nn.Module):
-    def __init__(self):
+    def __init__(self, hidden_dim, prop_num):
         super(Predictor, self).__init__()
 
-        self.fc1 = nn.Linear(LATENT_DIM, 150)
-        self.fc2 = nn.Linear(150, 75)
-        self.fc3 = nn.Linear(75, 1)
+        self.hidden_dim = hidden_dim
+        self.prop_num = prop_num
+
+        self.fc1 = nn.Linear(self.hidden_dim, self.hidden_dim)
+        nn.init.xavier_normal_(self.fc1.weight.data)
+        nn.init.normal_(self.fc1.bias.data)
+
+        self.fc2 = nn.Linear(self.hidden_dim, self.hidden_dim)
+        nn.init.xavier_normal_(self.fc2.weight.data)
+        nn.init.normal_(self.fc2.bias.data)
+
+        self.fc3 = nn.Linear(self.hidden_dim, self.prop_num)
+        nn.init.xavier_normal_(self.fc3.weight.data)
+        nn.init.normal_(self.fc3.bias.data)
 
         self.relu = nn.ReLU()
 
-    def forward(self, z_mean):
-        out1 = self.relu(self.fc1(z_mean))
+    def forward(self, z):
+        out1 = self.relu(self.fc1(z))
         out2 = self.relu(self.fc2(out1))
-        out = self.relu(self.fc3(out2))
+        out = self.fc3(out2)
 
-        return out.view(-1), [out1, out2]
+        return out.view(-1)  # , [out1, out2]
+
 
 # vaal predictor
 # class Predictor(nn.Module):
@@ -124,16 +143,16 @@ class Predictor(nn.Module):
 class Discriminator(nn.Module):
     """Adversary architecture(Discriminator) for WAE-GAN."""
 
-    def __init__(self, z_dim=10):
+    def __init__(self, z_dim=LATENT_DIM):
         super(Discriminator, self).__init__()
         self.z_dim = z_dim
         self.net = nn.Sequential(
-            nn.Linear(z_dim + 1, 500),
-            # nn.Linear(z_dim, 500),
+            # nn.Linear(z_dim + 1, 500),
+            nn.Linear(z_dim, z_dim),
             nn.ReLU(True),
-            nn.Linear(500, 500),
+            nn.Linear(z_dim, z_dim),
             nn.ReLU(True),
-            nn.Linear(500, 1),
+            nn.Linear(z_dim, 1),
             nn.Sigmoid()
         )
         self.weight_init()
@@ -143,19 +162,148 @@ class Discriminator(nn.Module):
             for m in self._modules[block]:
                 kaiming_init(m)
 
-    def forward(self, r, z):
-        z = torch.cat([z, r], 1)
-        return self.net(z)
-    # def forward(self, z):
+    # def forward(self, r, z):
+    #     z = torch.cat([z, r], 1)
     #     return self.net(z)
+    def forward(self, z):
+        return self.net(z)
 
 
 def kaiming_init(m):
     if isinstance(m, (nn.Linear, nn.Conv2d)):
-        nn.init.kaiming_normal_(m.weight)
+        nn.init.kaiming_normal_(m.weight.data)
         if m.bias is not None:
-            m.bias.data.fill_(0)
+            nn.init.normal_(m.bias.data)
     elif isinstance(m, (nn.BatchNorm1d, nn.BatchNorm2d)):
         m.weight.data.fill_(1)
         if m.bias is not None:
             m.bias.data.fill_(0)
+
+
+class Encoder(nn.Module):
+
+    def __init__(self, seq_len, fea_num, hidden_dim, layers):
+        super(Encoder, self).__init__()
+
+        self.seq_len = seq_len
+        self.fea_num = fea_num
+        self.hidden_dim = hidden_dim
+        self.layers = layers
+
+        self.embedd = nn.Embedding(fea_num, fea_num)
+        self.encoder_rnn = nn.LSTM(input_size=self.fea_num, hidden_size=self.hidden_dim, num_layers=self.layers,
+                                   bias=True, batch_first=True, bidirectional=False)
+
+        for param in self.encoder_rnn.parameters():
+            if len(param.shape) >= 2:
+                nn.init.orthogonal_(param.data)
+            else:
+                nn.init.normal_(param.data)
+
+    def forward(self, X, L):
+        batch_size = X.shape[0]
+        device = X.device
+        enc_h0 = torch.zeros(self.layers * 1, batch_size, self.hidden_dim).to(device)
+        enc_c0 = torch.zeros(self.layers * 1, batch_size, self.hidden_dim).to(device)
+
+        X = self.embedd(X)
+        out, (encoder_hn, encoder_cn) = self.encoder_rnn(X, (enc_h0, enc_c0))
+        last_step_index_list = (L - 1).view(-1, 1).expand(out.size(0), out.size(2)).unsqueeze(1)
+        Z = out.gather(1, last_step_index_list).squeeze()
+        # Z=torch.sigmoid(Z)
+        Z = F.normalize(Z, p=2, dim=1)
+
+        return Z
+
+
+class Decoder(nn.Module):
+
+    def __init__(self, seq_len, fea_num, hidden_dim, layers):
+        super(Decoder, self).__init__()
+
+        self.seq_len = seq_len
+        self.fea_num = fea_num
+        self.hidden_dim = hidden_dim
+        self.layers = layers
+
+        self.embedd = nn.Embedding(self.fea_num, self.fea_num)
+        self.decoder_rnn = nn.LSTM(input_size=self.fea_num + self.hidden_dim, hidden_size=self.hidden_dim,
+                                   num_layers=self.layers, bias=True, batch_first=True, bidirectional=False)
+
+        for param in self.decoder_rnn.parameters():
+            if len(param.shape) >= 2:
+                nn.init.orthogonal_(param.data)
+            else:
+                nn.init.normal_(param.data)
+
+        self.decoder_fc1 = nn.Linear(self.hidden_dim, self.fea_num)
+        nn.init.xavier_normal_(self.decoder_fc1.weight.data)
+        nn.init.normal_(self.decoder_fc1.bias.data)
+
+    def forward(self, Z, X):
+
+        batch_size = Z.shape[0]
+        device = Z.device
+        dec_h0 = torch.zeros(self.layers * 1, batch_size, self.hidden_dim).to(device)
+        dec_c0 = torch.zeros(self.layers * 1, batch_size, self.hidden_dim).to(device)
+
+        X = self.embedd(X)
+        Zm = Z.view(-1, 1, self.hidden_dim).expand(-1, self.seq_len, self.hidden_dim)
+        ZX = torch.cat((Zm, X), 2)
+        #        dec_out,(decoder_hn,decoder_cn)=self.decoder_rnn(X0,(Z.view(1,-1,self.hidden_dim),dec_c0))
+        dec_out, (decoder_hn, decoder_cn) = self.decoder_rnn(ZX, (dec_h0, dec_c0))
+        dec = self.decoder_fc1(dec_out)
+        return dec
+
+    def decoding(self, Z):
+        batch_size = Z.shape[0]
+        device = Z.device
+        dec_h0 = torch.zeros(self.layers * 1, batch_size, self.hidden_dim).to(device)
+        dec_c0 = torch.zeros(self.layers * 1, batch_size, self.hidden_dim).to(device)
+
+        seq = torch.zeros([batch_size, 1], dtype=torch.long).to(device)
+
+        Y = seq
+        Zm = Z.view(-1, 1, self.hidden_dim).expand(-1, 1, self.hidden_dim)
+
+        decoder_hn = dec_h0
+        decoder_cn = dec_c0
+        #        seq2=Xdata_onehot
+        for i in range(self.seq_len):
+            dec_h0 = decoder_hn
+            dec_c0 = decoder_cn
+
+            X = self.embedd(Y)
+            ZX = torch.cat((Zm, X), 2)
+            dec_out, (decoder_hn, decoder_cn) = self.decoder_rnn(ZX, (dec_h0, dec_c0))
+            dec = self.decoder_fc1(dec_out)
+            Y = torch.argmax(dec, dim=2)
+            #            Xdata_onehot=torch.zeros([batch_size,self.Nfea],dtype=torch.float32).to(device)
+            #            Xdata_onehot=Xdata_onehot.scatter_(1,Y,1).view(-1,1,self.Nfea)
+            seq = torch.cat((seq, Y), dim=1)
+        #            seq2=torch.cat((seq2,dec),dim=1)
+
+        return seq[:, 1:]  # , seq2[:,1:]
+
+
+class AE(nn.Module):
+
+    def __init__(self, seq_len, fea_num, hidden_dim, layers):
+        super(AE, self).__init__()
+
+        self.seq_len = seq_len
+        self.fea_num = fea_num
+        # self.prop_num = prop_num
+        self.hidden_dim = hidden_dim
+        self.layers = layers
+
+        self.Enc = Encoder(seq_len, fea_num, hidden_dim, layers)
+        self.Dec = Decoder(seq_len, fea_num, hidden_dim, layers)
+        # self.Pred = Predictor(hidden_dim, prop_num)
+
+    def forward(self, X, L, noise):
+        Z = self.Enc(X, L)
+        Zn = Z + noise
+        decoded = self.Dec(Zn, X)
+
+        return decoded, Z
