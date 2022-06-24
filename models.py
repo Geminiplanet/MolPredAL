@@ -13,9 +13,10 @@ def vec_to_char(out_num):
 
 
 class LossNet(nn.Module):
-    def __init__(self, feature_sizes=[10, 5], num_channels=[15, 15], interm_dim=15):
+    def __init__(self, feature_sizes=[15, 15], num_channels=[20, 20], interm_dim=15):
         super(LossNet, self).__init__()
 
+        #
         self.GAP1 = nn.AvgPool1d(feature_sizes[0])
         self.GAP2 = nn.AvgPool1d(feature_sizes[1])
 
@@ -41,22 +42,22 @@ class MolecularVAE(nn.Module):
     def __init__(self):
         super(MolecularVAE, self).__init__()
 
-        self.conv_1 = nn.Conv1d(42, 9, kernel_size=5)
-        self.conv_2 = nn.Conv1d(9, 9, kernel_size=5)
-        self.conv_3 = nn.Conv1d(9, 11, kernel_size=5)
-        # self.conv_1 = nn.Conv1d(200, 18, kernel_size=18)
-        # self.conv_2 = nn.Conv1d(18, 18, kernel_size=18)
-        # self.conv_3 = nn.Conv1d(18, 20, kernel_size=22)
+        # self.conv_1 = nn.Conv1d(42, 9, kernel_size=5)
+        # self.conv_2 = nn.Conv1d(9, 9, kernel_size=5)
+        # self.conv_3 = nn.Conv1d(9, 11, kernel_size=5)
+        self.conv_1 = nn.Conv1d(200, 18, kernel_size=18)
+        self.conv_2 = nn.Conv1d(18, 18, kernel_size=18)
+        self.conv_3 = nn.Conv1d(18, 20, kernel_size=22)
 
-        self.linear_0 = nn.Linear(110, 250)
-        # self.linear_0 = nn.Linear(400, 435)
+        # self.linear_0 = nn.Linear(110, 250)
+        self.linear_0 = nn.Linear(400, 435)
         self.linear_1 = nn.Linear(250, LATENT_DIM)
         self.linear_2 = nn.Linear(250, LATENT_DIM)
 
         # vaal: nn.Linear(LATENT_DIM, 300); ta-vaal: nn.Linear(LATENT_DIM + 1, 300)
         self.linear_3 = nn.Linear(LATENT_DIM + 1, 300)
         self.gru = nn.GRU(300, 500, 3, batch_first=True)
-        self.linear_4 = nn.Linear(500, len(QM9_CHAR_LIST))
+        self.linear_4 = nn.Linear(500, len(TOX21_CHAR_LIST))
 
         self.relu = nn.ReLU()
         self.softmax = nn.Softmax()
@@ -76,7 +77,7 @@ class MolecularVAE(nn.Module):
 
     def decode(self, z):
         z = F.selu(self.linear_3(z))
-        z = z.view(z.size(0), 1, z.size(-1)).repeat(1, MAX_QM9_LEN, 1)
+        z = z.view(z.size(0), 1, z.size(-1)).repeat(1, MAX_TOX21_LEN, 1)
         output, hn = self.gru(z)
         out_reshape = output.contiguous().view(-1, output.size(-1))
         y0 = F.softmax(self.linear_4(out_reshape), dim=1)
@@ -124,7 +125,7 @@ class Predictor(nn.Module):
         out2 = self.relu(self.fc2(out1))
         out = self.fc3(out2)
 
-        return out.view(-1)  # , [out1, out2]
+        return out.view(-1)#, [out1, out2]
 
 
 # vaal predictor
@@ -147,7 +148,7 @@ class Discriminator(nn.Module):
         super(Discriminator, self).__init__()
         self.z_dim = z_dim
         self.net = nn.Sequential(
-            # nn.Linear(z_dim + 1, 500),
+            # nn.Linear(z_dim + 1, z_dim),
             nn.Linear(z_dim, z_dim),
             nn.ReLU(True),
             nn.Linear(z_dim, z_dim),
@@ -227,6 +228,8 @@ class Decoder(nn.Module):
         self.layers = layers
 
         self.embedd = nn.Embedding(self.fea_num, self.fea_num)
+        # self.decoder_rnn = nn.LSTM(input_size=self.fea_num + self.hidden_dim + 1, hidden_size=self.hidden_dim,
+        #                            num_layers=self.layers, bias=True, batch_first=True, bidirectional=False)
         self.decoder_rnn = nn.LSTM(input_size=self.fea_num + self.hidden_dim, hidden_size=self.hidden_dim,
                                    num_layers=self.layers, bias=True, batch_first=True, bidirectional=False)
 
@@ -248,6 +251,7 @@ class Decoder(nn.Module):
         dec_c0 = torch.zeros(self.layers * 1, batch_size, self.hidden_dim).to(device)
 
         X = self.embedd(X)
+        # Zm = Z.view(-1, 1, self.hidden_dim + 1).expand(-1, self.seq_len, self.hidden_dim + 1)
         Zm = Z.view(-1, 1, self.hidden_dim).expand(-1, self.seq_len, self.hidden_dim)
         ZX = torch.cat((Zm, X), 2)
         #        dec_out,(decoder_hn,decoder_cn)=self.decoder_rnn(X0,(Z.view(1,-1,self.hidden_dim),dec_c0))
@@ -301,6 +305,11 @@ class AE(nn.Module):
         self.Dec = Decoder(seq_len, fea_num, hidden_dim, layers)
         # self.Pred = Predictor(hidden_dim, prop_num)
 
+    # def forward(self, X, L, noise, r):
+    #     Z = self.Enc(X, L)
+    #     Zn = Z + noise
+    #     Zn = torch.cat([Zn, r], 1)
+    #     decoded = self.Dec(Zn, X)
     def forward(self, X, L, noise):
         Z = self.Enc(X, L)
         Zn = Z + noise

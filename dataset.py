@@ -121,6 +121,8 @@ def process_qm9_smiles_data(data_dir):
             print("strange ", key)
     df = pd.read_csv(data_dir)
     target = df[QM9_TASKS].values
+    pmax = np.array(target).max(axis=0)
+    pmin = np.array(target).min(axis=0)
     mean = np.array(target).mean(axis=0)
     std = np.array(target).std(axis=0)
     smiles_list = df.smiles.values
@@ -129,7 +131,8 @@ def process_qm9_smiles_data(data_dir):
     Pdata = []
     for i, smi in enumerate(smiles_list):
         smiles_len = len(smi)
-        labels = (target[i] - mean) / std
+        # labels = (target[i] - pmin) / (pmax - pmin)  # normalization
+        labels = target[i] - mean / std
         Pdata.append(labels)
         # X_d = np.zeros((MAX_QM9_LEN, len(QM9_CHAR_LIST)))  # one-hot
         X_d = []
@@ -175,25 +178,27 @@ class QM9Dataset(Dataset):
         Xdata = torch.tensor(np.load(data_dir + f'X_data.npy'), dtype=torch.long)
         Ldata = torch.tensor(np.load(data_dir + f'L_data.npy'), dtype=torch.long)
         Pdata = torch.tensor(np.load(data_dir + f'P_data.npy'), dtype=torch.float)
-        Pdata = Pdata[:, task_no]
         data_len = Xdata.shape[0]
         index = list(range(data_len))
         # random.shuffle(index)
         train_num = int(0.8 * data_len)
         if name == 'train':
+            Pdata = Pdata[:, task_no]
             self.Xdata = Xdata[index[:train_num]]
             self.Ldata = Ldata[index[:train_num]]
             self.Pdata = Pdata[index[:train_num]]
             self.len = self.Xdata.shape[0]
         elif name == 'test':
+            Pdata = Pdata[:, task_no]
             self.Xdata = Xdata[index[train_num:]]
             self.Ldata = Ldata[index[train_num:]]
             self.Pdata = Pdata[index[train_num:]]
             self.len = self.Xdata.shape[0]
-        # elif name == 'unlabeled':
-        #     self.Xdata = Xdata
-        #     self.Pdata = Pdata
-        #     self.len = self.Xdata.shape[0]
+        elif name == 'all':
+            self.Xdata = Xdata
+            self.Ldata = Ldata
+            self.Pdata = Pdata
+            self.len = self.Xdata.shape[0]
 
     def __getitem__(self, index):
         return self.Xdata[index], self.Ldata[index], self.Pdata[index]
@@ -278,8 +283,9 @@ def load_qm9_dataset(data_dir, task_no):
     # process_qm9_smiles_data(data_dir)
     train_data = QM9Dataset('data/qm9/', 'train', task_no)
     test_data = QM9Dataset('data/qm9/', 'test', task_no)
+    all_data = QM9Dataset('data/qm9/', 'all', task_no)
     # unlabeled_data = QM9Dataset('data/qm9/', 'unlabeled', task_no)
-    return train_data, test_data, train_data
+    return train_data, test_data, all_data
 
 
 if __name__ == '__main__':
@@ -287,4 +293,13 @@ if __name__ == '__main__':
     # process_tox21_smiles_data('data/tox21.csv')
     # train_data = UserDataset('data/', 'train')
     # test_data = UserDataset('data/', 'test')
-    # unlabeled_data = UserDataset('data/', 'unlabeled')
+
+    # unlabeled_data = UserDataset('data/', 'unlabeled', 'NR-Aromatase')
+    # neg, pos, na = 0, 0, 0
+    # for _, _, label in unlabeled_data:
+    #
+    #     if label == 0: neg += 1
+    #     elif label == 1: pos += 1
+    #     else:
+    #         na += 1
+    # print(neg, pos, na)

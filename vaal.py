@@ -54,10 +54,12 @@ def symbol_vec(batch_x, recon_x):
 def main():
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
     method = 'VAAL'
-    results = open(f'results_{method}_QM9_{CYCLES}CYCLES.txt', 'w')
-    for task_num in range(3, 5):
+    results = open(f'results_{method}_QM9_{CYCLES}CYCLES_({ADDENNUM}_{SUBSET}).txt', 'w')
+    print(device, method, CYCLES, ADDENNUM, SUBSET)
+    for task_num in range(2):
         # load dataset
-        data_train, data_test, data_unlabeled = load_qm9_dataset('data/qm9.csv', task_num)
+        data_train, data_test, _ = load_qm9_dataset('data/qm9.csv', task_num)
+        data_unlabeled = data_train
         indices = list(range(data_train.len))
         random.shuffle(indices)
         labeled_set = indices[:ADDENNUM]
@@ -72,7 +74,8 @@ def main():
             random.shuffle(unlabeled_set)
             subset = unlabeled_set[:SUBSET]
 
-            task_ae = AE(seq_len=MAX_QM9_LEN, fea_num=len(QM9_CHAR_LIST), hidden_dim=LATENT_DIM, layers=1)
+            task_ae = AE(seq_len=MAX_QM9_LEN, fea_num=len(QM9_CHAR_LIST), hidden_dim=LATENT_DIM, layers=1).to(device)
+            task_ae.load_state_dict(torch.load('save_model/AE_state_dict_20epoch_train.pkl'))
             optim_ae = optim.Adam(task_ae.parameters(), lr=LR)
             criterion_ae = nn.CrossEntropyLoss()
 
@@ -90,7 +93,8 @@ def main():
                     batch_l = batch_l.to(device)
                     batch_p = batch_p.to(device)
 
-                    noise = torch.normal(mean=torch.zeros(BATCH, LATENT_DIM), std=0.2 * np.power(0.99, epoch) + 0.02)
+                    noise = torch.normal(mean=torch.zeros(BATCH, LATENT_DIM),
+                                         std=0.2 * np.power(0.99, epoch) + 0.02).to(device)
                     output, z = task_ae(batch_x, batch_l, noise)
                     ae_loss = criterion_ae(output.reshape(-1, len(QM9_CHAR_LIST)), batch_x.reshape(-1))
 
@@ -102,7 +106,7 @@ def main():
 
                     optim_ae.zero_grad()
                     optim_pred.zero_grad()
-                    loss.backward(retain_graph=True)
+                    loss.backward()
                     optim_ae.step()
                     optim_pred.step()
 
@@ -111,7 +115,7 @@ def main():
                 train_loss = np.array(losses).mean()
                 if epoch % 10 == 0:
                     # symbol_vec(batch_x, recon_x)
-                    print(f'epoch {epoch}: train loss is {train_loss: .5f}')
+                    print(f'epoch {epoch}: train loss is {train_loss}')
 
             # test task model
             print(" >> Test Model")
@@ -129,8 +133,8 @@ def main():
                     outputs.append(output.cpu())
                     labels.append(batch_p.cpu())
             test_loss = criterion_pred(torch.cat(outputs).view(-1), torch.cat(labels)).item()
-            print(
-                f'Cycle {cycle + 1}/{CYCLES} || labeled data size {len(labeled_set)}, test loss(MAE) = {test_loss: .5f}')
+            print(f'Cycle {cycle + 1}/{CYCLES} || property:{QM9_TASKS[task_num]} labeled data size {len(labeled_set)},'
+                  f' test loss(MAE) = {test_loss}')
             np.array([method, QM9_TASKS[task_num], cycle + 1, CYCLES, len(labeled_set), test_loss]).tofile(results,
                                                                                                            sep=" ")
             results.write("\n")
@@ -149,6 +153,7 @@ def main():
 
                 # train VAAL
                 vaal_ae = AE(MAX_QM9_LEN, len(QM9_CHAR_LIST), LATENT_DIM, 1).to(device)
+                vaal_ae.load_state_dict(torch.load('save_model/AE_state_dict_20epoch_train.pkl'))
                 discriminator = Discriminator(LATENT_DIM).to(device)
                 optim_vaal_ae = optim.Adam(vaal_ae.parameters(), lr=LR)
                 optim_discriminator = optim.Adam(discriminator.parameters(), lr=LR)
@@ -167,7 +172,7 @@ def main():
 
                 train_iterations = (ADDENNUM * cycle + len(subset)) * 30 // BATCH
 
-                for iter_count in range(train_iterations):
+                for iter_count in range(500):
                     labeled_x, labeled_l, labeled_p = next(labeled_data)
                     unlabeled_x, unlabeled_l = next(unlabeled_data)
 
@@ -180,7 +185,7 @@ def main():
                     # VAE step
                     for count in range(num_vae_steps):  # num_vae_steps
                         noise = torch.normal(mean=torch.zeros(BATCH, LATENT_DIM),
-                                             std=0.2 * np.power(0.99, iter_count) + 0.02)
+                                             std=0.2 * np.power(0.99, iter_count) + 0.02).to(device)
                         recon, z = vaal_ae(labeled_x, labeled_l, noise)
                         unsup_loss = criterion_ae(recon.reshape(-1, len(QM9_CHAR_LIST)), labeled_x.reshape(-1))
                         unlab_recon, unlab_z = vaal_ae(unlabeled_x, unlabeled_l, noise)
